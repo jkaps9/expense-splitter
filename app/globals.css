@@ -194,3 +194,10 @@ h5,
 h6 {
   font-weight: 700;
 }
+
+/* UTILITIES */
+
+.amount-text {
+  font-family: var(--font-mono);
+  font-variant-numeric: tabular-nums;
+}
