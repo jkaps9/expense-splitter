@@ -1,49 +1,179 @@
+/*
+  Theme strategy
+  --------------
+  Light is the default. Dark applies in two ways:
+
+  1. Automatically, when the user's OS prefers dark (`prefers-color-scheme`).
+  2. Manually, when you set `data-theme="dark"` on <html> from a toggle.
+
+  A manual choice always wins: `data-theme="light"` forces light even on a
+  dark OS, and `data-theme="dark"` forces dark even on a light OS.
+
+  To avoid a flash of the wrong theme, set `data-theme` from a small inline
+  script in <head> (reading the saved preference) before the first paint.
+
+  The dark palette is intentionally defined twice below. Keep the two blocks
+  in sync if you change a value.
+*/
+
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  color-scheme: light;
+
+  /* Light mode: cool, clean (all text pairings meet WCAG AA) */
+  --color-bg-primary: #f6f8fb;
+  --color-bg-secondary: #edf1f6;
+  --color-bg-tertiary: #e3e9f1;
+  --color-surface: #ffffff;
+  --color-border: #dbe1ea;
+  --color-border-subtle: #e7ecf3;
+
+  --color-text-primary: #131a26;
+  --color-text-secondary: #566073;
+  --color-text-tertiary: #646e7c;
+
+  --color-accent: #2a62d6;
+  --color-accent-hover: #2156c9;
+  --color-accent-subtle: #e7eefc;
+
+  --color-success: #0a7e55;
+  --color-warning: #b5790a;
+  --color-error: #d32637;
+
+  --color-owe: #d32637;
+  --color-owed: #0a7e55;
+  --color-owe-subtle: #fce7ea;
+  --color-owed-subtle: #dcf1e9;
+
+  --color-focus: #2a62d6;
+
+  --font-sans: "Manrope", system-ui, -apple-system, sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, "SF Mono", monospace;
+
+  --text-xs: 0.6875rem;
+  --text-sm: 0.8125rem;
+  --text-base: 1rem;
+  --text-lg: 1.25rem;
+  --text-xl: 1.5625rem;
+  --text-2xl: 1.9375rem;
+  --text-3xl: 2.4375rem;
+
+  --leading-tight: 1.2;
+  --leading-snug: 1.3;
+  --leading-normal: 1.4;
+  --leading-relaxed: 1.45;
+  --leading-loose: 1.55;
+
+  --font-regular: 400;
+  --font-medium: 500;
+  --font-semibold: 600;
+  --font-bold: 700;
+  --font-extrabold: 800;
+
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.25rem;
+  --space-6: 1.5rem;
+  --space-8: 2rem;
+  --space-10: 2.5rem;
+  --space-12: 3rem;
+  --space-16: 4rem;
+  --space-20: 5rem;
+
+  --radius-sm: 0.25rem;
+  --radius-md: 0.5rem;
+  --radius-lg: 0.625rem;
+  --radius-xl: 0.875rem;
+  --radius-full: 9999px;
+
+  --shadow-sm: 0 1px 2px rgba(15, 23, 42, 0.05);
+  --shadow-md:
+    0 4px 6px -1px rgba(15, 23, 42, 0.07), 0 2px 4px -2px rgba(15, 23, 42, 0.05);
+  --shadow-lg:
+    0 10px 15px -3px rgba(15, 23, 42, 0.08),
+    0 4px 6px -4px rgba(15, 23, 42, 0.04);
+
+  --sidebar-width: 16rem;
+  --content-max-width: 42rem;
+  --detail-pane-width: 22rem;
+  --page-max-width: 80rem;
 }
 
+/* Dark mode: cool graphite (primary showcase; the preview uses it).
+   Block 1 of 2: follows the OS unless the user has forced light. */
 @media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
-
-html {
-  height: 100%;
-}
-
-html,
-body {
-  max-width: 100vw;
-  overflow-x: hidden;
-}
-
-body {
-  min-height: 100%;
-  display: flex;
-  flex-direction: column;
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-* {
-  box-sizing: border-box;
-  padding: 0;
-  margin: 0;
-}
-
-a {
-  color: inherit;
-  text-decoration: none;
-}
-
-@media (prefers-color-scheme: dark) {
-  html {
+  :root:not([data-theme="light"]) {
     color-scheme: dark;
+
+    --color-bg-primary: #0a0d13;
+    --color-bg-secondary: #0c0f16;
+    --color-bg-tertiary: #151a24;
+    --color-surface: #10141c;
+    --color-border: #212935;
+    --color-border-subtle: #1a202b;
+
+    --color-text-primary: #e7ebf2;
+    --color-text-secondary: #8b94a6;
+    --color-text-tertiary: #788294;
+
+    --color-accent: #5b8def;
+    --color-accent-hover: #7fa6f5;
+    --color-accent-subtle: #15203a;
+
+    --color-success: #36d29a;
+    --color-warning: #e3b341;
+    --color-error: #f2606a;
+
+    --color-owe: #fb7185;
+    --color-owed: #36d29a;
+    --color-owe-subtle: #2a171c;
+    --color-owed-subtle: #102a22;
+
+    --color-focus: #5b8def;
+
+    --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.3);
+    --shadow-md:
+      0 4px 6px -1px rgba(0, 0, 0, 0.4), 0 2px 4px -2px rgba(0, 0, 0, 0.3);
+    --shadow-lg:
+      0 10px 15px -3px rgba(0, 0, 0, 0.5), 0 4px 6px -4px rgba(0, 0, 0, 0.3);
   }
+}
+
+/* Dark mode, Block 2 of 2: a manual toggle setting data-theme="dark",
+   which overrides the OS setting. Keep these values in sync with Block 1. */
+:root[data-theme="dark"] {
+  color-scheme: dark;
+
+  --color-bg-primary: #0a0d13;
+  --color-bg-secondary: #0c0f16;
+  --color-bg-tertiary: #151a24;
+  --color-surface: #10141c;
+  --color-border: #212935;
+  --color-border-subtle: #1a202b;
+
+  --color-text-primary: #e7ebf2;
+  --color-text-secondary: #8b94a6;
+  --color-text-tertiary: #788294;
+
+  --color-accent: #5b8def;
+  --color-accent-hover: #7fa6f5;
+  --color-accent-subtle: #15203a;
+
+  --color-success: #36d29a;
+  --color-warning: #e3b341;
+  --color-error: #f2606a;
+
+  --color-owe: #fb7185;
+  --color-owed: #36d29a;
+  --color-owe-subtle: #2a171c;
+  --color-owed-subtle: #102a22;
+
+  --color-focus: #5b8def;
+
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.3);
+  --shadow-md:
+    0 4px 6px -1px rgba(0, 0, 0, 0.4), 0 2px 4px -2px rgba(0, 0, 0, 0.3);
+  --shadow-lg:
+    0 10px 15px -3px rgba(0, 0, 0, 0.5), 0 4px 6px -4px rgba(0, 0, 0, 0.3);
 }
