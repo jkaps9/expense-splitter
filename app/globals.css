@@ -287,6 +287,7 @@ button {
 }
 
 p {
+  line-height: 1.6;
   max-width: 65ch;
 }
 
@@ -296,19 +297,23 @@ p {
 
 body {
   font-family: var(--font-sans);
-  font-weight: 400;
+  font-weight: var(--font-regular);
 }
 
 h1,
 h2 {
-  font-weight: 800;
+  font-weight: var(--font-extrabold);
 }
 
-h3,
+/* TODO: revisit font weights based on brand-kit */
+h3 {
+  font-weight: var(--font-bold);
+}
+
 h4,
 h5,
 h6 {
-  font-weight: 700;
+  font-weight: var(--font-semibold);
 }
 
 section {
@@ -327,4 +332,5 @@ section {
 .amount-text {
   font-family: var(--font-mono);
   font-variant-numeric: tabular-nums;
+  font-weight: var(--font-medium);
 }
