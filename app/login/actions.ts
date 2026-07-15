@@ -42,6 +42,7 @@ export async function signUp(formData: FormData) {
   const { error } = await supabase.auth.signUp(data);
 
   if (error) {
+    // TODO: currently the auth flow is going back to login screen instead of going to error screen. Perhaps can add as a pop up box instead of separate page?
     redirect("/error");
   }
 
