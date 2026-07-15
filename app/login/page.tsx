@@ -10,21 +10,38 @@ export default function Login({
   return (
     <div className={styles.container}>
       <form className={styles.form}>
+        <label htmlFor="display_name" className={styles.label}>
+          Display Name (For Signup)
+        </label>
+        <input
+          id="display_name"
+          name="display_name"
+          placeholder="John Doe"
+          autoComplete="name"
+          className={styles.input}
+        />
+
         <label htmlFor="email" className={styles.label}>
           Email
         </label>
         <input
+          id="email"
           name="email"
+          type="email"
+          autoComplete="email"
           placeholder="you@example.com"
           required
           className={styles.input}
         />
+
         <label htmlFor="password" className={styles.label}>
           Password
         </label>
         <input
+          id="password"
           type="password"
           name="password"
+          autoComplete="password"
           placeholder="••••••••"
           required
           className={styles.input}
@@ -45,7 +62,6 @@ export default function Login({
             Sign Up
           </SubmitButton>
         </div>
-        {searchParams?.message && <p>{searchParams.message}</p>}
       </form>
     </div>
   );
