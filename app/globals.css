@@ -201,9 +201,6 @@
 }
 
 body {
-  @include type-body;
-  color: var(--color-body-text);
-  background-color: var(--color-background);
   /* 5. Improve text rendering */
   -webkit-font-smoothing: antialiased;
 }
@@ -296,6 +293,8 @@ p {
 <~~ ~~~~~~~~~~~~~~~~~~~~~~~~~~ ~*/
 
 body {
+  background-color: var(--color-bg-primary);
+  color: var(--color-text-primary);
   font-family: var(--font-sans);
   font-weight: var(--font-regular);
 }

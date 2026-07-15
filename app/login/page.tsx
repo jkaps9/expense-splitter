@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { SubmitButton } from "./submit-button";
 import { signIn, signUp } from "./actions";
+import styles from "./login.module.css";
 
 export default function Login({
   searchParams,
@@ -8,8 +9,8 @@ export default function Login({
   searchParams: { message: string };
 }) {
   return (
-    <div className="flex-1 flex flex-col w-full px-8 sm:max-w-md justify-center gap-2">
-      <Link href="/">
+    <div className={styles.container}>
+      {/* <Link href="/">
         <svg
           xmlns="http://www.w3.org/2000/svg"
           width="24"
@@ -24,22 +25,41 @@ export default function Login({
           <polyline points="15 18 9 12 15 6" />
         </svg>{" "}
         Back
-      </Link>
+      </Link> */}
 
-      <form>
-        <label htmlFor="email">Email</label>
-        <input name="email" placeholder="you@example.com" required />
-        <label htmlFor="password">Password</label>
+      <form className={styles.form}>
+        <label htmlFor="email" className={styles.label}>
+          Email
+        </label>
+        <input
+          name="email"
+          placeholder="you@example.com"
+          required
+          className={styles.input}
+        />
+        <label htmlFor="password" className={styles.label}>
+          Password
+        </label>
         <input
           type="password"
           name="password"
           placeholder="••••••••"
           required
+          className={styles.input}
         />
-        <SubmitButton formAction={signIn} pendingText="Signing In...">
+        <div className={styles.buttonGroup}></div>
+        <SubmitButton
+          formAction={signIn}
+          pendingText="Signing In..."
+          className={styles.loginButton}
+        >
           Sign In
         </SubmitButton>
-        <SubmitButton formAction={signUp} pendingText="Signing Up...">
+        <SubmitButton
+          formAction={signUp}
+          pendingText="Signing Up..."
+          className={styles.signupButton}
+        >
           Sign Up
         </SubmitButton>
         {searchParams?.message && <p>{searchParams.message}</p>}
