@@ -17,7 +17,7 @@ export default async function AuthButton() {
   };
 
   return claims ? (
-    <div className="flex items-center gap-4">
+    <div>
       Hey, {claims.email}!
       <form action={signOut}>
         <button>Logout</button>
