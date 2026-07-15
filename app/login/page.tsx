@@ -47,21 +47,22 @@ export default function Login({
           required
           className={styles.input}
         />
-        <div className={styles.buttonGroup}></div>
-        <SubmitButton
-          formAction={signIn}
-          pendingText="Signing In..."
-          className={styles.loginButton}
-        >
-          Sign In
-        </SubmitButton>
-        <SubmitButton
-          formAction={signUp}
-          pendingText="Signing Up..."
-          className={styles.signupButton}
-        >
-          Sign Up
-        </SubmitButton>
+        <div className={styles.buttonGroup}>
+          <SubmitButton
+            formAction={signIn}
+            pendingText="Signing In..."
+            className={styles.loginButton}
+          >
+            Sign In
+          </SubmitButton>
+          <SubmitButton
+            formAction={signUp}
+            pendingText="Signing Up..."
+            className={styles.signupButton}
+          >
+            Sign Up
+          </SubmitButton>
+        </div>
         {searchParams?.message && <p>{searchParams.message}</p>}
       </form>
     </div>
