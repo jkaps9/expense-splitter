@@ -1,13 +1,3 @@
-.container {
-  min-height: 100vh;
-  background-color: var(--color-bg-primary);
-  color: var(--color-text-primary);
-  padding: var(--space-6) var(--space-4);
-  max-width: var(--page-max-width, 80rem);
-  margin: 0 auto;
-  font-family: var(--font-sans);
-}
-
 .header {
   display: flex;
   justify-content: space-between;

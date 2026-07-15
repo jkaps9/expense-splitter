@@ -3,6 +3,7 @@ import { createClient } from "@/lib/supabase/server";
 import { redirect } from "next/navigation";
 import Link from "next/link";
 import styles from "./dashboard.module.css";
+import AuthButton from "@/components/AuthButton";
 
 export default async function DashboardPage() {
   const supabase = await createClient();
@@ -23,7 +24,12 @@ export default async function DashboardPage() {
     .order("created_at", { ascending: false });
 
   return (
-    <div className={styles.container}>
+    <div className="container">
+      <header>
+        <div className="container" style={{ marginBlock: "2rem" }}>
+          <AuthButton></AuthButton>
+        </div>
+      </header>
       <header className={styles.header}>
         <h1 className={styles.title}>Your Groups</h1>
         <button className={styles.newGroupButton}>+ New Group</button>
@@ -35,7 +41,7 @@ export default async function DashboardPage() {
             <p className={styles.emptyText}>You do not have any groups yet.</p>
             <p className={styles.emptySubtext}>
               Create one to start tracking expenses for an apartment, a project,
-              or a family trip to Maine.
+              or a family trip.
             </p>
           </div>
         ) : (
