@@ -21,6 +21,7 @@
         "npm:next@16.2.10",
         "npm:react-dom@19.2.4",
         "npm:react@19.2.4",
+        "npm:supabase@^2.109.1",
         "npm:typescript@5"
       ]
     }
