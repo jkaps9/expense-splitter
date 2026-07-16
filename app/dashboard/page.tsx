@@ -32,7 +32,9 @@ export default async function DashboardPage() {
       </header>
       <header className={styles.header}>
         <h1 className={styles.title}>Your Groups</h1>
-        <button className={styles.newGroupButton}>+ New Group</button>
+        <Link href="/dashboard/groups/new" className={styles.newGroupButton}>
+          + New Group
+        </Link>
       </header>
 
       <main className={styles.main}>
