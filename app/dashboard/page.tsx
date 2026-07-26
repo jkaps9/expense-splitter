@@ -7,7 +7,6 @@ import AuthButton from "@/components/AuthButton";
 export default async function DashboardPage() {
   const supabase = await createClient();
 
-  // Verify the user is authenticated
   const {
     data: { user },
     error: authError,
@@ -16,7 +15,6 @@ export default async function DashboardPage() {
     redirect("/login");
   }
 
-  // Fetch groups. RLS ensures they only see their own groups.
   const { data: groups, error: groupsError } = await supabase
     .from("groups")
     .select("*")
