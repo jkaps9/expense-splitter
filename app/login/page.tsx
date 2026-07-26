@@ -1,4 +1,4 @@
-import { SubmitButton } from "@/components/submit-button";
+import { SubmitButton } from "@/components/SubmitButton";
 import { signIn } from "./actions";
 
 export default function Login() {
