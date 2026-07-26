@@ -1,7 +1,6 @@
-import Link from "next/link";
-import AuthButton from "@/components/AuthButton";
+import { signOut } from "./actions";
 
-export default function DashboardLayout({
+export default async function DashboardLayout({
   children,
 }: {
   children: React.ReactNode;
@@ -9,8 +8,13 @@ export default function DashboardLayout({
   return (
     <>
       <header>
-        <div className="container" style={{ marginBlock: "2rem" }}>
-          <AuthButton></AuthButton>
+        <div className="container row">
+          <p>Hey, [DisplayName]</p>
+          <form action={signOut} className="btn-form">
+            <button className="btn" type="submit">
+              Logout
+            </button>
+          </form>
         </div>
       </header>
       <main>{children}</main>
