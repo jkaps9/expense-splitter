@@ -1,5 +1,5 @@
 import { SubmitButton } from "@/components/submit-button";
-import { signIn } from "./actions";
+import { signUp } from "./actions";
 
 export default function Login() {
   return (
@@ -7,6 +7,14 @@ export default function Login() {
       <section className="login" id="login">
         <div className="container">
           <form>
+            <label htmlFor="display_name">Display Name</label>
+            <input
+              id="display_name"
+              name="display_name"
+              placeholder="John Doe"
+              autoComplete="name"
+            />
+
             <label htmlFor="email">Email</label>
             <input
               id="email"
@@ -27,8 +35,8 @@ export default function Login() {
               required
             />
             <div>
-              <SubmitButton formAction={signIn} pendingText="Signing In...">
-                Sign In
+              <SubmitButton formAction={signUp} pendingText="Signing Up...">
+                Sign Up
               </SubmitButton>
             </div>
           </form>
