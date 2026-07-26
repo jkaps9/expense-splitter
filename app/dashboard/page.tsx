@@ -1,8 +1,7 @@
 // app/dashboard/page.tsx
 import { createClient } from "@/lib/supabase/server";
-import { redirect } from "next/navigation";
+import { redirect, notFound } from "next/navigation";
 import Link from "next/link";
-import AuthButton from "@/components/AuthButton";
 
 export default async function DashboardPage() {
   const supabase = await createClient();
@@ -20,19 +19,15 @@ export default async function DashboardPage() {
     .select("*")
     .order("created_at", { ascending: false });
 
-  return (
-    <div className="container">
-      <header>
-        <div className="container" style={{ marginBlock: "2rem" }}>
-          <AuthButton></AuthButton>
-        </div>
-      </header>
-      <header>
-        <h1>Your Groups</h1>
-        <Link href="/dashboard/groups/new">+ New Group</Link>
-      </header>
+  if (groupsError) notFound();
 
-      <main>
+  return (
+    <section className="groups">
+      <div className="container">
+        <div className="groups__header">
+          <h1>Your Groups</h1>
+          <Link href="/dashboard/groups/new">+ New Group</Link>
+        </div>
         {!groups || groups.length === 0 ? (
           <div>
             <p>You do not have any groups yet.</p>
@@ -42,7 +37,7 @@ export default async function DashboardPage() {
             </p>
           </div>
         ) : (
-          <ul>
+          <ul className="groups__list">
             {groups.map((group) => (
               <li key={group.id}>
                 <Link href={`/dashboard/groups/${group.id}`}>
@@ -53,7 +48,7 @@ export default async function DashboardPage() {
             ))}
           </ul>
         )}
-      </main>
-    </div>
+      </div>
+    </section>
   );
 }

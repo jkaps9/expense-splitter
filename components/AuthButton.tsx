@@ -17,10 +17,12 @@ export default async function AuthButton() {
   };
 
   return claims ? (
-    <div style={{ display: "flex", justifyContent: "space-between" }}>
+    <div className="row">
       Hey, {claims.email}!
-      <form action={signOut}>
-        <button>Logout</button>
+      <form action={signOut} className="btn-form">
+        <button className="btn" type="submit">
+          Logout
+        </button>
       </form>
     </div>
   ) : (

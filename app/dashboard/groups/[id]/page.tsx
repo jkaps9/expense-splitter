@@ -40,6 +40,7 @@ export default async function Page({
     <>
       <section className="group-details">
         <div className="container">
+          <Link href="/dashboard">Back to Dashboard</Link>
           <div className="group-details">
             <h1>{group.name}</h1>
             <p>{group.description}</p>
