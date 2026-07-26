@@ -1,0 +1,1485 @@
+{
+  "groups": [
+    {
+      "id": "grp_japan_2024",
+      "name": "Trip to Japan",
+      "description": "Two weeks in Tokyo, Kyoto, and Osaka. Cherry blossom season 2024.",
+      "currency": "USD",
+      "createdAt": "2024-03-15T09:00:00Z",
+      "members": [
+        {
+          "id": "mem_alex",
+          "name": "Alex Chen",
+          "email": "alex@example.com",
+          "avatarColor": "#6366F1"
+        },
+        {
+          "id": "mem_jordan",
+          "name": "Jordan Park",
+          "email": "jordan@example.com",
+          "avatarColor": "#F59E0B"
+        },
+        {
+          "id": "mem_sam",
+          "name": "Sam Rivera",
+          "email": "sam@example.com",
+          "avatarColor": "#EC4899"
+        },
+        {
+          "id": "mem_taylor",
+          "name": "Taylor Kim",
+          "email": "taylor@example.com",
+          "avatarColor": "#14B8A6"
+        }
+      ],
+      "expenses": [
+        {
+          "id": "exp_001",
+          "description": "Shinjuku hotel (3 nights)",
+          "amount": 84000,
+          "currency": "JPY",
+          "exchangeRate": 0.0067,
+          "paidBy": "mem_alex",
+          "splitType": "equal",
+          "splits": [
+            {
+              "memberId": "mem_alex",
+              "amount": 21000
+            },
+            {
+              "memberId": "mem_jordan",
+              "amount": 21000
+            },
+            {
+              "memberId": "mem_sam",
+              "amount": 21000
+            },
+            {
+              "memberId": "mem_taylor",
+              "amount": 21000
+            }
+          ],
+          "date": "2024-03-18T14:00:00Z",
+          "category": "Accommodation"
+        },
+        {
+          "id": "exp_002",
+          "description": "Sushi Dai at Tsukiji",
+          "amount": 32400,
+          "currency": "JPY",
+          "exchangeRate": 0.0067,
+          "paidBy": "mem_jordan",
+          "splitType": "equal",
+          "splits": [
+            {
+              "memberId": "mem_alex",
+              "amount": 8100
+            },
+            {
+              "memberId": "mem_jordan",
+              "amount": 8100
+            },
+            {
+              "memberId": "mem_sam",
+              "amount": 8100
+            },
+            {
+              "memberId": "mem_taylor",
+              "amount": 8100
+            }
+          ],
+          "date": "2024-03-19T12:30:00Z",
+          "category": "Food & Drink"
+        },
+        {
+          "id": "exp_003",
+          "description": "JR Pass (7-day)",
+          "amount": 236.5,
+          "currency": "USD",
+          "exchangeRate": 1.0,
+          "paidBy": "mem_alex",
+          "splitType": "equal",
+          "splits": [
+            {
+              "memberId": "mem_alex",
+              "amount": 59.13
+            },
+            {
+              "memberId": "mem_jordan",
+              "amount": 59.13
+            },
+            {
+              "memberId": "mem_sam",
+              "amount": 59.12
+            },
+            {
+              "memberId": "mem_taylor",
+              "amount": 59.12
+            }
+          ],
+          "date": "2024-03-15T10:00:00Z",
+          "category": "Transport"
+        },
+        {
+          "id": "exp_004",
+          "description": "TeamLab Borderless tickets",
+          "amount": 12800,
+          "currency": "JPY",
+          "exchangeRate": 0.0067,
+          "paidBy": "mem_sam",
+          "splitType": "equal",
+          "splits": [
+            {
+              "memberId": "mem_alex",
+              "amount": 3200
+            },
+            {
+              "memberId": "mem_jordan",
+              "amount": 3200
+            },
+            {
+              "memberId": "mem_sam",
+              "amount": 3200
+            },
+            {
+              "memberId": "mem_taylor",
+              "amount": 3200
+            }
+          ],
+          "date": "2024-03-20T09:00:00Z",
+          "category": "Entertainment"
+        },
+        {
+          "id": "exp_005",
+          "description": "Kyoto ryokan (2 nights)",
+          "amount": 120000,
+          "currency": "JPY",
+          "exchangeRate": 0.0067,
+          "paidBy": "mem_taylor",
+          "splitType": "exact",
+          "splits": [
+            {
+              "memberId": "mem_alex",
+              "amount": 35000
+            },
+            {
+              "memberId": "mem_jordan",
+              "amount": 35000
+            },
+            {
+              "memberId": "mem_sam",
+              "amount": 25000
+            },
+            {
+              "memberId": "mem_taylor",
+              "amount": 25000
+            }
+          ],
+          "date": "2024-03-22T15:00:00Z",
+          "category": "Accommodation",
+          "notes": "Alex and Jordan had the larger room"
+        },
+        {
+          "id": "exp_006",
+          "description": "Fushimi Inari snacks & drinks",
+          "amount": 4850,
+          "currency": "JPY",
+          "exchangeRate": 0.0067,
+          "paidBy": "mem_jordan",
+          "splitType": "equal",
+          "splits": [
+            {
+              "memberId": "mem_alex",
+              "amount": 1213
+            },
+            {
+              "memberId": "mem_jordan",
+              "amount": 1213
+            },
+            {
+              "memberId": "mem_sam",
+              "amount": 1212
+            },
+            {
+              "memberId": "mem_taylor",
+              "amount": 1212
+            }
+          ],
+          "date": "2024-03-23T11:00:00Z",
+          "category": "Food & Drink"
+        },
+        {
+          "id": "exp_007",
+          "description": "Shinkansen Kyoto to Osaka",
+          "amount": 5720,
+          "currency": "JPY",
+          "exchangeRate": 0.0067,
+          "paidBy": "mem_alex",
+          "splitType": "equal",
+          "splits": [
+            {
+              "memberId": "mem_alex",
+              "amount": 1430
+            },
+            {
+              "memberId": "mem_jordan",
+              "amount": 1430
+            },
+            {
+              "memberId": "mem_sam",
+              "amount": 1430
+            },
+            {
+              "memberId": "mem_taylor",
+              "amount": 1430
+            }
+          ],
+          "date": "2024-03-24T08:30:00Z",
+          "category": "Transport"
+        },
+        {
+          "id": "exp_008",
+          "description": "Don Quijote shopping haul",
+          "amount": 18750,
+          "currency": "JPY",
+          "exchangeRate": 0.0067,
+          "paidBy": "mem_sam",
+          "splitType": "exact",
+          "splits": [
+            {
+              "memberId": "mem_alex",
+              "amount": 6200
+            },
+            {
+              "memberId": "mem_jordan",
+              "amount": 3550
+            },
+            {
+              "memberId": "mem_sam",
+              "amount": 5800
+            },
+            {
+              "memberId": "mem_taylor",
+              "amount": 3200
+            }
+          ],
+          "date": "2024-03-24T16:00:00Z",
+          "category": "Shopping",
+          "notes": "Each person picked different items"
+        },
+        {
+          "id": "exp_009",
+          "description": "Osaka street food tour",
+          "amount": 28000,
+          "currency": "JPY",
+          "exchangeRate": 0.0067,
+          "paidBy": "mem_taylor",
+          "splitType": "equal",
+          "splits": [
+            {
+              "memberId": "mem_alex",
+              "amount": 7000
+            },
+            {
+              "memberId": "mem_jordan",
+              "amount": 7000
+            },
+            {
+              "memberId": "mem_sam",
+              "amount": 7000
+            },
+            {
+              "memberId": "mem_taylor",
+              "amount": 7000
+            }
+          ],
+          "date": "2024-03-25T18:00:00Z",
+          "category": "Food & Drink"
+        },
+        {
+          "id": "exp_010",
+          "description": "Osaka Castle entry",
+          "amount": 2400,
+          "currency": "JPY",
+          "exchangeRate": 0.0067,
+          "paidBy": "mem_jordan",
+          "splitType": "equal",
+          "splits": [
+            {
+              "memberId": "mem_alex",
+              "amount": 800
+            },
+            {
+              "memberId": "mem_jordan",
+              "amount": 800
+            },
+            {
+              "memberId": "mem_sam",
+              "amount": 800
+            }
+          ],
+          "date": "2024-03-26T10:00:00Z",
+          "category": "Entertainment",
+          "notes": "Taylor skipped this one"
+        },
+        {
+          "id": "exp_011",
+          "description": "Convenience store runs (accumulated)",
+          "amount": 8340,
+          "currency": "JPY",
+          "exchangeRate": 0.0067,
+          "paidBy": "mem_sam",
+          "splitType": "equal",
+          "splits": [
+            {
+              "memberId": "mem_alex",
+              "amount": 2085
+            },
+            {
+              "memberId": "mem_jordan",
+              "amount": 2085
+            },
+            {
+              "memberId": "mem_sam",
+              "amount": 2085
+            },
+            {
+              "memberId": "mem_taylor",
+              "amount": 2085
+            }
+          ],
+          "date": "2024-03-27T20:00:00Z",
+          "category": "Groceries"
+        },
+        {
+          "id": "exp_012",
+          "description": "Izakaya dinner in Dotonbori",
+          "amount": 42600,
+          "currency": "JPY",
+          "exchangeRate": 0.0067,
+          "paidBy": "mem_alex",
+          "splitType": "shares",
+          "splits": [
+            {
+              "memberId": "mem_alex",
+              "amount": 14200,
+              "shares": 2
+            },
+            {
+              "memberId": "mem_jordan",
+              "amount": 14200,
+              "shares": 2
+            },
+            {
+              "memberId": "mem_sam",
+              "amount": 7100,
+              "shares": 1
+            },
+            {
+              "memberId": "mem_taylor",
+              "amount": 7100,
+              "shares": 1
+            }
+          ],
+          "date": "2024-03-25T20:30:00Z",
+          "category": "Food & Drink",
+          "notes": "Alex and Jordan ordered premium sake"
+        },
+        {
+          "id": "exp_013",
+          "description": "Group travel insurance (EU provider)",
+          "amount": 96.0,
+          "currency": "EUR",
+          "exchangeRate": 1.08,
+          "paidBy": "mem_jordan",
+          "splitType": "equal",
+          "splits": [
+            {
+              "memberId": "mem_alex",
+              "amount": 24.0
+            },
+            {
+              "memberId": "mem_jordan",
+              "amount": 24.0
+            },
+            {
+              "memberId": "mem_sam",
+              "amount": 24.0
+            },
+            {
+              "memberId": "mem_taylor",
+              "amount": 24.0
+            }
+          ],
+          "date": "2024-03-16T10:00:00Z",
+          "category": "Other"
+        }
+      ],
+      "settlements": [
+        {
+          "id": "stl_001",
+          "from": "mem_jordan",
+          "to": "mem_alex",
+          "amount": 150.0,
+          "currency": "USD",
+          "exchangeRate": 1.0,
+          "date": "2024-03-24T21:00:00Z"
+        },
+        {
+          "id": "stl_002",
+          "from": "mem_sam",
+          "to": "mem_taylor",
+          "amount": 8500,
+          "currency": "JPY",
+          "exchangeRate": 0.0067,
+          "date": "2024-03-26T19:00:00Z"
+        }
+      ]
+    },
+    {
+      "id": "grp_apt_4b",
+      "name": "Apartment 4B",
+      "description": "Monthly shared expenses for our apartment.",
+      "currency": "USD",
+      "createdAt": "2024-01-01T00:00:00Z",
+      "members": [
+        {
+          "id": "mem_riley",
+          "name": "Riley Morgan",
+          "email": "riley@example.com",
+          "avatarColor": "#8B5CF6"
+        },
+        {
+          "id": "mem_casey",
+          "name": "Casey Brooks",
+          "email": "casey@example.com",
+          "avatarColor": "#F97316"
+        },
+        {
+          "id": "mem_drew",
+          "name": "Drew Patel",
+          "email": "drew@example.com",
+          "avatarColor": "#06B6D4"
+        }
+      ],
+      "expenses": [
+        {
+          "id": "exp_101",
+          "description": "January rent",
+          "amount": 3600.0,
+          "currency": "USD",
+          "exchangeRate": 1.0,
+          "paidBy": "mem_riley",
+          "splitType": "exact",
+          "splits": [
+            {
+              "memberId": "mem_riley",
+              "amount": 1400.0
+            },
+            {
+              "memberId": "mem_casey",
+              "amount": 1100.0
+            },
+            {
+              "memberId": "mem_drew",
+              "amount": 1100.0
+            }
+          ],
+          "date": "2024-01-01T09:00:00Z",
+          "category": "Housing",
+          "recurring": "monthly",
+          "notes": "Riley has the master bedroom"
+        },
+        {
+          "id": "exp_102",
+          "description": "January electricity",
+          "amount": 142.37,
+          "currency": "USD",
+          "exchangeRate": 1.0,
+          "paidBy": "mem_casey",
+          "splitType": "equal",
+          "splits": [
+            {
+              "memberId": "mem_riley",
+              "amount": 47.46
+            },
+            {
+              "memberId": "mem_casey",
+              "amount": 47.46
+            },
+            {
+              "memberId": "mem_drew",
+              "amount": 47.45
+            }
+          ],
+          "date": "2024-01-05T10:00:00Z",
+          "category": "Utilities"
+        },
+        {
+          "id": "exp_103",
+          "description": "Internet (monthly)",
+          "amount": 79.99,
+          "currency": "USD",
+          "exchangeRate": 1.0,
+          "paidBy": "mem_drew",
+          "splitType": "equal",
+          "splits": [
+            {
+              "memberId": "mem_riley",
+              "amount": 26.67
+            },
+            {
+              "memberId": "mem_casey",
+              "amount": 26.66
+            },
+            {
+              "memberId": "mem_drew",
+              "amount": 26.66
+            }
+          ],
+          "date": "2024-01-03T08:00:00Z",
+          "category": "Utilities",
+          "recurring": "monthly"
+        },
+        {
+          "id": "exp_104",
+          "description": "Costco grocery run",
+          "amount": 287.43,
+          "currency": "USD",
+          "exchangeRate": 1.0,
+          "paidBy": "mem_riley",
+          "splitType": "equal",
+          "splits": [
+            {
+              "memberId": "mem_riley",
+              "amount": 95.81
+            },
+            {
+              "memberId": "mem_casey",
+              "amount": 95.81
+            },
+            {
+              "memberId": "mem_drew",
+              "amount": 95.81
+            }
+          ],
+          "date": "2024-01-07T14:00:00Z",
+          "category": "Groceries"
+        },
+        {
+          "id": "exp_105",
+          "description": "Cleaning supplies",
+          "amount": 34.5,
+          "currency": "USD",
+          "exchangeRate": 1.0,
+          "paidBy": "mem_casey",
+          "splitType": "equal",
+          "splits": [
+            {
+              "memberId": "mem_riley",
+              "amount": 11.5
+            },
+            {
+              "memberId": "mem_casey",
+              "amount": 11.5
+            },
+            {
+              "memberId": "mem_drew",
+              "amount": 11.5
+            }
+          ],
+          "date": "2024-01-12T11:00:00Z",
+          "category": "Other"
+        },
+        {
+          "id": "exp_106",
+          "description": "February rent",
+          "amount": 3600.0,
+          "currency": "USD",
+          "exchangeRate": 1.0,
+          "paidBy": "mem_riley",
+          "splitType": "exact",
+          "splits": [
+            {
+              "memberId": "mem_riley",
+              "amount": 1400.0
+            },
+            {
+              "memberId": "mem_casey",
+              "amount": 1100.0
+            },
+            {
+              "memberId": "mem_drew",
+              "amount": 1100.0
+            }
+          ],
+          "date": "2024-02-01T09:00:00Z",
+          "category": "Housing",
+          "recurring": "monthly"
+        },
+        {
+          "id": "exp_107",
+          "description": "February electricity",
+          "amount": 168.92,
+          "currency": "USD",
+          "exchangeRate": 1.0,
+          "paidBy": "mem_casey",
+          "splitType": "equal",
+          "splits": [
+            {
+              "memberId": "mem_riley",
+              "amount": 56.31
+            },
+            {
+              "memberId": "mem_casey",
+              "amount": 56.31
+            },
+            {
+              "memberId": "mem_drew",
+              "amount": 56.3
+            }
+          ],
+          "date": "2024-02-05T10:00:00Z",
+          "category": "Utilities"
+        },
+        {
+          "id": "exp_108",
+          "description": "Trader Joe's groceries",
+          "amount": 156.78,
+          "currency": "USD",
+          "exchangeRate": 1.0,
+          "paidBy": "mem_drew",
+          "splitType": "equal",
+          "splits": [
+            {
+              "memberId": "mem_riley",
+              "amount": 52.26
+            },
+            {
+              "memberId": "mem_casey",
+              "amount": 52.26
+            },
+            {
+              "memberId": "mem_drew",
+              "amount": 52.26
+            }
+          ],
+          "date": "2024-02-10T16:00:00Z",
+          "category": "Groceries"
+        },
+        {
+          "id": "exp_109",
+          "description": "Netflix subscription",
+          "amount": 22.99,
+          "currency": "USD",
+          "exchangeRate": 1.0,
+          "paidBy": "mem_drew",
+          "splitType": "equal",
+          "splits": [
+            {
+              "memberId": "mem_riley",
+              "amount": 7.67
+            },
+            {
+              "memberId": "mem_casey",
+              "amount": 7.66
+            },
+            {
+              "memberId": "mem_drew",
+              "amount": 7.66
+            }
+          ],
+          "date": "2024-02-15T08:00:00Z",
+          "category": "Entertainment",
+          "recurring": "monthly"
+        },
+        {
+          "id": "exp_110",
+          "description": "Plumber visit (clogged drain)",
+          "amount": 275.0,
+          "currency": "USD",
+          "exchangeRate": 1.0,
+          "paidBy": "mem_riley",
+          "splitType": "equal",
+          "splits": [
+            {
+              "memberId": "mem_riley",
+              "amount": 91.67
+            },
+            {
+              "memberId": "mem_casey",
+              "amount": 91.67
+            },
+            {
+              "memberId": "mem_drew",
+              "amount": 91.66
+            }
+          ],
+          "date": "2024-02-18T14:00:00Z",
+          "category": "Other"
+        }
+      ],
+      "settlements": [
+        {
+          "id": "stl_101",
+          "from": "mem_casey",
+          "to": "mem_riley",
+          "amount": 1104.56,
+          "currency": "USD",
+          "exchangeRate": 1.0,
+          "date": "2024-01-31T18:00:00Z"
+        },
+        {
+          "id": "stl_102",
+          "from": "mem_drew",
+          "to": "mem_riley",
+          "amount": 1201.43,
+          "currency": "USD",
+          "exchangeRate": 1.0,
+          "date": "2024-01-31T18:05:00Z"
+        }
+      ]
+    },
+    {
+      "id": "grp_office_lunch",
+      "name": "Office Lunch Crew",
+      "description": "Weekly lunches, coffee runs, and the occasional birthday cake.",
+      "currency": "USD",
+      "createdAt": "2024-02-05T09:00:00Z",
+      "members": [
+        {
+          "id": "mem_mia",
+          "name": "Mia Torres",
+          "email": "mia@example.com",
+          "avatarColor": "#EC4899"
+        },
+        {
+          "id": "mem_noah",
+          "name": "Noah Williams",
+          "email": "noah@example.com",
+          "avatarColor": "#8B5CF6"
+        },
+        {
+          "id": "mem_priya",
+          "name": "Priya Sharma",
+          "email": "priya@example.com",
+          "avatarColor": "#F59E0B"
+        },
+        {
+          "id": "mem_ethan",
+          "name": "Ethan Nakamura",
+          "email": "ethan@example.com",
+          "avatarColor": "#06B6D4"
+        }
+      ],
+      "expenses": [
+        {
+          "id": "exp_201",
+          "description": "Thai Palace lunch",
+          "amount": 67.8,
+          "currency": "USD",
+          "exchangeRate": 1.0,
+          "paidBy": "mem_mia",
+          "splitType": "equal",
+          "splits": [
+            {
+              "memberId": "mem_mia",
+              "amount": 16.95
+            },
+            {
+              "memberId": "mem_noah",
+              "amount": 16.95
+            },
+            {
+              "memberId": "mem_priya",
+              "amount": 16.95
+            },
+            {
+              "memberId": "mem_ethan",
+              "amount": 16.95
+            }
+          ],
+          "date": "2024-02-07T12:30:00Z",
+          "category": "Food & Drink"
+        },
+        {
+          "id": "exp_202",
+          "description": "Morning coffee run",
+          "amount": 24.5,
+          "currency": "USD",
+          "exchangeRate": 1.0,
+          "paidBy": "mem_noah",
+          "splitType": "equal",
+          "splits": [
+            {
+              "memberId": "mem_mia",
+              "amount": 6.13
+            },
+            {
+              "memberId": "mem_noah",
+              "amount": 6.13
+            },
+            {
+              "memberId": "mem_priya",
+              "amount": 6.12
+            },
+            {
+              "memberId": "mem_ethan",
+              "amount": 6.12
+            }
+          ],
+          "date": "2024-02-09T09:15:00Z",
+          "category": "Food & Drink"
+        },
+        {
+          "id": "exp_203",
+          "description": "Pizza Friday",
+          "amount": 48.0,
+          "currency": "USD",
+          "exchangeRate": 1.0,
+          "paidBy": "mem_priya",
+          "splitType": "equal",
+          "splits": [
+            {
+              "memberId": "mem_mia",
+              "amount": 12.0
+            },
+            {
+              "memberId": "mem_noah",
+              "amount": 12.0
+            },
+            {
+              "memberId": "mem_priya",
+              "amount": 12.0
+            },
+            {
+              "memberId": "mem_ethan",
+              "amount": 12.0
+            }
+          ],
+          "date": "2024-02-16T12:00:00Z",
+          "category": "Food & Drink"
+        },
+        {
+          "id": "exp_204",
+          "description": "Birthday cake for Lisa",
+          "amount": 35.0,
+          "currency": "USD",
+          "exchangeRate": 1.0,
+          "paidBy": "mem_ethan",
+          "splitType": "equal",
+          "splits": [
+            {
+              "memberId": "mem_mia",
+              "amount": 8.75
+            },
+            {
+              "memberId": "mem_noah",
+              "amount": 8.75
+            },
+            {
+              "memberId": "mem_priya",
+              "amount": 8.75
+            },
+            {
+              "memberId": "mem_ethan",
+              "amount": 8.75
+            }
+          ],
+          "date": "2024-02-20T14:00:00Z",
+          "category": "Shopping"
+        },
+        {
+          "id": "exp_205",
+          "description": "Sandwich shop lunch",
+          "amount": 52.4,
+          "currency": "USD",
+          "exchangeRate": 1.0,
+          "paidBy": "mem_mia",
+          "splitType": "equal",
+          "splits": [
+            {
+              "memberId": "mem_mia",
+              "amount": 17.47
+            },
+            {
+              "memberId": "mem_noah",
+              "amount": 17.47
+            },
+            {
+              "memberId": "mem_ethan",
+              "amount": 17.46
+            }
+          ],
+          "date": "2024-02-23T12:30:00Z",
+          "category": "Food & Drink",
+          "notes": "Priya was out sick"
+        },
+        {
+          "id": "exp_206",
+          "description": "Boba tea run",
+          "amount": 31.6,
+          "currency": "USD",
+          "exchangeRate": 1.0,
+          "paidBy": "mem_noah",
+          "splitType": "equal",
+          "splits": [
+            {
+              "memberId": "mem_mia",
+              "amount": 7.9
+            },
+            {
+              "memberId": "mem_noah",
+              "amount": 7.9
+            },
+            {
+              "memberId": "mem_priya",
+              "amount": 7.9
+            },
+            {
+              "memberId": "mem_ethan",
+              "amount": 7.9
+            }
+          ],
+          "date": "2024-02-28T15:00:00Z",
+          "category": "Food & Drink"
+        },
+        {
+          "id": "exp_207",
+          "description": "Sushi lunch",
+          "amount": 89.2,
+          "currency": "USD",
+          "exchangeRate": 1.0,
+          "paidBy": "mem_priya",
+          "splitType": "percentage",
+          "splits": [
+            {
+              "memberId": "mem_mia",
+              "amount": 26.76,
+              "percentage": 30
+            },
+            {
+              "memberId": "mem_noah",
+              "amount": 17.84,
+              "percentage": 20
+            },
+            {
+              "memberId": "mem_priya",
+              "amount": 26.76,
+              "percentage": 30
+            },
+            {
+              "memberId": "mem_ethan",
+              "amount": 17.84,
+              "percentage": 20
+            }
+          ],
+          "date": "2024-03-04T12:30:00Z",
+          "category": "Food & Drink",
+          "notes": "Mia and Priya had the premium omakase"
+        },
+        {
+          "id": "exp_208",
+          "description": "Coffee beans for the office",
+          "amount": 18.95,
+          "currency": "USD",
+          "exchangeRate": 1.0,
+          "paidBy": "mem_ethan",
+          "splitType": "equal",
+          "splits": [
+            {
+              "memberId": "mem_mia",
+              "amount": 4.74
+            },
+            {
+              "memberId": "mem_noah",
+              "amount": 4.74
+            },
+            {
+              "memberId": "mem_priya",
+              "amount": 4.74
+            },
+            {
+              "memberId": "mem_ethan",
+              "amount": 4.73
+            }
+          ],
+          "date": "2024-03-06T10:00:00Z",
+          "category": "Groceries"
+        }
+      ],
+      "settlements": []
+    },
+    {
+      "id": "grp_birthday",
+      "name": "Sarah's Birthday Present",
+      "description": "Chipping in for Sarah's birthday gift, dinner, and decorations.",
+      "currency": "USD",
+      "createdAt": "2024-02-10T11:00:00Z",
+      "members": [
+        {
+          "id": "mem_olivia",
+          "name": "Olivia Hayes",
+          "email": "olivia@example.com",
+          "avatarColor": "#10B981"
+        },
+        {
+          "id": "mem_ben",
+          "name": "Ben Gutierrez",
+          "email": "ben@example.com",
+          "avatarColor": "#6366F1"
+        },
+        {
+          "id": "mem_chloe",
+          "name": "Chloe Yun",
+          "email": "chloe@example.com",
+          "avatarColor": "#F43F5E"
+        },
+        {
+          "id": "mem_marcus",
+          "name": "Marcus Webb",
+          "email": "marcus@example.com",
+          "avatarColor": "#F97316"
+        }
+      ],
+      "expenses": [
+        {
+          "id": "exp_301",
+          "description": "AirPods gift",
+          "amount": 179.99,
+          "currency": "USD",
+          "exchangeRate": 1.0,
+          "paidBy": "mem_olivia",
+          "splitType": "exact",
+          "splits": [
+            {
+              "memberId": "mem_olivia",
+              "amount": 60.0
+            },
+            {
+              "memberId": "mem_ben",
+              "amount": 50.0
+            },
+            {
+              "memberId": "mem_chloe",
+              "amount": 40.0
+            },
+            {
+              "memberId": "mem_marcus",
+              "amount": 29.99
+            }
+          ],
+          "date": "2024-02-12T18:00:00Z",
+          "category": "Shopping",
+          "notes": "Everyone contributed what they could"
+        },
+        {
+          "id": "exp_302",
+          "description": "Dinner reservation deposit",
+          "amount": 100.0,
+          "currency": "USD",
+          "exchangeRate": 1.0,
+          "paidBy": "mem_ben",
+          "splitType": "equal",
+          "splits": [
+            {
+              "memberId": "mem_olivia",
+              "amount": 25.0
+            },
+            {
+              "memberId": "mem_ben",
+              "amount": 25.0
+            },
+            {
+              "memberId": "mem_chloe",
+              "amount": 25.0
+            },
+            {
+              "memberId": "mem_marcus",
+              "amount": 25.0
+            }
+          ],
+          "date": "2024-02-14T10:00:00Z",
+          "category": "Food & Drink"
+        },
+        {
+          "id": "exp_303",
+          "description": "Decorations and balloons",
+          "amount": 42.5,
+          "currency": "USD",
+          "exchangeRate": 1.0,
+          "paidBy": "mem_chloe",
+          "splitType": "equal",
+          "splits": [
+            {
+              "memberId": "mem_olivia",
+              "amount": 10.63
+            },
+            {
+              "memberId": "mem_ben",
+              "amount": 10.63
+            },
+            {
+              "memberId": "mem_chloe",
+              "amount": 10.62
+            },
+            {
+              "memberId": "mem_marcus",
+              "amount": 10.62
+            }
+          ],
+          "date": "2024-02-15T16:00:00Z",
+          "category": "Shopping"
+        },
+        {
+          "id": "exp_304",
+          "description": "Flowers",
+          "amount": 35.0,
+          "currency": "USD",
+          "exchangeRate": 1.0,
+          "paidBy": "mem_marcus",
+          "splitType": "exact",
+          "splits": [
+            {
+              "memberId": "mem_olivia",
+              "amount": 15.0
+            },
+            {
+              "memberId": "mem_marcus",
+              "amount": 20.0
+            }
+          ],
+          "date": "2024-02-16T09:00:00Z",
+          "category": "Shopping",
+          "notes": "Just Olivia and Marcus chipped in for flowers"
+        }
+      ],
+      "settlements": [
+        {
+          "id": "stl_301",
+          "from": "mem_marcus",
+          "to": "mem_olivia",
+          "amount": 50.61,
+          "currency": "USD",
+          "exchangeRate": 1.0,
+          "date": "2024-02-17T14:00:00Z"
+        },
+        {
+          "id": "stl_302",
+          "from": "mem_chloe",
+          "to": "mem_olivia",
+          "amount": 18.75,
+          "currency": "USD",
+          "exchangeRate": 1.0,
+          "date": "2024-02-17T14:30:00Z"
+        }
+      ]
+    },
+    {
+      "id": "grp_camping",
+      "name": "Camping Weekend",
+      "description": "Lake Tahoe camping trip. Firewood, food, and fresh air.",
+      "currency": "USD",
+      "createdAt": "2024-03-01T12:00:00Z",
+      "members": [
+        {
+          "id": "mem_jake",
+          "name": "Jake Foster",
+          "email": "jake@example.com",
+          "avatarColor": "#14B8A6"
+        },
+        {
+          "id": "mem_lily",
+          "name": "Lily Tran",
+          "email": "lily@example.com",
+          "avatarColor": "#A855F7"
+        },
+        {
+          "id": "mem_omar",
+          "name": "Omar Hassan",
+          "email": "omar@example.com",
+          "avatarColor": "#EF4444"
+        },
+        {
+          "id": "mem_rachel",
+          "name": "Rachel Kim",
+          "email": "rachel@example.com",
+          "avatarColor": "#3B82F6"
+        },
+        {
+          "id": "mem_dev",
+          "name": "Dev Okafor",
+          "avatarColor": "#F59E0B"
+        }
+      ],
+      "expenses": [
+        {
+          "id": "exp_401",
+          "description": "Campsite reservation (2 nights)",
+          "amount": 180.0,
+          "currency": "USD",
+          "exchangeRate": 1.0,
+          "paidBy": "mem_jake",
+          "splitType": "equal",
+          "splits": [
+            {
+              "memberId": "mem_jake",
+              "amount": 36.0
+            },
+            {
+              "memberId": "mem_lily",
+              "amount": 36.0
+            },
+            {
+              "memberId": "mem_omar",
+              "amount": 36.0
+            },
+            {
+              "memberId": "mem_rachel",
+              "amount": 36.0
+            },
+            {
+              "memberId": "mem_dev",
+              "amount": 36.0
+            }
+          ],
+          "date": "2024-03-06T19:00:00Z",
+          "category": "Accommodation"
+        },
+        {
+          "id": "exp_402",
+          "description": "Groceries for the trip",
+          "amount": 124.75,
+          "currency": "USD",
+          "exchangeRate": 1.0,
+          "paidBy": "mem_lily",
+          "splitType": "equal",
+          "splits": [
+            {
+              "memberId": "mem_jake",
+              "amount": 24.95
+            },
+            {
+              "memberId": "mem_lily",
+              "amount": 24.95
+            },
+            {
+              "memberId": "mem_omar",
+              "amount": 24.95
+            },
+            {
+              "memberId": "mem_rachel",
+              "amount": 24.95
+            },
+            {
+              "memberId": "mem_dev",
+              "amount": 24.95
+            }
+          ],
+          "date": "2024-03-08T17:00:00Z",
+          "category": "Groceries"
+        },
+        {
+          "id": "exp_403",
+          "description": "Firewood (3 bundles)",
+          "amount": 27.0,
+          "currency": "USD",
+          "exchangeRate": 1.0,
+          "paidBy": "mem_omar",
+          "splitType": "equal",
+          "splits": [
+            {
+              "memberId": "mem_jake",
+              "amount": 5.4
+            },
+            {
+              "memberId": "mem_lily",
+              "amount": 5.4
+            },
+            {
+              "memberId": "mem_omar",
+              "amount": 5.4
+            },
+            {
+              "memberId": "mem_rachel",
+              "amount": 5.4
+            },
+            {
+              "memberId": "mem_dev",
+              "amount": 5.4
+            }
+          ],
+          "date": "2024-03-09T10:00:00Z",
+          "category": "Other"
+        },
+        {
+          "id": "exp_404",
+          "description": "Gas for the drive",
+          "amount": 65.4,
+          "currency": "USD",
+          "exchangeRate": 1.0,
+          "paidBy": "mem_jake",
+          "splitType": "exact",
+          "splits": [
+            {
+              "memberId": "mem_jake",
+              "amount": 0.0
+            },
+            {
+              "memberId": "mem_lily",
+              "amount": 16.35
+            },
+            {
+              "memberId": "mem_omar",
+              "amount": 16.35
+            },
+            {
+              "memberId": "mem_rachel",
+              "amount": 16.35
+            },
+            {
+              "memberId": "mem_dev",
+              "amount": 16.35
+            }
+          ],
+          "date": "2024-03-09T08:00:00Z",
+          "category": "Transport",
+          "notes": "Jake drove, so passengers split the gas"
+        },
+        {
+          "id": "exp_405",
+          "description": "Cooler and ice",
+          "amount": 34.99,
+          "currency": "USD",
+          "exchangeRate": 1.0,
+          "paidBy": "mem_rachel",
+          "splitType": "equal",
+          "splits": [
+            {
+              "memberId": "mem_jake",
+              "amount": 7.0
+            },
+            {
+              "memberId": "mem_lily",
+              "amount": 7.0
+            },
+            {
+              "memberId": "mem_omar",
+              "amount": 7.0
+            },
+            {
+              "memberId": "mem_rachel",
+              "amount": 7.0
+            },
+            {
+              "memberId": "mem_dev",
+              "amount": 6.99
+            }
+          ],
+          "date": "2024-03-09T09:30:00Z",
+          "category": "Shopping"
+        },
+        {
+          "id": "exp_406",
+          "description": "Marshmallows, hot dogs, buns",
+          "amount": 22.8,
+          "currency": "USD",
+          "exchangeRate": 1.0,
+          "paidBy": "mem_dev",
+          "splitType": "equal",
+          "splits": [
+            {
+              "memberId": "mem_jake",
+              "amount": 4.56
+            },
+            {
+              "memberId": "mem_lily",
+              "amount": 4.56
+            },
+            {
+              "memberId": "mem_omar",
+              "amount": 4.56
+            },
+            {
+              "memberId": "mem_rachel",
+              "amount": 4.56
+            },
+            {
+              "memberId": "mem_dev",
+              "amount": 4.56
+            }
+          ],
+          "date": "2024-03-09T11:00:00Z",
+          "category": "Groceries"
+        },
+        {
+          "id": "exp_407",
+          "description": "State park day pass",
+          "amount": 30.0,
+          "currency": "USD",
+          "exchangeRate": 1.0,
+          "paidBy": "mem_jake",
+          "splitType": "equal",
+          "splits": [
+            {
+              "memberId": "mem_jake",
+              "amount": 6.0
+            },
+            {
+              "memberId": "mem_lily",
+              "amount": 6.0
+            },
+            {
+              "memberId": "mem_omar",
+              "amount": 6.0
+            },
+            {
+              "memberId": "mem_rachel",
+              "amount": 6.0
+            },
+            {
+              "memberId": "mem_dev",
+              "amount": 6.0
+            }
+          ],
+          "date": "2024-03-10T09:00:00Z",
+          "category": "Entertainment"
+        },
+        {
+          "id": "exp_408",
+          "description": "Breakfast diner on the way home",
+          "amount": 68.5,
+          "currency": "USD",
+          "exchangeRate": 1.0,
+          "paidBy": "mem_lily",
+          "splitType": "equal",
+          "splits": [
+            {
+              "memberId": "mem_jake",
+              "amount": 13.7
+            },
+            {
+              "memberId": "mem_lily",
+              "amount": 13.7
+            },
+            {
+              "memberId": "mem_omar",
+              "amount": 13.7
+            },
+            {
+              "memberId": "mem_rachel",
+              "amount": 13.7
+            },
+            {
+              "memberId": "mem_dev",
+              "amount": 13.7
+            }
+          ],
+          "date": "2024-03-10T11:30:00Z",
+          "category": "Food & Drink"
+        }
+      ],
+      "settlements": []
+    }
+  ]
+}

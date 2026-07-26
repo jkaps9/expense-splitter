@@ -1,0 +1,24 @@
+{
+  "siteName": "Cough It Up",
+  "coreValueProp": "Split expenses. Settle up. Stay friends.",
+  "siteDescription": "Cough It Up is a group expense management app that lets users split costs with friends, roommates, and travel companions. Users create groups, log shared expenses with flexible split types (equal, exact amounts, percentages, and shares), track multi-currency expenses with real exchange rates, and see clear pairwise settlement suggestions. A beautifully designed group finance tool, built from scratch.",
+  "targetDemo": "Anyone who shares costs with other people, from college roommates splitting rent and utilities to friend groups managing a vacation budget.",
+  "userProfiles": [
+    {
+      "name": "The roommate",
+      "description": "who splits rent, utilities, groceries, and household supplies every month. Wants a clear picture of who owes what without awkward text conversations or mental math."
+    },
+    {
+      "name": "The trip organizer",
+      "description": "who pays for hotels, restaurants, and activities across a multi-day trip with friends. Wants to track everything in one place and settle up fairly at the end, especially when expenses span multiple currencies."
+    },
+    {
+      "name": "The social splitter",
+      "description": "who regularly goes to dinners, concerts, and events with different friend groups. Wants a quick, frictionless way to log \"I paid, you owe me\" without creating spreadsheets."
+    },
+    {
+      "name": "The fair-minded friend",
+      "description": "who wants to make sure costs are divided fairly, rather than always equally. Sometimes one person eats more, sometimes someone opts out of an activity. Wants split flexibility beyond simple \"divide by N.\""
+    }
+  ]
+}
