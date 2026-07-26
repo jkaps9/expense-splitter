@@ -1,5 +1,5 @@
 import { signOut } from "./actions";
-
+// TODO: figure out how to get user and pass up/down between layout and page
 export default async function DashboardLayout({
   children,
 }: {
