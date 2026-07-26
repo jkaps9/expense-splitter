@@ -16,9 +16,6 @@ export default async function Home() {
     redirect("/dashboard");
   }
 
-  if (authError) {
-    redirect("/login");
-  }
   return (
     <section className="hero">
       <div className="container">
