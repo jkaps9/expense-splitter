@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import { Manrope, IBM_Plex_Mono } from "next/font/google";
 import "./globals.css";
 import siteConfig from "@/data/site-config.json";
-import Header from "@/components/Header";
 
 const manrope = Manrope({
   variable: "--font-sans",
@@ -27,10 +26,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={`${manrope.variable} ${ibmPlexMono.variable}`}>
-      <body>
-        <Header></Header>
-        <main>{children}</main>
-      </body>
+      <body>{children}</body>
     </html>
   );
 }
