@@ -425,3 +425,8 @@ input {
   margin-bottom: var(--space-4);
   padding: var(--space-3);
 }
+
+.btn-form {
+  padding: 0;
+  width: fit-content;
+}
