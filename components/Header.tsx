@@ -42,7 +42,7 @@ export default function Header() {
                 item.href === "/login"
                   ? "accent-text"
                   : item.href === "/signup"
-                    ? "btn btn--primary"
+                    ? "btn"
                     : ""
               }
             >
