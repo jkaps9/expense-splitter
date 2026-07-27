@@ -1,5 +1,6 @@
 import { createClient } from "@/lib/supabase/server";
 import { notFound } from "next/navigation";
+import Link from "next/link";
 
 type MemberWithUser = {
   id: string;
@@ -54,6 +55,12 @@ export default async function Page({
               );
             })}
           </ul>
+          <div className="row">
+            <h2>Expenses</h2>
+            <Link href={`/dashboard/groups/${id}/expenses/new`} className="btn">
+              Add Expense
+            </Link>
+          </div>
         </div>
       </section>
     </>
