@@ -3,6 +3,7 @@ import { Manrope, IBM_Plex_Mono } from "next/font/google";
 import "../globals.css";
 import siteConfig from "@/data/site-config.json";
 import { signOut } from "./actions";
+import Link from "next/link";
 
 const manrope = Manrope({
   variable: "--font-sans",
@@ -30,12 +31,15 @@ export default function RootLayout({
       <body>
         <header>
           <div className="container row">
-            <p>Hey, [DisplayName]</p>
-            <form action={signOut} className="btn-form">
-              <button className="btn" type="submit">
-                Logout
-              </button>
-            </form>
+            <Link href="/dashboard">&lt;- Back to Dashboard</Link>
+            <div className="account row">
+              <Link href="/account">[DisplayName]</Link>
+              <form action={signOut} className="btn-form">
+                <button className="btn" type="submit">
+                  Logout
+                </button>
+              </form>
+            </div>
           </div>
         </header>
         <main>{children}</main>
