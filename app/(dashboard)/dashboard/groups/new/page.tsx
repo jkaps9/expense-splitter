@@ -10,7 +10,7 @@ export default function NewGroupPage() {
       </header>
 
       <main>
-        <form className="form--modal">
+        <form action={createGroup}>
           <div className="input-group">
             <label htmlFor="name">Group Name</label>
             <input
@@ -42,7 +42,7 @@ export default function NewGroupPage() {
             </select>
           </div>
 
-          <button formAction={createGroup} type="submit" className="btn">
+          <button type="submit" className="btn">
             Create Group
           </button>
         </form>

@@ -14,16 +14,17 @@ export async function createGroup(formData: FormData) {
     redirect("/login");
   }
 
-  const groupData = {
-    name: formData.get("name") as string,
-    description: formData.get("description") as string,
-    default_currency: (formData.get("default_currency") as string) || "USD",
-  };
+  const name = formData.get("name") as string;
+  const description = formData.get("description") as string;
+  const default_currency =
+    (formData.get("default_currency") as string) || "USD";
 
   const { data: group, error: groupError } = await supabase
     .from("groups")
     .insert({
-      groupData,
+      name,
+      description,
+      default_currency,
     })
     .select()
     .single();
