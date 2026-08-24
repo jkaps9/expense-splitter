@@ -13,3 +13,14 @@ export interface ExpenseFormState {
   splitType: SplitType;
   members: SplitMemberState[];
 }
+
+interface NotificationSettings {
+  email_alerts: boolean;
+}
+
+export interface ProfileData {
+  display_name: string;
+  avatar_url: string | null;
+  default_currency: string;
+  notification_settings: NotificationSettings;
+}
