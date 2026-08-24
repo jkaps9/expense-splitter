@@ -26,6 +26,7 @@ export interface ProfileData {
 }
 
 export interface Group {
+  id: string;
   name: string;
   description: string;
   default_currency: string;

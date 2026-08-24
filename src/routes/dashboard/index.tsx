@@ -5,6 +5,8 @@ import styles from "@styles/DashboardBase.module.css";
 import { ProfileData, Group } from "@/types";
 import { supabase } from "@/lib/supabase";
 
+import Groups from "@/components/Groups";
+
 export default function DashboardBase() {
   const [loading, setLoading] = useState(true);
   const [profileData, setProfileData] = useState<ProfileData>({
@@ -78,8 +80,7 @@ export default function DashboardBase() {
           <p>Loading...</p>
         ) : (
           <>
-            <h1>Dashboard</h1>
-            <ul>{groups && groups.map((group) => <li>{group.name}</li>)}</ul>
+            <Groups groups={groups}></Groups>
             <Outlet context={outletProps} />
           </>
         )}
