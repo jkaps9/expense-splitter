@@ -280,7 +280,7 @@ h6 {
   font-weight: var(--font-semibold);
 }
 
-section {
+main > section {
   padding-block: clamp(var(--space-8), 0.9437rem + 4.507vw, var(--space-20));
 }
 
