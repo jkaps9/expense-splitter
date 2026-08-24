@@ -24,3 +24,10 @@ export interface ProfileData {
   default_currency: string;
   notification_settings: NotificationSettings;
 }
+
+export interface Group {
+  name: string;
+  description: string;
+  default_currency: string;
+  created_at: string;
+}

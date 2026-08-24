@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { Outlet } from "react-router";
 import DashboardHeader from "@components/DashboardHeader";
 import styles from "@styles/DashboardBase.module.css";
-import { ProfileData } from "@/types";
+import { ProfileData, Group } from "@/types";
 import { supabase } from "@/lib/supabase";
 
 export default function DashboardBase() {
@@ -14,17 +14,29 @@ export default function DashboardBase() {
     notification_settings: { email_alerts: true },
   });
 
+  const [groups, setGroups] = useState<Group[]>([]);
+
   useEffect(() => {
-    async function fetchUserData() {
+    async function fetchData() {
       try {
-        const [profile] = await Promise.all([
+        const [profileRes, groupsRes] = await Promise.all([
           supabase.from("users").select("*").limit(1).single(),
+          supabase
+            .from("groups")
+            .select("*")
+            .order("created_at", { ascending: false }),
         ]);
 
-        if (profile.error) {
-          console.error("Error fetching user data", profile.error.message);
+        if (profileRes.error) {
+          console.error("Error fetching user data", profileRes.error.message);
         } else {
-          setProfileData(profile.data);
+          setProfileData(profileRes.data);
+        }
+
+        if (groupsRes.error) {
+          console.error("Error fetching groups", groupsRes.error.message);
+        } else {
+          setGroups(groupsRes.data);
         }
       } catch (err) {
         console.error(err);
@@ -33,7 +45,7 @@ export default function DashboardBase() {
       }
     }
 
-    fetchUserData();
+    fetchData();
 
     const { data: authListener } = supabase.auth.onAuthStateChange(
       (event, session) => {
@@ -55,14 +67,22 @@ export default function DashboardBase() {
 
   const outletProps = {
     profileData,
+    groups,
   };
 
   return (
     <div className={styles.dashboard}>
       <DashboardHeader display_name={profileData.display_name} />
       <main>
-        <h1>Dashboard</h1>
-        <Outlet context={outletProps} />
+        {loading ? (
+          <p>Loading...</p>
+        ) : (
+          <>
+            <h1>Dashboard</h1>
+            <ul>{groups && groups.map((group) => <li>{group.name}</li>)}</ul>
+            <Outlet context={outletProps} />
+          </>
+        )}
       </main>
     </div>
   );
