@@ -1,9 +1,9 @@
 .header {
-  padding-block: var(--spacing-base);
+  padding-block: var(--space-4);
 }
 
 .logo {
   align-items: center;
   display: flex;
-  gap: var(--spacing-base);
+  gap: var(--space-4);
 }
