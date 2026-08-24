@@ -14,7 +14,7 @@ export default function DashboardHeader() {
         <ReactLogo aria-hidden="true" />
         <span>React Supabase Starter</span>
       </div>
-      <button type="button" onClick={signOut}>
+      <button type="button" onClick={signOut} className="btn btn--secondary">
         Sign out
       </button>
     </header>
