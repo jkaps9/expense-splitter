@@ -13,7 +13,7 @@ export default function Groups({ groups }: GroupsProps) {
         {groups &&
           groups.map((group) => (
             <li key={group.id}>
-              <Link to={`/dashboard/groups/${group.id}`}>
+              <Link to={`/dashboard/groups/:${group.id}`}>
                 <h2>{group.name}</h2>
                 <p>{group.description}</p>
               </Link>
