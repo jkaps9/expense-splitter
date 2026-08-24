@@ -7,12 +7,12 @@ export default defineConfig({
   plugins: [react(), svgr()],
   resolve: {
     alias: {
-      "@": path.resolve(__dirname, "./src"),
-      "@assets": path.resolve(__dirname, "./src/assets"),
-      "@components": path.resolve(__dirname, "./src/components"),
-      "@hooks": path.resolve(__dirname, "./src/hooks"),
-      "@routes": path.resolve(__dirname, "./src/routes"),
-      "@styles": path.resolve(__dirname, "./src/styles"),
+      "@": path.resolve(import.meta.dirname, "./src"),
+      "@assets": path.resolve(import.meta.dirname, "./src/assets"),
+      "@components": path.resolve(import.meta.dirname, "./src/components"),
+      "@hooks": path.resolve(import.meta.dirname, "./src/hooks"),
+      "@routes": path.resolve(import.meta.dirname, "./src/routes"),
+      "@styles": path.resolve(import.meta.dirname, "./src/styles"),
     },
   },
 });
