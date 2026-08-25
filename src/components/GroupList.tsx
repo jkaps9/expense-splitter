@@ -5,7 +5,7 @@ interface GroupsProps {
   groups: Group[];
 }
 
-export default function Groups({ groups }: GroupsProps) {
+export default function GroupList({ groups }: GroupsProps) {
   return (
     <>
       <div>
