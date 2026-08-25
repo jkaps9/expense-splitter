@@ -11,7 +11,8 @@ import ResetPassword from "@routes/auth/reset-password";
 
 import DashboardBase from "@routes/dashboard";
 import UpdatePassword from "@routes/dashboard/update-password";
-import GroupDetails from "@routes/dashboard/groups/[id]/index";
+import GroupDetails from "@/routes/groups/group-details";
+import NewGroup from "./routes/groups/new-group";
 
 const router = createBrowserRouter([
   {
@@ -23,7 +24,14 @@ const router = createBrowserRouter([
         path: "dashboard",
         Component: DashboardBase,
       },
-      { path: "dashboard/groups/:id", Component: GroupDetails },
+      {
+        path: "groups",
+        Component: DashboardBase,
+        children: [
+          { path: "new", Component: NewGroup },
+          { path: ":id", Component: GroupDetails },
+        ],
+      },
       { path: "update-password", Component: UpdatePassword },
     ],
   },
