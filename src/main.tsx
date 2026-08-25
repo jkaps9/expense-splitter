@@ -10,7 +10,8 @@ import SignUp from "@routes/auth/signup";
 import ResetPassword from "@routes/auth/reset-password";
 
 import DashboardBase from "@routes/dashboard";
-import UpdatePassword from "./routes/dashboard/update-password";
+import UpdatePassword from "@routes/dashboard/update-password";
+import GroupDetails from "@routes/dashboard/groups/[id]/index";
 
 const router = createBrowserRouter([
   {
@@ -22,6 +23,7 @@ const router = createBrowserRouter([
         path: "dashboard",
         Component: DashboardBase,
       },
+      { path: "dashboard/groups/:id", Component: GroupDetails },
       { path: "update-password", Component: UpdatePassword },
     ],
   },
