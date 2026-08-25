@@ -26,7 +26,6 @@ const router = createBrowserRouter([
       },
       {
         path: "groups",
-        Component: DashboardBase,
         children: [
           { path: "new", Component: NewGroup },
           { path: ":id", Component: GroupDetails },
