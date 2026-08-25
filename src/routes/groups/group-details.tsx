@@ -19,9 +19,6 @@ export default function GroupDetails() {
 
   return (
     <>
-      <button type="button" onClick={() => navigate(-1)}>
-        Go Back
-      </button>
       <h1>{id}</h1>
       <p>Dynamic route! Yeehaw!</p>
       <button

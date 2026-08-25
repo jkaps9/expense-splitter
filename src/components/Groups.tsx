@@ -8,7 +8,10 @@ interface GroupsProps {
 export default function Groups({ groups }: GroupsProps) {
   return (
     <>
-      <h1>Your Groups</h1>
+      <div>
+        <h1>Your Groups</h1>
+        <Link to="/groups/new">Add Group</Link>
+      </div>
       <ul>
         {groups &&
           groups.map((group) => (
