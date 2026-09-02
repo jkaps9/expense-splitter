@@ -68,7 +68,9 @@ export default function GroupDetails() {
   };
 
   const editGroup = () => {
-    navigate(`${import.meta.env.BASE_URL}/groups/edit/${id}`);
+    navigate(`${import.meta.env.BASE_URL}/groups/edit/${id}`, {
+      state: { groupDetails: groupDetails },
+    });
   };
 
   return (

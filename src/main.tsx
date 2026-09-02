@@ -15,6 +15,7 @@ import UpdatePassword from "@routes/dashboard/update-password";
 import GroupsBase from "@routes/groups";
 import GroupDetails from "@/routes/groups/group-details";
 import NewGroup from "@routes/groups/new-group";
+import EditGroup from "@routes/groups/edit-group";
 
 const router = createBrowserRouter([
   {
@@ -32,6 +33,7 @@ const router = createBrowserRouter([
         children: [
           { path: "new", Component: NewGroup },
           { path: ":id", Component: GroupDetails },
+          { path: "edit/:id", Component: EditGroup },
         ],
       },
       { path: "update-password", Component: UpdatePassword },
