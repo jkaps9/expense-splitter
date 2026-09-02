@@ -1,7 +1,8 @@
-import FormInput from "@/components/FormInput";
+import FormInput from "@components/FormInput";
 import { supabase } from "@/lib/supabase";
 import { useForm } from "@/hooks/useFormValidation";
 import { useNavigate } from "react-router";
+import AuthForm from "@components/AuthForm";
 
 export default function NewGroup() {
   const navigate = useNavigate();
@@ -36,11 +37,12 @@ export default function NewGroup() {
 
   return (
     <>
-      <h1>Create new group</h1>
-      <p>
-        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Sint, dicta!
-      </p>
-      <form onSubmit={handleSubmit}>
+      <AuthForm
+        title="Create New Group"
+        description="Lorem, ipsum dolor sit amet consectetur adipisicing elit. Sint, dicta!"
+        onSubmit={handleSubmit}
+        submitText="Create"
+      >
         <FormInput
           id="groupName"
           name="name"
@@ -72,10 +74,7 @@ export default function NewGroup() {
           value={formData.default_currency}
           required
         ></FormInput>
-        <button type="submit" className="btn btn--primary">
-          Create Group
-        </button>
-      </form>
+      </AuthForm>
       {/* TODO: form fields to add: 
           - name
           - description
