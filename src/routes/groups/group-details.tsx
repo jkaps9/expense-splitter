@@ -14,6 +14,7 @@ export default function GroupDetails() {
   });
 
   const { id } = useParams();
+  const navigate = useNavigate();
 
   useEffect(() => {
     async function fetchData() {
@@ -55,8 +56,6 @@ export default function GroupDetails() {
     };
   });
 
-  const navigate = useNavigate();
-
   const deleteGroup = async () => {
     const response = await supabase.from("groups").delete().eq("id", id);
 
@@ -68,21 +67,34 @@ export default function GroupDetails() {
     }
   };
 
+  const editGroup = () => {
+    navigate(`${import.meta.env.BASE_URL}/groups/edit/${id}`);
+  };
+
   return (
     <>
+      {loading && <p>Loading...</p>}
       <div className="row">
-        {loading && <p>Loading...</p>}
         <div>
           <h1>{groupDetails.name}</h1>
           <p>{groupDetails.description}</p>
         </div>
-        <button
-          type="button"
-          className="btn btn--destructive"
-          onClick={deleteGroup}
-        >
-          Delete Group
-        </button>
+        <div>
+          <button
+            type="button"
+            className="btn btn--secondary"
+            onClick={editGroup}
+          >
+            Edit Group
+          </button>
+          <button
+            type="button"
+            className="btn btn--destructive"
+            onClick={deleteGroup}
+          >
+            Delete Group
+          </button>
+        </div>
       </div>
     </>
   );
