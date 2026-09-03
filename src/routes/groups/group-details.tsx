@@ -73,6 +73,14 @@ export default function GroupDetails() {
     });
   };
 
+  const newExpense = () => {
+    navigate(`${import.meta.env.BASE_URL}/expenses/new/`, {
+      state: {
+        default_currency: groupDetails.default_currency,
+      },
+    });
+  };
+
   return (
     <>
       {loading && <p>Loading...</p>}
@@ -97,6 +105,11 @@ export default function GroupDetails() {
             Delete Group
           </button>
         </div>
+      </div>
+      <div>
+        <button type="button" className="btn btn--primary" onClick={newExpense}>
+          + Add Expense
+        </button>
       </div>
     </>
   );

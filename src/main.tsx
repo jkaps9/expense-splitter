@@ -17,6 +17,8 @@ import GroupDetails from "@/routes/groups/group-details";
 import NewGroup from "@routes/groups/new-group";
 import EditGroup from "@routes/groups/edit-group";
 
+import NewExpense from "./routes/expenses/new-expense";
+
 const router = createBrowserRouter([
   {
     path: `${import.meta.env.BASE_URL}`,
@@ -35,6 +37,10 @@ const router = createBrowserRouter([
           { path: ":id", Component: GroupDetails },
           { path: "edit/:id", Component: EditGroup },
         ],
+      },
+      {
+        path: "expenses",
+        children: [{ path: "new", Component: NewExpense }],
       },
       { path: "update-password", Component: UpdatePassword },
     ],
