@@ -17,7 +17,15 @@ export default function NewGroup() {
       return newErrors;
     },
     onSubmit: async (values) => {
-      const { data, error } = await supabase
+      const {
+        data: { user },
+        error: authError,
+      } = await supabase.auth.getUser();
+      if (authError || !user) {
+        navigate(`${import.meta.env.BASE_URL}`);
+        return;
+      }
+      const { data: group, error: groupError } = await supabase
         .from("groups")
         .insert({
           name: values.name,
@@ -27,10 +35,22 @@ export default function NewGroup() {
         .select()
         .single();
 
-      if (error) {
-        alert(error.message);
+      if (groupError || !group) {
+        alert(groupError?.message || "Failed to create group");
+        return;
       } else {
-        navigate(`${import.meta.env.BASE_URL}/groups/${data.id}`);
+        const { error: memberError } = await supabase
+          .from("group_members")
+          .insert({
+            group_id: group.id,
+            user_id: user.id,
+          });
+
+        if (memberError) {
+          alert(memberError.message);
+        } else {
+          navigate(`${import.meta.env.BASE_URL}/groups/${group.id}`);
+        }
       }
     },
   });
