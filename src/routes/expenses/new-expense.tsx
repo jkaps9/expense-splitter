@@ -11,12 +11,14 @@ export default function NewExpense() {
   const { formData, errors, handleChange, handleSubmit } = useForm({
     initialValues: {
       description: "",
+      category: "",
       amount: "",
       currency: location.state?.groupDetails.default_currency || "",
     },
     validate: (values) => {
       const newErrors: Partial<Record<keyof typeof values, string>> = {};
       if (!values.description) newErrors.description = "Can't be empty";
+      if (!values.category) newErrors.category = "Can't be blank";
       if (!values.currency) newErrors.currency = "Can't be blank";
       return newErrors;
     },
@@ -26,8 +28,10 @@ export default function NewExpense() {
         .insert({
           group_id: location.state?.groupDetails.id,
           description: values.description,
+          category: values.category,
           amount: values.amount,
           currency: values.currency,
+          split_type: "equal",
         })
         .select()
         .single();
@@ -61,6 +65,15 @@ export default function NewExpense() {
           value={formData.description}
           required
         ></FormInput>
+        <select
+          name="category"
+          id="category-select"
+          value={formData.category}
+          onChange={handleChange}
+        >
+          <option value="">--Please choose an option--</option>
+          <option value="food">Food</option>
+        </select>
         <FormInput
           id="amount"
           name="amount"
