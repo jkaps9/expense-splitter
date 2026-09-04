@@ -10,21 +10,22 @@ export default function NewExpense() {
 
   const { formData, errors, handleChange, handleSubmit } = useForm({
     initialValues: {
-      name: "",
+      description: "",
       amount: "",
-      currency: location.state?.default_currency || "",
+      currency: location.state?.groupDetails.default_currency || "",
     },
     validate: (values) => {
       const newErrors: Partial<Record<keyof typeof values, string>> = {};
-      if (!values.name) newErrors.name = "Can't be empty";
+      if (!values.description) newErrors.description = "Can't be empty";
       if (!values.currency) newErrors.currency = "Can't be blank";
       return newErrors;
     },
     onSubmit: async (values) => {
-      const { data, error } = await supabase
-        .from("groups")
+      const { error } = await supabase
+        .from("expenses")
         .insert({
-          name: values.name,
+          group_id: location.state?.groupDetails.id,
+          description: values.description,
           amount: values.amount,
           currency: values.currency,
         })
@@ -34,7 +35,9 @@ export default function NewExpense() {
       if (error) {
         alert(error.message);
       } else {
-        navigate(`${import.meta.env.BASE_URL}/groups/${data.id}`);
+        navigate(
+          `${import.meta.env.BASE_URL}/groups/${location.state?.groupDetails.id}`,
+        );
       }
     },
   });
@@ -48,14 +51,14 @@ export default function NewExpense() {
         submitText="Create"
       >
         <FormInput
-          id="expenseName"
-          name="name"
-          label="Name"
+          id="expenseDescription"
+          name="description"
+          label="Description"
           type="text"
-          placeholder="Dinner at [Restaurant Name]"
+          placeholder="Dinner at Restaurant"
           onChange={handleChange}
-          errorMessage={errors.name}
-          value={formData.name}
+          errorMessage={errors.description}
+          value={formData.description}
           required
         ></FormInput>
         <FormInput
