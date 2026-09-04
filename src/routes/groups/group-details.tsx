@@ -76,7 +76,7 @@ export default function GroupDetails() {
   const newExpense = () => {
     navigate(`${import.meta.env.BASE_URL}/expenses/new/`, {
       state: {
-        default_currency: groupDetails.default_currency,
+        groupDetails: groupDetails,
       },
     });
   };
