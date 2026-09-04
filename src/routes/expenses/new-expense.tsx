@@ -3,6 +3,8 @@ import { supabase } from "@/lib/supabase";
 import { useForm } from "@/hooks/useFormValidation";
 import { useNavigate, useLocation } from "react-router";
 import AuthForm from "@components/AuthForm";
+import { SPLIT_TYPES } from "@/constants";
+import type { SplitTypes } from "@/constants";
 
 export default function NewExpense() {
   const navigate = useNavigate();
@@ -14,6 +16,7 @@ export default function NewExpense() {
       category: "",
       amount: "",
       currency: location.state?.groupDetails.default_currency || "",
+      splitType: "",
     },
     validate: (values) => {
       const newErrors: Partial<Record<keyof typeof values, string>> = {};
@@ -31,7 +34,7 @@ export default function NewExpense() {
           category: values.category,
           amount: values.amount,
           currency: values.currency,
-          split_type: "equal",
+          split_type: values.splitType,
         })
         .select()
         .single();
@@ -65,6 +68,7 @@ export default function NewExpense() {
           value={formData.description}
           required
         ></FormInput>
+        <label htmlFor="category-select">Category</label>
         <select
           name="category"
           id="category-select"
@@ -94,6 +98,18 @@ export default function NewExpense() {
           value={formData.currency}
           required
         ></FormInput>
+        <label htmlFor="splitType-select">Split Type</label>
+        <select
+          name="splitType"
+          id="splitType-select"
+          value={formData.splitType}
+          onChange={handleChange}
+        >
+          <option value="">--Please choose an option--</option>
+          {SPLIT_TYPES.map((type) => (
+            <option value={type}>{type}</option>
+          ))}
+        </select>
       </AuthForm>
     </>
   );
