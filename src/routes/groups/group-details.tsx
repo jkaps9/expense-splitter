@@ -103,6 +103,13 @@ export default function GroupDetails() {
     }
   };
 
+const editExpense = (expense) => {
+    navigate(`${import.meta.env.BASE_URL}/expenses/edit/${expense.id}`, {
+      state: { expense: expense },
+    });
+  };
+
+
   return (
     <>
       {loading && <p>Loading...</p>}
@@ -142,7 +149,7 @@ export default function GroupDetails() {
                 <p>{expense.amount}</p>
               </div>
               <div>
-                <button type="button" className="btn btn--secondary">
+                <button type="button" className="btn btn--secondary" onClick={() => editExpense(expense)}>
                   Edit
                 </button>
                 <button
