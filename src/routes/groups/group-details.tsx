@@ -124,8 +124,18 @@ export default function GroupDetails() {
         <ul>
           {groupExpenses.map((expense) => (
             <li key={expense.id} className="row">
-              <p>{expense.description}</p>
-              <p>{expense.amount}</p>
+              <div>
+                <p>{expense.description}</p>
+                <p>{expense.amount}</p>
+              </div>
+              <div>
+                <button type="button" className="btn btn--secondary">
+                  Edit
+                </button>
+                <button type="button" className="btn btn--destructive">
+                  Delete
+                </button>
+              </div>
             </li>
           ))}
         </ul>
