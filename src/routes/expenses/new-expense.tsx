@@ -3,7 +3,7 @@ import { supabase } from "@/lib/supabase";
 import { useForm } from "@/hooks/useFormValidation";
 import { useNavigate, useLocation } from "react-router";
 import AuthForm from "@components/AuthForm";
-import { SPLIT_TYPES } from "@/constants";
+import { EXPENSE_CATEGORIES, SPLIT_TYPES } from "@/constants";
 
 export default function NewExpense() {
   const navigate = useNavigate();
@@ -75,7 +75,9 @@ export default function NewExpense() {
           onChange={handleChange}
         >
           <option value="">--Please choose an option--</option>
-          <option value="food">Food</option>
+          {EXPENSE_CATEGORIES.map((category) => (
+            <option value={category.toLowerCase()}>{category}</option>
+          ))}
         </select>
         <FormInput
           id="amount"

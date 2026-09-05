@@ -17,7 +17,7 @@ export default function EditExpense() {
       category: expense.category,
       amount: expense.amount,
       currency: expense.currency,
-      splitType: expense.splitType,
+      splitType: expense.split_type,
     },
     validate: (values) => {
       const newErrors: Partial<Record<keyof typeof values, string>> = {};
@@ -76,7 +76,6 @@ export default function EditExpense() {
           onChange={handleChange}
         >
           <option value="">--Please choose an option--</option>
-          <option value="food">Food</option>
           {EXPENSE_CATEGORIES.map((category) => (
             <option value={category.toLowerCase()}>{category}</option>
           ))}
