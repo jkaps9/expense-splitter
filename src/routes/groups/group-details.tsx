@@ -103,12 +103,11 @@ export default function GroupDetails() {
     }
   };
 
-const editExpense = (expense) => {
+  const editExpense = (expense) => {
     navigate(`${import.meta.env.BASE_URL}/expenses/edit/${expense.id}`, {
       state: { expense: expense },
     });
   };
-
 
   return (
     <>
@@ -144,12 +143,17 @@ const editExpense = (expense) => {
         <ul>
           {groupExpenses.map((expense) => (
             <li key={expense.id} className="row">
-              <div>
+              <div className="row" style={{ gap: "0.5rem" }}>
                 <p>{expense.description}</p>
                 <p>{expense.amount}</p>
+                <p>{new Date(expense.created_at).toLocaleDateString()}</p>
               </div>
               <div>
-                <button type="button" className="btn btn--secondary" onClick={() => editExpense(expense)}>
+                <button
+                  type="button"
+                  className="btn btn--secondary"
+                  onClick={() => editExpense(expense)}
+                >
                   Edit
                 </button>
                 <button
