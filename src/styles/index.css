@@ -333,6 +333,18 @@ main > section {
   }
 }
 
+.btn--destructive {
+  border-color: var(--color-error);
+  color: var(--color-error);
+
+  &:hover,
+  &:active,
+  &:focus-visible {
+    background-color: var(--color-error);
+    color: unset;
+  }
+}
+
 .sr-only {
   position: absolute;
   width: 1px;
