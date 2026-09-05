@@ -10,9 +10,9 @@ export default function GroupsBase() {
         <button
           type="button"
           className="btn btn--secondary"
-          onClick={() => navigate(-1)}
+          onClick={() => navigate(`${import.meta.env.BASE_URL}/dashboard`)}
         >
-          Go Back
+          Dashboard
         </button>
       </header>
       <main>
