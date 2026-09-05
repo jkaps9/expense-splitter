@@ -17,7 +17,8 @@ import GroupDetails from "@/routes/groups/group-details";
 import NewGroup from "@routes/groups/new-group";
 import EditGroup from "@routes/groups/edit-group";
 
-import NewExpense from "./routes/expenses/new-expense";
+import NewExpense from "@routes/expenses/new-expense";
+import EditExpense from "@routes/expenses/edit-expense";
 
 const router = createBrowserRouter([
   {
@@ -40,7 +41,10 @@ const router = createBrowserRouter([
       },
       {
         path: "expenses",
-        children: [{ path: "new", Component: NewExpense }],
+        children: [
+          { path: "new", Component: NewExpense },
+          { path: "edit/:id", Component: EditExpense },
+        ],
       },
       { path: "update-password", Component: UpdatePassword },
     ],
