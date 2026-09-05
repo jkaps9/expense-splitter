@@ -90,6 +90,19 @@ export default function GroupDetails() {
     });
   };
 
+  const deleteExpense = async (expenseId) => {
+    const response = await supabase
+      .from("expenses")
+      .delete()
+      .eq("id", expenseId);
+
+    if (response.success) {
+      alert("expense deleted");
+    } else {
+      alert(`something went wrong\n${response.status}: ${response.statusText}`);
+    }
+  };
+
   return (
     <>
       {loading && <p>Loading...</p>}
@@ -132,7 +145,11 @@ export default function GroupDetails() {
                 <button type="button" className="btn btn--secondary">
                   Edit
                 </button>
-                <button type="button" className="btn btn--destructive">
+                <button
+                  type="button"
+                  className="btn btn--destructive"
+                  onClick={() => deleteExpense(expense.id)}
+                >
                   Delete
                 </button>
               </div>
