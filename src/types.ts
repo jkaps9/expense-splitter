@@ -32,3 +32,16 @@ export interface Group {
   default_currency: string;
   created_at: string;
 }
+
+export interface Expense {
+  id: string;
+  group_id: string;
+  description: string;
+  amount: number;
+  currency: string;
+  exchange_rate: number;
+  category: string;
+  split_type: string;
+  expense_date: string;
+  created_at: string;
+}

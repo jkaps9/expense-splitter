@@ -1,6 +1,6 @@
 import { useParams, useNavigate } from "react-router";
 import { supabase } from "@/lib/supabase";
-import { Group } from "@/types";
+import { Group, Expense } from "@/types";
 import { useState, useEffect } from "react";
 
 export default function GroupDetails() {
@@ -13,20 +13,29 @@ export default function GroupDetails() {
     created_at: "",
   });
 
+  const [groupExpenses, setGroupExpenses] = useState<Expense[]>([]);
+
   const { id } = useParams();
   const navigate = useNavigate();
 
   useEffect(() => {
     async function fetchData() {
       try {
-        const [groupDetailRes] = await Promise.all([
+        const [groupDetailRes, expensesRes] = await Promise.all([
           supabase.from("groups").select("*").eq("id", id),
+          supabase.from("expenses").select("*").eq("group_id", id),
         ]);
 
         if (groupDetailRes.error) {
           console.error("Error fetching groups", groupDetailRes.error.message);
         } else {
           setGroupDetails(groupDetailRes.data[0]);
+        }
+
+        if (expensesRes.error) {
+          console.error("Error fetching group expenses");
+        } else {
+          setGroupExpenses(expensesRes.data);
         }
       } catch (err) {
         console.error(err);
@@ -111,6 +120,18 @@ export default function GroupDetails() {
           + Add Expense
         </button>
       </div>
+      {groupExpenses && groupExpenses.length > 0 ? (
+        <ul>
+          {groupExpenses.map((expense) => (
+            <li key={expense.id} className="row">
+              <p>{expense.description}</p>
+              <p>{expense.amount}</p>
+            </li>
+          ))}
+        </ul>
+      ) : (
+        <p>Add an expense</p>
+      )}
     </>
   );
 }
