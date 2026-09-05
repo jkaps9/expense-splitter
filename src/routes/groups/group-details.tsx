@@ -143,10 +143,10 @@ export default function GroupDetails() {
         <ul>
           {groupExpenses.map((expense) => (
             <li key={expense.id} className="row">
-              <div className="row" style={{ gap: "0.5rem" }}>
+              <div className="row" style={{ gap: "0.5rem", flex: "1" }}>
+                <p>{new Date(expense.created_at).toLocaleDateString()}</p>
                 <p>{expense.description}</p>
                 <p>{expense.amount}</p>
-                <p>{new Date(expense.created_at).toLocaleDateString()}</p>
               </div>
               <div>
                 <button
