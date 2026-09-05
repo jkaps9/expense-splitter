@@ -23,7 +23,11 @@ export default function GroupDetails() {
       try {
         const [groupDetailRes, expensesRes] = await Promise.all([
           supabase.from("groups").select("*").eq("id", id),
-          supabase.from("expenses").select("*").eq("group_id", id),
+          supabase
+            .from("expenses")
+            .select("*")
+            .eq("group_id", id)
+            .order("created_at", { ascending: false }),
         ]);
 
         if (groupDetailRes.error) {
