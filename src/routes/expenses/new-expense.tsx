@@ -4,7 +4,6 @@ import { useForm } from "@/hooks/useFormValidation";
 import { useNavigate, useLocation } from "react-router";
 import AuthForm from "@components/AuthForm";
 import { SPLIT_TYPES } from "@/constants";
-import type { SplitTypes } from "@/constants";
 
 export default function NewExpense() {
   const navigate = useNavigate();
@@ -107,7 +106,7 @@ export default function NewExpense() {
         >
           <option value="">--Please choose an option--</option>
           {SPLIT_TYPES.map((type) => (
-            <option value={type}>{type}</option>
+            <option value={type.toLowerCase()}>{type}</option>
           ))}
         </select>
       </AuthForm>
