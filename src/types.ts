@@ -33,6 +33,14 @@ export interface Group {
   created_at: string;
 }
 
+export interface GroupMember {
+  group_id: string;
+  user_id: string;
+  guest_name: string;
+  joined_at: string;
+  id: string;
+}
+
 export interface Expense {
   id: string;
   group_id: string;

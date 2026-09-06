@@ -1,6 +1,6 @@
 import { useParams, useNavigate } from "react-router";
 import { supabase } from "@/lib/supabase";
-import { Group, Expense } from "@/types";
+import { Group, GroupMember, Expense } from "@/types";
 import { useState, useEffect } from "react";
 
 export default function GroupDetails() {
@@ -12,7 +12,7 @@ export default function GroupDetails() {
     default_currency: "",
     created_at: "",
   });
-
+  const [groupMembers, setGroupMembers] = useState<GroupMember[]>([]);
   const [groupExpenses, setGroupExpenses] = useState<Expense[]>([]);
 
   const { id } = useParams();
@@ -21,19 +21,30 @@ export default function GroupDetails() {
   useEffect(() => {
     async function fetchData() {
       try {
-        const [groupDetailRes, expensesRes] = await Promise.all([
-          supabase.from("groups").select("*").eq("id", id),
-          supabase
-            .from("expenses")
-            .select("*")
-            .eq("group_id", id)
-            .order("created_at", { ascending: false }),
-        ]);
+        const [groupDetailRes, groupMembersRes, expensesRes] =
+          await Promise.all([
+            supabase.from("groups").select("*").eq("id", id),
+            supabase.from("group_members").select("*").eq("group_id", id),
+            supabase
+              .from("expenses")
+              .select("*")
+              .eq("group_id", id)
+              .order("created_at", { ascending: false }),
+          ]);
 
         if (groupDetailRes.error) {
           console.error("Error fetching groups", groupDetailRes.error.message);
         } else {
           setGroupDetails(groupDetailRes.data[0]);
+        }
+
+        if (groupMembersRes.error) {
+          console.error(
+            "Error fetching group members",
+            groupMembersRes.error.message,
+          );
+        } else {
+          setGroupMembers(groupMembersRes.data);
         }
 
         if (expensesRes.error) {
