@@ -1,19 +1,20 @@
 import FormInput from "@components/FormInput";
 import { supabase } from "@/lib/supabase";
 import { useForm } from "@/hooks/useFormValidation";
-import { useNavigate } from "react-router";
+import { useNavigate, useLocation } from "react-router";
 import AuthForm from "@components/AuthForm";
 
 export default function NewGroupMember() {
   const navigate = useNavigate();
+  const location = useLocation();
+
+  const groupId = location.state?.groupDetails.id;
 
   const { formData, errors, handleChange, handleSubmit } = useForm({
-    initialValues: { name: "", description: "", default_currency: "" },
+    initialValues: { name: "", email: "" },
     validate: (values) => {
       const newErrors: Partial<Record<keyof typeof values, string>> = {};
       if (!values.name) newErrors.name = "Can't be empty";
-      if (!values.default_currency)
-        newErrors.default_currency = "Can't be blank";
       return newErrors;
     },
     onSubmit: async (values) => {
@@ -21,35 +22,28 @@ export default function NewGroupMember() {
         data: { user },
         error: authError,
       } = await supabase.auth.getUser();
+
       if (authError || !user) {
         navigate(`${import.meta.env.BASE_URL}`);
         return;
       }
-      const { data: group, error: groupError } = await supabase
-        .from("groups")
-        .insert({
-          name: values.name,
-          description: values.description,
-          default_currency: values.default_currency,
-        })
-        .select()
-        .single();
 
-      if (groupError || !group) {
-        alert(groupError?.message || "Failed to create group");
-        return;
-      } else {
-        const { error: memberError } = await supabase
+      if (!values.email || values.email === "") {
+        const { data: groupMember, error: groupMemberError } = await supabase
           .from("group_members")
           .insert({
-            group_id: group.id,
-            user_id: user.id,
-          });
+            group_id: groupId,
+            user_id: null,
+            guest_name: values.name,
+          })
+          .select()
+          .single();
 
-        if (memberError) {
-          alert(memberError.message);
+        if (groupMemberError || !groupMember) {
+          alert(groupMemberError?.message || "Failed to create group");
+          return;
         } else {
-          navigate(`${import.meta.env.BASE_URL}/groups/${group.id}`);
+          navigate(`${import.meta.env.BASE_URL}/groups/${groupId}`);
         }
       }
     },
@@ -66,14 +60,25 @@ export default function NewGroupMember() {
         <FormInput
           id="memberName"
           name="name"
-          label="Member's Display Name"
+          label="Name"
           type="text"
-          placeholder="Display name"
+          placeholder="name"
           onChange={handleChange}
           errorMessage={errors.name}
           value={formData.name}
           required
         ></FormInput>
+        <FormInput
+          id="email"
+          name="email"
+          label="Email Address"
+          type="email"
+          placeholder="Email address (optional)"
+          value={formData.email}
+          onChange={handleChange}
+          errorMessage={errors.email}
+          autoComplete="off"
+        />
       </AuthForm>
     </>
   );
