@@ -35,6 +35,32 @@ export default function NewGroupMember() {
             group_id: groupId,
             user_id: null,
             guest_name: values.name,
+            status: "active",
+          })
+          .select()
+          .single();
+
+        if (groupMemberError || !groupMember) {
+          alert(groupMemberError?.message || "Failed to add member");
+          return;
+        } else {
+          navigate(`${import.meta.env.BASE_URL}/groups/${groupId}`);
+        }
+      } else {
+        const expiration = new Date();
+        expiration.setDate(expiration.getDate() + 7);
+
+        const { data: groupMember, error: groupMemberError } = await supabase
+          .from("group_members")
+          .insert({
+            group_id: groupId,
+            user_id: null,
+            guest_name: values.name,
+            email: values.email,
+            status: "pending",
+            invite_token: self.crypto.randomUUID(),
+            invited_by: user.id,
+            expires_at: expiration,
           })
           .select()
           .single();
