@@ -51,8 +51,12 @@ export default function AcceptInvite() {
   const { token: inviteToken } = useParams<{ token: string }>();
   const navigate = useNavigate();
 
-  const [status, setStatus] = useState<PageStatus>("checking_session");
-  const [errorMessage, setErrorMessage] = useState<string | null>(null);
+  const [status, setStatus] = useState<PageStatus>(() =>
+    inviteToken ? "checking_session" : "error",
+  );
+  const [errorMessage, setErrorMessage] = useState<string | null>(() =>
+    inviteToken ? null : "This invite link is missing a token.",
+  );
   const [authView, setAuthView] = useState<"signin" | "signup">("signin");
 
   const [email, setEmail] = useState("");
@@ -63,9 +67,7 @@ export default function AcceptInvite() {
   const hasAcceptedRef = useRef(false);
 
   useEffect(() => {
-    if (!inviteToken) {
-      return;
-    }
+    if (!inviteToken) return;
 
     const acceptAsAuthenticated = async (accessToken: string) => {
       if (hasAcceptedRef.current) return;
