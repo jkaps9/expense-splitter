@@ -69,6 +69,28 @@ export default function NewGroupMember() {
           alert(groupMemberError?.message || "Failed to create group");
           return;
         } else {
+          const {
+            data: { session },
+          } = await supabase.auth.getSession();
+          const inviteResponse = await fetch(
+            `${import.meta.env.VITE_SUPABASE_URL}/functions/v1/send-invite`,
+            {
+              method: "POST",
+              headers: {
+                "Content-Type": "application/json",
+                Authorization: `Bearer ${session?.access_token}`,
+              },
+              body: JSON.stringify({ group_member_id: groupMember.id }),
+            },
+          );
+
+          if (!inviteResponse.ok) {
+            const { error } = await inviteResponse.json();
+            console.error("Invite email failed to send:", error);
+            alert(
+              "Member added, but the invite email failed to send. You can resend it later.",
+            );
+          }
           navigate(`${import.meta.env.BASE_URL}/groups/${groupId}`);
         }
       }
