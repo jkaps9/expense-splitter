@@ -96,7 +96,7 @@ export default function GroupDetails() {
 
     if (response.success) {
       alert("group deleted");
-      navigate(-1);
+      navigate(`${import.meta.env.BASE_URL}/dashboard`);
     } else {
       alert(`something went wrong\n${response.status}: ${response.statusText}`);
     }
