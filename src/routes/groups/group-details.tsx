@@ -185,7 +185,7 @@ export default function GroupDetails() {
         <ul>
           {groupMembers.map((member) => (
             <li key={member.id}>
-              {member.users.display_name || member.guest_name}
+              {member.users?.display_name ?? member.guest_name}
             </li>
           ))}
         </ul>
