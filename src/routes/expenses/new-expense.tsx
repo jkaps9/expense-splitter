@@ -57,6 +57,15 @@ export default function NewExpense() {
         submitText="Create"
       >
         <FormInput
+          id="amount"
+          name="amount"
+          label="Amount"
+          type="number"
+          placeholder="0.00"
+          value={formData.amount}
+          onChange={handleChange}
+        ></FormInput>
+        <FormInput
           id="expenseDescription"
           name="description"
           label="Description"
@@ -79,15 +88,6 @@ export default function NewExpense() {
             <option value={category.toLowerCase()}>{category}</option>
           ))}
         </select>
-        <FormInput
-          id="amount"
-          name="amount"
-          label="Amount"
-          type="number"
-          placeholder="0.00"
-          value={formData.amount}
-          onChange={handleChange}
-        ></FormInput>
         <FormInput
           id="currency"
           name="currency"
