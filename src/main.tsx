@@ -21,6 +21,8 @@ import NewGroupMember from "@routes/groups/new-member";
 import NewExpense from "@routes/expenses/new-expense";
 import EditExpense from "@routes/expenses/edit-expense";
 
+import AcceptInvite from "@routes/invite";
+
 const router = createBrowserRouter([
   {
     path: `${import.meta.env.BASE_URL}`,
@@ -59,6 +61,10 @@ const router = createBrowserRouter([
       { path: "signup", Component: SignUp },
       { path: "reset-password", Component: ResetPassword },
     ],
+  },
+  {
+    path: `${import.meta.env.BASE_URL}/invite/:token`,
+    Component: AcceptInvite,
   },
 ]);
 

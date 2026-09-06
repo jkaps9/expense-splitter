@@ -72,6 +72,14 @@ export default function NewGroupMember() {
           const {
             data: { session },
           } = await supabase.auth.getSession();
+          if (!session?.access_token) {
+            console.error("No active session — cannot call send-invite");
+            alert(
+              "Member added, but couldn't send the invite email (not signed in?).",
+            );
+            return;
+          }
+
           const inviteResponse = await fetch(
             `${import.meta.env.VITE_SUPABASE_URL}/functions/v1/send-invite`,
             {
@@ -79,6 +87,7 @@ export default function NewGroupMember() {
               headers: {
                 "Content-Type": "application/json",
                 Authorization: `Bearer ${session?.access_token}`,
+                apikey: import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY,
               },
               body: JSON.stringify({ group_member_id: groupMember.id }),
             },
