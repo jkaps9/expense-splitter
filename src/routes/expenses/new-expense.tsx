@@ -21,6 +21,11 @@ export default function NewExpense() {
     },
     validate: (values) => {
       const newErrors: Partial<Record<keyof typeof values, string>> = {};
+      if (!values.amount) {
+        newErrors.amount = "Can't be empty";
+      } else if (values.amount === "" || Number(values.amount) <= 0) {
+        newErrors.amount = "Must be greater than zero";
+      }
       if (!values.description) newErrors.description = "Can't be empty";
       if (!values.category) newErrors.category = "Can't be blank";
       if (!values.currency) newErrors.currency = "Can't be blank";
@@ -67,6 +72,7 @@ export default function NewExpense() {
           placeholder="0.00"
           value={formData.amount}
           onChange={handleChange}
+          errorMessage={errors.amount}
         ></FormInput>
         <FormInput
           id="expenseDate"
