@@ -176,10 +176,18 @@ export default function GroupDetails() {
         <ul>
           {groupExpenses.map((expense) => (
             <li key={expense.id} className="row">
-              <div className="row" style={{ gap: "0.5rem", flex: "1" }}>
-                <p>{new Date(expense.created_at).toLocaleDateString()}</p>
-                <p>{expense.description}</p>
-                <p>{expense.amount}</p>
+              <div
+                style={{
+                  display: "grid",
+                  gridTemplateColumns: "repeat(3, 1fr)",
+                  gap: "0.5rem",
+                  flex: "1",
+                }}
+              >
+                <span>{expense.description}</span>
+                <strong>{expense.amount}</strong>
+                <span>{/* TODO: add payer */}</span>
+                <span>{new Date(expense.created_at).toLocaleDateString()}</span>
               </div>
               <div>
                 <button
