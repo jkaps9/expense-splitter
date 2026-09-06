@@ -3,6 +3,7 @@ import { supabase } from "@/lib/supabase";
 import { useForm } from "@/hooks/useFormValidation";
 import { useNavigate } from "react-router";
 import AuthForm from "@components/AuthForm";
+import { CURRENCIES } from "@/constants";
 
 export default function NewGroup() {
   const navigate = useNavigate();
@@ -83,17 +84,21 @@ export default function NewGroup() {
           value={formData.description}
           onChange={handleChange}
         ></FormInput>
-        <FormInput
-          id="groupDefaultCurrency"
+        <label htmlFor="groupDefaultCurrency">Default Currency</label>
+        <select
           name="default_currency"
-          label="Default Currency"
-          type="text"
-          placeholder="USD"
-          onChange={handleChange}
-          errorMessage={errors.default_currency}
+          id="groupDefaultCurrency"
           value={formData.default_currency}
           required
-        ></FormInput>
+        >
+          <option value="">--Please choose an option--</option>
+          {CURRENCIES.map((currency) => (
+            <option value={currency.iso_code}>
+              {currency.symbol} {currency.iso_code}
+            </option>
+          ))}
+        </select>
+        <p className="error-message">{errors.default_currency}</p>
       </AuthForm>
       {/* TODO: form fields to add: 
           - name
