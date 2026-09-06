@@ -135,21 +135,22 @@ export default function GroupDetails() {
     });
   };
 
+  const newMember = () => {
+    navigate(`${import.meta.env.BASE_URL}/groups/new-member/`, {
+      state: {
+        groupDetails: groupDetails,
+        groupMembers: groupMembers,
+      },
+    });
+  };
+
   return (
     <>
       {loading && <p>Loading...</p>}
       <div className="row">
-        <div>
+        <div style={{ display: "flex", flexDirection: "column" }}>
           <h1>{groupDetails.name}</h1>
           <p>{groupDetails.description}</p>
-          <h2>Group Members</h2>
-          <ul>
-            {groupMembers.map((member) => (
-              <li key={member.id}>
-                {member.users.display_name || member.guest_name}
-              </li>
-            ))}
-          </ul>
         </div>
         <div>
           <button
@@ -167,6 +168,27 @@ export default function GroupDetails() {
             Delete Group
           </button>
         </div>
+      </div>
+      <div>
+        <div className="row">
+          <h2>Group Members</h2>
+          <div>
+            <button
+              type="button"
+              className="btn btn--secondary"
+              onClick={newMember}
+            >
+              + Add Member
+            </button>
+          </div>
+        </div>
+        <ul>
+          {groupMembers.map((member) => (
+            <li key={member.id}>
+              {member.users.display_name || member.guest_name}
+            </li>
+          ))}
+        </ul>
       </div>
       <div>
         <button type="button" className="btn btn--primary" onClick={newExpense}>
