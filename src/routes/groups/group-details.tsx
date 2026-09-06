@@ -179,7 +179,7 @@ export default function GroupDetails() {
               <div
                 style={{
                   display: "grid",
-                  gridTemplateColumns: "repeat(3, 1fr)",
+                  gridTemplateColumns: "repeat(4, 1fr)",
                   gap: "0.5rem",
                   flex: "1",
                 }}
