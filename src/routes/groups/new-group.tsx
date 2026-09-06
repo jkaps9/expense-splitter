@@ -89,6 +89,7 @@ export default function NewGroup() {
           name="default_currency"
           id="groupDefaultCurrency"
           value={formData.default_currency}
+          onChange={handleChange}
           required
         >
           <option value="">--Please choose an option--</option>
