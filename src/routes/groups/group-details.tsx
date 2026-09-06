@@ -1,9 +1,13 @@
 import { useParams, useNavigate } from "react-router";
 import { supabase } from "@/lib/supabase";
+import { QueryData } from "@supabase/supabase-js";
 import { Group, GroupMember, Expense } from "@/types";
 import { useState, useEffect } from "react";
 
 export default function GroupDetails() {
+  const { id } = useParams();
+  const navigate = useNavigate();
+
   const [loading, setLoading] = useState(true);
   const [groupDetails, setGroupDetails] = useState<Group>({
     id: "",
@@ -12,11 +16,17 @@ export default function GroupDetails() {
     default_currency: "",
     created_at: "",
   });
-  const [groupMembers, setGroupMembers] = useState<GroupMember[]>([]);
-  const [groupExpenses, setGroupExpenses] = useState<Expense[]>([]);
 
-  const { id } = useParams();
-  const navigate = useNavigate();
+  const groupMemberQuery = supabase
+    .from("group_members")
+    .select("*, users(display_name)")
+    .eq("group_id", id);
+  type GroupMembersWithDisplayName = QueryData<typeof groupMemberQuery>;
+
+  const [groupMembers, setGroupMembers] = useState<
+    GroupMembersWithDisplayName[]
+  >([]);
+  const [groupExpenses, setGroupExpenses] = useState<Expense[]>([]);
 
   useEffect(() => {
     async function fetchData() {
@@ -24,7 +34,7 @@ export default function GroupDetails() {
         const [groupDetailRes, groupMembersRes, expensesRes] =
           await Promise.all([
             supabase.from("groups").select("*").eq("id", id),
-            supabase.from("group_members").select("*").eq("group_id", id),
+            groupMemberQuery,
             supabase
               .from("expenses")
               .select("*")
@@ -131,6 +141,12 @@ export default function GroupDetails() {
         <div>
           <h1>{groupDetails.name}</h1>
           <p>{groupDetails.description}</p>
+          <h2>Group Members</h2>
+          <ul>
+            {groupMembers.map((member) => (
+              <li>{member.users.display_name || member.guest_name}</li>
+            ))}
+          </ul>
         </div>
         <div>
           <button
