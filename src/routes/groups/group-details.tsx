@@ -3,6 +3,7 @@ import { supabase } from "@/lib/supabase";
 import { QueryData } from "@supabase/supabase-js";
 import { Group, Expense } from "@/types";
 import { useState, useEffect } from "react";
+import { CURRENCIES } from "@/constants";
 
 export default function GroupDetails() {
   const { id } = useParams();
@@ -185,7 +186,13 @@ export default function GroupDetails() {
                 }}
               >
                 <span>{expense.description}</span>
-                <strong>{expense.amount}</strong>
+                <strong>
+                  {
+                    CURRENCIES.find((c) => c.iso_code === expense.currency)
+                      ?.symbol
+                  }
+                  {expense.amount.toFixed(2)}
+                </strong>
                 <span>{/* TODO: add payer */}</span>
                 <span>{new Date(expense.created_at).toLocaleDateString()}</span>
               </div>
