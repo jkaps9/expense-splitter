@@ -8,12 +8,14 @@ import { EXPENSE_CATEGORIES, SPLIT_TYPES } from "@/constants";
 export default function NewExpense() {
   const navigate = useNavigate();
   const location = useLocation();
+  const today = new Date().toISOString().split("T")[0];
 
   const { formData, errors, handleChange, handleSubmit } = useForm({
     initialValues: {
+      amount: "",
+      date: today,
       description: "",
       category: "",
-      amount: "",
       currency: location.state?.groupDetails.default_currency || "",
       splitType: "",
     },
@@ -32,6 +34,7 @@ export default function NewExpense() {
           description: values.description,
           category: values.category,
           amount: values.amount,
+          expense_date: values.date,
           currency: values.currency,
           split_type: values.splitType,
         })
@@ -65,6 +68,16 @@ export default function NewExpense() {
           value={formData.amount}
           onChange={handleChange}
         ></FormInput>
+        <FormInput
+          id="expenseDate"
+          name="date"
+          label="Date"
+          type="date"
+          onChange={handleChange}
+          errorMessage={errors.date}
+          value={formData.date}
+          required
+        />
         <FormInput
           id="expenseDescription"
           name="description"
