@@ -16,6 +16,7 @@ import GroupsBase from "@routes/groups";
 import GroupDetails from "@/routes/groups/group-details";
 import NewGroup from "@routes/groups/new-group";
 import EditGroup from "@routes/groups/edit-group";
+import NewGroupMember from "@routes/groups/new-member";
 
 import NewExpense from "@routes/expenses/new-expense";
 import EditExpense from "@routes/expenses/edit-expense";
@@ -37,6 +38,7 @@ const router = createBrowserRouter([
           { path: "new", Component: NewGroup },
           { path: ":id", Component: GroupDetails },
           { path: "edit/:id", Component: EditGroup },
+          { path: "new-member", Component: NewGroupMember },
         ],
       },
       {
