@@ -1,7 +1,7 @@
 import { useParams, useNavigate } from "react-router";
 import { supabase } from "@/lib/supabase";
 import { QueryData } from "@supabase/supabase-js";
-import { Group, GroupMember, Expense } from "@/types";
+import { Group, Expense } from "@/types";
 import { useState, useEffect } from "react";
 
 export default function GroupDetails() {
@@ -115,7 +115,7 @@ export default function GroupDetails() {
     });
   };
 
-  const deleteExpense = async (expenseId) => {
+  const deleteExpense = async (expenseId: string) => {
     const response = await supabase
       .from("expenses")
       .delete()
@@ -128,7 +128,7 @@ export default function GroupDetails() {
     }
   };
 
-  const editExpense = (expense) => {
+  const editExpense = (expense: Expense) => {
     navigate(`${import.meta.env.BASE_URL}/expenses/edit/${expense.id}`, {
       state: { expense: expense },
     });
