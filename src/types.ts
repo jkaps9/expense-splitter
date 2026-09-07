@@ -4,6 +4,7 @@ export interface SplitMemberState {
   groupMemberId: string;
   displayName: string;
   isActive: boolean;
+  included: boolean;
   splitValue: number | null;
   calculatedAmount: number;
 }

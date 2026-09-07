@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import FormInput from "@components/FormInput";
 import { supabase } from "@/lib/supabase";
 import { useForm } from "@/hooks/useFormValidation";
@@ -6,6 +6,14 @@ import { useNavigate, useLocation } from "react-router";
 import AuthForm from "@components/AuthForm";
 import { EXPENSE_CATEGORIES, SPLIT_TYPES } from "@/constants";
 import { SplitMemberState } from "@/types";
+
+interface RouterGroupMember {
+  id: string;
+  guest_name: string | null;
+  users: {
+    display_name: string | null;
+  } | null;
+}
 
 export default function NewExpense() {
   const navigate = useNavigate();
@@ -16,11 +24,10 @@ export default function NewExpense() {
   const [membersState, setMembersState] = useState<
     (SplitMemberState & { name: string })[]
   >(
-    groupMembers.map((m: any) => ({
+    groupMembers.map((m: RouterGroupMember) => ({
       groupMemberId: m.id,
       included: true,
       splitValue: 0,
-      calculatedAmount: 0,
       name: m.users?.display_name || m.guest_name || "Unknown",
     })),
   );
@@ -33,6 +40,7 @@ export default function NewExpense() {
       category: "",
       currency: location.state?.groupDetails.default_currency || "",
       splitType: "",
+      payer: "",
     },
     validate: (values) => {
       const newErrors: Partial<Record<keyof typeof values, string>> = {};
@@ -57,7 +65,7 @@ export default function NewExpense() {
           expense_date: values.date,
           currency: values.currency,
           split_type: values.splitType,
-          paid_by_member_id: membersState[0]?.groupMemberId, // Assuming first member paid for now; add a payer dropdown later!
+          paid_by_member_id: values.payer, // Assuming first member paid for now; add a payer dropdown later!
         })
         .select()
         .single();
@@ -66,7 +74,7 @@ export default function NewExpense() {
         return alert(expenseError.message);
       }
 
-      const splitsToInsert = membersState
+      const splitsToInsert = calculatedMembers
         .filter((m) => m.included && m.calculatedAmount > 0)
         .map((m) => ({
           expense_id: expense.id,
@@ -88,58 +96,37 @@ export default function NewExpense() {
     },
   });
 
-  useEffect(() => {
+  const calculatedMembers = membersState.map((m) => {
+    let calculatedAmount = 0;
     const totalAmount = Number(formData.amount) || 0;
     const type = formData.splitType.toLowerCase();
 
-    setMembersState((prev) => {
-      let nextState = [...prev];
+    if (type === "equal") {
+      const includedCount = membersState.filter((x) => x.included).length;
+      calculatedAmount =
+        includedCount > 0 && m.included ? totalAmount / includedCount : 0;
+    } else if (type === "exact") {
+      calculatedAmount = Number(m.splitValue) || 0;
+    } else if (type === "percentage") {
+      calculatedAmount = (totalAmount * (Number(m.splitValue) || 0)) / 100;
+    } else if (type === "shares") {
+      const totalShares = membersState.reduce(
+        (sum, x) => sum + (Number(x.splitValue) || 0),
+        0,
+      );
+      calculatedAmount =
+        totalShares > 0
+          ? (totalAmount * (Number(m.splitValue) || 0)) / totalShares
+          : 0;
+    }
 
-      if (type === "equal") {
-        const includedCount = nextState.filter((m) => m.included).length;
-        const splitAmount = includedCount > 0 ? totalAmount / includedCount : 0;
-        nextState = nextState.map((m) => ({
-          ...m,
-          calculatedAmount: m.included ? Number(splitAmount.toFixed(2)) : 0,
-        }));
-      } else if (type === "exact") {
-        nextState = nextState.map((m) => ({
-          ...m,
-          calculatedAmount: Number(m.splitValue) || 0,
-        }));
-      } else if (type === "percentage") {
-        nextState = nextState.map((m) => ({
-          ...m,
-          calculatedAmount: Number(
-            ((totalAmount * (Number(m.splitValue) || 0)) / 100).toFixed(2),
-          ),
-        }));
-      } else if (type === "shares") {
-        const totalShares = nextState.reduce(
-          (sum, m) => sum + (Number(m.splitValue) || 0),
-          0,
-        );
-        nextState = nextState.map((m) => ({
-          ...m,
-          calculatedAmount:
-            totalShares > 0
-              ? Number(
-                  (
-                    (totalAmount * (Number(m.splitValue) || 0)) /
-                    totalShares
-                  ).toFixed(2),
-                )
-              : 0,
-        }));
-      }
-      return nextState;
-    });
-  }, [formData.amount, formData.splitType]);
+    return { ...m, calculatedAmount: Number(calculatedAmount.toFixed(2)) };
+  });
 
-  const handleMemberUpdate = (
+  const handleMemberUpdate = <K extends keyof SplitMemberState>(
     id: string,
-    field: keyof SplitMemberState,
-    value: any,
+    field: K,
+    value: SplitMemberState[K],
   ) => {
     setMembersState((prev) =>
       prev.map((m) => (m.groupMemberId === id ? { ...m, [field]: value } : m)),
@@ -228,7 +215,7 @@ export default function NewExpense() {
           onChange={handleChange}
         >
           <option value="">--Please choose an option--</option>
-          {groupMembers.map((member) => (
+          {groupMembers.map((member: RouterGroupMember) => (
             <option value={member.id}>
               {member.users?.display_name || member.guest_name || "Unknown"}
             </option>
@@ -238,7 +225,7 @@ export default function NewExpense() {
         {formData.splitType && (
           <div style={{ marginTop: "1rem" }}>
             <h4>Split Breakdown</h4>
-            {membersState.map((member) => (
+            {calculatedMembers.map((member) => (
               <div
                 key={member.groupMemberId}
                 style={{
