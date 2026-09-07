@@ -4,7 +4,7 @@ import { supabase } from "@/lib/supabase";
 import { useForm } from "@/hooks/useFormValidation";
 import { useNavigate, useLocation } from "react-router";
 import AuthForm from "@components/AuthForm";
-import { EXPENSE_CATEGORIES, SPLIT_TYPES } from "@/constants";
+import { EXPENSE_CATEGORIES, SPLIT_TYPES, CURRENCIES } from "@/constants";
 import { SplitMemberState, Split } from "@/types";
 
 interface RouterGroupMember {
@@ -263,17 +263,25 @@ export default function ManageExpense() {
             </option>
           ))}
         </select>
-        <FormInput
-          id="currency"
+        <label htmlFor="currency">Currency</label>
+        <select
           name="currency"
-          label="Currency"
-          type="text"
-          placeholder="USD"
-          onChange={handleChange}
-          errorMessage={errors.currency}
+          id="currency"
           value={formData.currency}
+          onChange={handleChange}
           required
-        ></FormInput>
+        >
+          <option key="0" value="">
+            --Please choose an option--
+          </option>
+          {CURRENCIES.map((currency) => (
+            <option key={currency.iso_code} value={currency.iso_code}>
+              {currency.symbol} {currency.iso_code}
+            </option>
+          ))}
+        </select>
+        <p className="error-message">{errors.currency}</p>
+
         <label htmlFor="splitType-select">Split Type</label>
         <select
           name="splitType"
