@@ -14,8 +14,7 @@ import UpdatePassword from "@routes/dashboard/update-password";
 
 import GroupsBase from "@routes/groups";
 import GroupDetails from "@/routes/groups/group-details";
-import NewGroup from "@routes/groups/new-group";
-import EditGroup from "@routes/groups/edit-group";
+import ManageGroup from "@routes/groups/manage-group";
 import NewGroupMember from "@routes/groups/new-member";
 
 import NewExpense from "@routes/expenses/new-expense";
@@ -37,9 +36,9 @@ const router = createBrowserRouter([
         path: "groups",
         Component: GroupsBase,
         children: [
-          { path: "new", Component: NewGroup },
+          { path: "new", Component: ManageGroup },
           { path: ":id", Component: GroupDetails },
-          { path: "edit/:id", Component: EditGroup },
+          { path: "edit/:id", Component: ManageGroup },
           { path: "new-member", Component: NewGroupMember },
         ],
       },
