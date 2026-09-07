@@ -5,7 +5,7 @@ import { useForm } from "@/hooks/useFormValidation";
 import { useNavigate, useLocation } from "react-router";
 import AuthForm from "@components/AuthForm";
 import { EXPENSE_CATEGORIES, SPLIT_TYPES } from "@/constants";
-import { SplitMemberState } from "@/types";
+import { SplitMemberState, Split } from "@/types";
 
 interface RouterGroupMember {
   id: string;
@@ -22,17 +22,23 @@ export default function ManageExpense() {
   const groupMembers = location.state?.groupMembers || [];
 
   const expense = location.state?.expense;
+  const existingSplits = location.state?.splits || [];
   const isEditMode = !!expense;
 
   const [membersState, setMembersState] = useState<
     (SplitMemberState & { name: string })[]
   >(
-    groupMembers.map((m: RouterGroupMember) => ({
-      groupMemberId: m.id,
-      included: true,
-      splitValue: 0,
-      name: m.users?.display_name || m.guest_name || "Unknown",
-    })),
+    groupMembers.map((m: RouterGroupMember) => {
+      const memberSplit = existingSplits.find(
+        (s: Split) => s.group_member_id === m.id,
+      );
+      return {
+        groupMemberId: m.id,
+        included: isEditMode ? !!memberSplit : true,
+        splitValue: memberSplit?.split_value || 0,
+        name: m.users?.display_name || m.guest_name || "Unknown",
+      };
+    }),
   );
 
   const { formData, errors, handleChange, handleSubmit } = useForm({
@@ -93,6 +99,13 @@ export default function ManageExpense() {
         if (error) {
           return alert(error.message);
         }
+
+        const { error: deleteError } = await supabase
+          .from("splits")
+          .delete()
+          .eq("expense_id", expense.id);
+
+        if (deleteError) return alert(deleteError.message);
 
         const splitsToInsert = calculatedMembers
           .filter((m) => m.included && m.calculatedAmount > 0)
