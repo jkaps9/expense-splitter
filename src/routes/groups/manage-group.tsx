@@ -85,10 +85,14 @@ export default function ManageGroup() {
   return (
     <>
       <AuthForm
-        title="Edit Group"
-        description="Lorem, ipsum dolor sit amet consectetur adipisicing elit. Sint, dicta!"
+        title={isEditMode ? "Edit Group" : "Create New Group"}
+        description={
+          isEditMode
+            ? "Update your group settings."
+            : "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Sint, dicta!"
+        }
         onSubmit={handleSubmit}
-        submitText="Submit Changes"
+        submitText={isEditMode ? "Submit Changes" : "Create"}
       >
         <FormInput
           id="groupName"
