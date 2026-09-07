@@ -92,13 +92,21 @@ export default function GroupDetails() {
   });
 
   const deleteGroup = async () => {
-    const response = await supabase.from("groups").delete().eq("id", id);
+    if (
+      window.confirm(
+        `Are you sure you want to delete ${groupDetails.name}?  This action is irreversible.`,
+      )
+    ) {
+      const response = await supabase.from("groups").delete().eq("id", id);
 
-    if (response.success) {
-      alert("group deleted");
-      navigate(`${import.meta.env.BASE_URL}/dashboard`);
-    } else {
-      alert(`something went wrong\n${response.status}: ${response.statusText}`);
+      if (response.success) {
+        alert("group deleted");
+        navigate(`${import.meta.env.BASE_URL}/dashboard`);
+      } else {
+        alert(
+          `something went wrong\n${response.status}: ${response.statusText}`,
+        );
+      }
     }
   };
 
@@ -118,15 +126,23 @@ export default function GroupDetails() {
   };
 
   const deleteExpense = async (expenseId: string) => {
-    const response = await supabase
-      .from("expenses")
-      .delete()
-      .eq("id", expenseId);
+    if (
+      window.confirm(
+        "Are you sure you want to delete this expense? This action is irreversible.",
+      )
+    ) {
+      const response = await supabase
+        .from("expenses")
+        .delete()
+        .eq("id", expenseId);
 
-    if (response.success) {
-      alert("expense deleted");
-    } else {
-      alert(`something went wrong\n${response.status}: ${response.statusText}`);
+      if (response.success) {
+        alert("expense deleted");
+      } else {
+        alert(
+          `something went wrong\n${response.status}: ${response.statusText}`,
+        );
+      }
     }
   };
 
