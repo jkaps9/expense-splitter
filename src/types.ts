@@ -42,6 +42,13 @@ export interface GroupMember {
   id: string;
 }
 
+export interface Split {
+  expense_id: string;
+  group_member_id: string;
+  amount_owed: number;
+  split_value: number;
+}
+
 export interface Expense {
   id: string;
   group_id: string;
@@ -53,4 +60,5 @@ export interface Expense {
   split_type: string;
   expense_date: string;
   created_at: string;
+  splits?: Split[];
 }
