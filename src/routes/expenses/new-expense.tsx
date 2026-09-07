@@ -57,6 +57,17 @@ export default function NewExpense() {
       return newErrors;
     },
     onSubmit: async (values) => {
+      const type = values.splitType.toLowerCase();
+
+      if (type === "exact" && currentSplitTotal !== totalExpenseAmount) {
+        return alert(
+          "Exact split amounts must match the total expense exactly.",
+        );
+      }
+      if (type === "percentage" && currentSplitTotal !== 100) {
+        return alert("Percentages must add up to exactly 100%.");
+      }
+
       const { data: expense, error: expenseError } = await supabase
         .from("expenses")
         .insert({
