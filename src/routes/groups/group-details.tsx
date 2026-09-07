@@ -132,7 +132,11 @@ export default function GroupDetails() {
 
   const editExpense = (expense: Expense) => {
     navigate(`${import.meta.env.BASE_URL}/expenses/edit/${expense.id}`, {
-      state: { expense: expense },
+      state: {
+        groupDetails: groupDetails,
+        groupMembers: groupMembers,
+        expense: expense,
+      },
     });
   };
 
