@@ -92,9 +92,11 @@ export default function NewGroup() {
           onChange={handleChange}
           required
         >
-          <option value="">--Please choose an option--</option>
+          <option key="0" value="">
+            --Please choose an option--
+          </option>
           {CURRENCIES.map((currency) => (
-            <option value={currency.iso_code}>
+            <option key={currency.iso_code} value={currency.iso_code}>
               {currency.symbol} {currency.iso_code}
             </option>
           ))}
