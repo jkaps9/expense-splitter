@@ -38,7 +38,7 @@ export default function GroupDetails() {
             groupMemberQuery,
             supabase
               .from("expenses")
-              .select("*")
+              .select("*, splits(*)")
               .eq("group_id", id)
               .order("created_at", { ascending: false }),
           ]);
@@ -136,6 +136,7 @@ export default function GroupDetails() {
         groupDetails: groupDetails,
         groupMembers: groupMembers,
         expense: expense,
+        splits: expense.splits || [],
       },
     });
   };
