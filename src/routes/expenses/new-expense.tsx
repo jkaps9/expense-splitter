@@ -181,9 +181,13 @@ export default function NewExpense() {
           value={formData.category}
           onChange={handleChange}
         >
-          <option value="">--Please choose an option--</option>
+          <option key="0" value="">
+            --Please choose an option--
+          </option>
           {EXPENSE_CATEGORIES.map((category) => (
-            <option value={category.toLowerCase()}>{category}</option>
+            <option key={category.toLowerCase()} value={category.toLowerCase()}>
+              {category}
+            </option>
           ))}
         </select>
         <FormInput
@@ -204,9 +208,13 @@ export default function NewExpense() {
           value={formData.splitType}
           onChange={handleChange}
         >
-          <option value="">--Please choose an option--</option>
+          <option key="0" value="">
+            --Please choose an option--
+          </option>
           {SPLIT_TYPES.map((type) => (
-            <option value={type.toLowerCase()}>{type}</option>
+            <option key={type.toLowerCase()} value={type.toLowerCase()}>
+              {type}
+            </option>
           ))}
         </select>
         <p className="error-message">{errors.splitType}</p>
@@ -218,9 +226,11 @@ export default function NewExpense() {
           value={formData.payer}
           onChange={handleChange}
         >
-          <option value="">--Please choose an option--</option>
+          <option key="0" value="">
+            --Please choose an option--
+          </option>
           {groupMembers.map((member: RouterGroupMember) => (
-            <option value={member.id}>
+            <option key={member.id} value={member.id}>
               {member.users?.display_name || member.guest_name || "Unknown"}
             </option>
           ))}
