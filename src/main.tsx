@@ -19,6 +19,7 @@ import NewGroupMember from "@routes/groups/new-member";
 
 import NewExpense from "@routes/expenses/new-expense";
 import EditExpense from "@routes/expenses/edit-expense";
+import ManageExpense from "./routes/expenses/manage-expense";
 
 import AcceptInvite from "@routes/invite";
 
@@ -45,8 +46,8 @@ const router = createBrowserRouter([
       {
         path: "expenses",
         children: [
-          { path: "new", Component: NewExpense },
-          { path: "edit/:id", Component: EditExpense },
+          { path: "new", Component: ManageExpense },
+          { path: "edit/:id", Component: ManageExpense },
         ],
       },
       { path: "update-password", Component: UpdatePassword },
