@@ -91,6 +91,7 @@ export default function ManageExpense() {
             amount: values.amount,
             currency: values.currency,
             split_type: values.splitType,
+            paid_by_member_id: values.payer,
           })
           .eq("id", expense.id)
           .select()
