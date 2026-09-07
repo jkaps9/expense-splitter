@@ -112,6 +112,7 @@ export default function GroupDetails() {
     navigate(`${import.meta.env.BASE_URL}/expenses/new/`, {
       state: {
         groupDetails: groupDetails,
+        groupMembers: groupMembers,
       },
     });
   };
