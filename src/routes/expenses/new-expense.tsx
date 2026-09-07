@@ -125,6 +125,12 @@ export default function NewExpense() {
     return { ...m, calculatedAmount: Number(calculatedAmount.toFixed(2)) };
   });
 
+  const currentSplitTotal = calculatedMembers.reduce(
+    (sum, m) => sum + (Number(m.splitValue) || 0),
+    0,
+  );
+  const totalExpenseAmount = Number(formData.amount) || 0;
+
   const handleMemberUpdate = <K extends keyof SplitMemberState>(
     id: string,
     field: K,
@@ -289,6 +295,54 @@ export default function NewExpense() {
                 </span>
               </div>
             ))}
+            {/* Live Validation Summary */}
+            {formData.splitType.toLowerCase() === "exact" && (
+              <div
+                style={{
+                  marginTop: "1rem",
+                  padding: "0.75rem",
+                  borderRadius: "4px",
+                  backgroundColor:
+                    currentSplitTotal === totalExpenseAmount
+                      ? "#e6ffed"
+                      : "#ffebe9",
+                  color:
+                    currentSplitTotal === totalExpenseAmount
+                      ? "#0a5c36"
+                      : "#9e1c23",
+                  fontSize: "0.875rem",
+                }}
+              >
+                <strong>Total:</strong>{" "}
+                <span style={{ fontFamily: "monospace" }}>
+                  ${currentSplitTotal.toFixed(2)}
+                </span>{" "}
+                /{" "}
+                <span style={{ fontFamily: "monospace" }}>
+                  ${totalExpenseAmount.toFixed(2)}
+                </span>
+                {currentSplitTotal !== totalExpenseAmount &&
+                  " (Amounts must exactly match the total expense)"}
+              </div>
+            )}
+
+            {formData.splitType.toLowerCase() === "percentage" && (
+              <div
+                style={{
+                  marginTop: "1rem",
+                  padding: "0.75rem",
+                  borderRadius: "4px",
+                  backgroundColor:
+                    currentSplitTotal === 100 ? "#e6ffed" : "#ffebe9",
+                  color: currentSplitTotal === 100 ? "#0a5c36" : "#9e1c23",
+                  fontSize: "0.875rem",
+                }}
+              >
+                <strong>Total:</strong> {currentSplitTotal}% / 100%
+                {currentSplitTotal !== 100 &&
+                  " (Percentages must add up to exactly 100%)"}
+              </div>
+            )}
           </div>
         )}
       </AuthForm>
