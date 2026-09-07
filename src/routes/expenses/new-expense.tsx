@@ -52,6 +52,8 @@ export default function NewExpense() {
       if (!values.description) newErrors.description = "Can't be empty";
       if (!values.category) newErrors.category = "Can't be blank";
       if (!values.currency) newErrors.currency = "Can't be blank";
+      if (!values.splitType) newErrors.splitType = "Can't be blank";
+      if (!values.payer) newErrors.payer = "Can't be blank";
       return newErrors;
     },
     onSubmit: async (values) => {
@@ -65,7 +67,7 @@ export default function NewExpense() {
           expense_date: values.date,
           currency: values.currency,
           split_type: values.splitType,
-          paid_by_member_id: values.payer, // Assuming first member paid for now; add a payer dropdown later!
+          paid_by_member_id: values.payer,
         })
         .select()
         .single();
@@ -207,6 +209,8 @@ export default function NewExpense() {
             <option value={type.toLowerCase()}>{type}</option>
           ))}
         </select>
+        <p className="error-message">{errors.splitType}</p>
+
         <label htmlFor="payer-select">Payer</label>
         <select
           name="payer"
@@ -221,6 +225,7 @@ export default function NewExpense() {
             </option>
           ))}
         </select>
+        <p className="error-message">{errors.payer}</p>
 
         {formData.splitType && (
           <div style={{ marginTop: "1rem" }}>
