@@ -5,6 +5,8 @@ import { Group, Expense } from "@/types";
 import { useState, useEffect } from "react";
 import { CURRENCIES } from "@/constants";
 import ExpenseListStyles from "@styles/ExpenseList.module.css";
+import EditIcon from "@assets/edit.svg?react";
+import DeleteIcon from "@assets/trash.svg?react";
 
 export default function GroupDetails() {
   const { id } = useParams();
@@ -242,14 +244,16 @@ export default function GroupDetails() {
                   className="btn btn--secondary"
                   onClick={() => editExpense(expense)}
                 >
-                  Edit
+                  <EditIcon width={24} heighr={24}></EditIcon>
+                  <span className="sr-only">Edit</span>
                 </button>
                 <button
                   type="button"
                   className="btn btn--destructive"
                   onClick={() => deleteExpense(expense.id)}
                 >
-                  Delete
+                  <DeleteIcon width={24} heighr={24}></DeleteIcon>
+                  <span className="sr-only">Delete</span>
                 </button>
               </div>
             </li>
