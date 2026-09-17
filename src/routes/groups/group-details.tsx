@@ -238,7 +238,7 @@ export default function GroupDetails() {
                 <span>{/* TODO: add payer */}payer</span>
                 <span>{new Date(expense.created_at).toLocaleDateString()}</span>
               </div>
-              <div>
+              <div className={ExpenseListStyles.itemButtons}>
                 <button
                   type="button"
                   className="btn btn--secondary"

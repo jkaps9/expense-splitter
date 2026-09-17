@@ -23,6 +23,16 @@
   grid-column: span 3;
 }
 
+.itemButtons {
+  align-items: center;
+  display: flex;
+  gap: 1rem;
+  & > * {
+    padding: 0;
+    border: none;
+  }
+}
+
 @media (min-width: 64rem) {
   .itemDetails {
     grid-template-columns: 2fr repeat(3, 1fr);
