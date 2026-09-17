@@ -4,6 +4,7 @@ import { QueryData } from "@supabase/supabase-js";
 import { Group, Expense } from "@/types";
 import { useState, useEffect } from "react";
 import { CURRENCIES } from "@/constants";
+import ExpenseListStyles from "@styles/ExpenseList.module.css";
 
 export default function GroupDetails() {
   const { id } = useParams();
@@ -218,18 +219,13 @@ export default function GroupDetails() {
         </button>
       </div>
       {groupExpenses && groupExpenses.length > 0 ? (
-        <ul>
+        <ul className={ExpenseListStyles.expenseList}>
           {groupExpenses.map((expense) => (
-            <li key={expense.id} className="row">
-              <div
-                style={{
-                  display: "grid",
-                  gridTemplateColumns: "2fr repeat(3, 1fr)",
-                  gap: "0.5rem",
-                  flex: "1",
-                }}
-              >
-                <span>{expense.description}</span>
+            <li key={expense.id} className={ExpenseListStyles.expenseItem}>
+              <div className={ExpenseListStyles.itemDetails}>
+                <span className={ExpenseListStyles.itemDescription}>
+                  {expense.description}
+                </span>
                 <strong>
                   {
                     CURRENCIES.find((c) => c.iso_code === expense.currency)
@@ -237,7 +233,7 @@ export default function GroupDetails() {
                   }
                   {expense.amount.toFixed(2)}
                 </strong>
-                <span>{/* TODO: add payer */}</span>
+                <span>{/* TODO: add payer */}payer</span>
                 <span>{new Date(expense.created_at).toLocaleDateString()}</span>
               </div>
               <div>

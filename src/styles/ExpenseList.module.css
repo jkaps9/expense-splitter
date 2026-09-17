@@ -1,0 +1,30 @@
+.expenseList {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding-block: 1rem;
+}
+
+.expenseItem {
+  align-items: center;
+  display: flex;
+  gap: 0.25rem;
+  justify-content: space-between;
+}
+
+.itemDetails {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.5rem;
+  flex: 1;
+}
+
+.itemDescription {
+  grid-column: span 3;
+}
+
+@media (min-width: 64rem) {
+  .itemDetails {
+    grid-template-columns: 2fr repeat(3, 1fr);
+  }
+}
