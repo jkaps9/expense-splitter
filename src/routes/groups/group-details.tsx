@@ -177,20 +177,22 @@ export default function GroupDetails() {
           <h1>{groupDetails.name}</h1>
           <p>{groupDetails.description}</p>
         </div>
-        <div>
+        <div className={ExpenseListStyles.itemButtons}>
           <button
             type="button"
             className="btn btn--secondary"
             onClick={editGroup}
           >
-            Edit Group
+            <EditIcon></EditIcon>
+            <span className="sr-only">Edit Group</span>
           </button>
           <button
             type="button"
             className="btn btn--destructive"
             onClick={deleteGroup}
           >
-            Delete Group
+            <DeleteIcon></DeleteIcon>
+            <span className="sr-only">Delete Group</span>
           </button>
         </div>
       </div>
