@@ -244,7 +244,7 @@ export default function GroupDetails() {
                   className="btn btn--secondary"
                   onClick={() => editExpense(expense)}
                 >
-                  <EditIcon width={24} heighr={24}></EditIcon>
+                  <EditIcon></EditIcon>
                   <span className="sr-only">Edit</span>
                 </button>
                 <button
@@ -252,7 +252,7 @@ export default function GroupDetails() {
                   className="btn btn--destructive"
                   onClick={() => deleteExpense(expense.id)}
                 >
-                  <DeleteIcon width={24} heighr={24}></DeleteIcon>
+                  <DeleteIcon></DeleteIcon>
                   <span className="sr-only">Delete</span>
                 </button>
               </div>
