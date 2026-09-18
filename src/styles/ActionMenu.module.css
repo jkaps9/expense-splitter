@@ -1,21 +1,5 @@
-.actionMenuTrigger {
-  border: 1px solid transparent;
-  background: none;
-  display: flex;
-  padding: 0;
+.actionMenu {
   position: relative;
-  &:hover {
-    cursor: pointer;
-    border-color: var(--color-border);
-    border-radius: var(--radius-xs);
-    box-shadow: 2px 2px 0 0 var(--colors-neutral-900);
-  }
-
-  &:focus-visible,
-  &:active {
-    border-radius: var(--radius-xs);
-    outline: 2px solid var(--colors-blue-600);
-  }
 }
 
 .actionMenuDropdown {

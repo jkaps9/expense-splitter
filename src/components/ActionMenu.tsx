@@ -106,11 +106,11 @@ export default function ActionMenu({
     }
   };
   return (
-    <div className="action-menu" ref={containerRef} onBlur={handleBlur}>
+    <div className={styles.actionMenu} ref={containerRef} onBlur={handleBlur}>
       <button
         ref={buttonRef}
         type="button"
-        className={styles.actionMenuTrigger}
+        className="btn btn--secondary"
         aria-haspopup="menu"
         aria-expanded={isOpen}
         aria-label={ariaLabel}
