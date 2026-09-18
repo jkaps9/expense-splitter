@@ -216,89 +216,103 @@ export default function GroupDetails({ id }: { id: string }) {
   return (
     <>
       {loading && <p>Loading...</p>}
-      <div className={GroupDetailStyles.header}>
-        <div className={GroupDetailStyles.headerNameAndDescription}>
-          <h1>{groupDetails.name}</h1>
-          <p className="muted-text">{groupDetails.description}</p>
+      <div className={GroupDetailStyles.top}>
+        <div className={GroupDetailStyles.header}>
+          <div className={GroupDetailStyles.headerNameAndDescription}>
+            <h1>{groupDetails.name}</h1>
+            <p className="muted-text">{groupDetails.description}</p>
+          </div>
+          <div className={GroupDetailStyles.headerButtons}>
+            <button
+              type="button"
+              className="btn btn--primary"
+              onClick={newExpense}
+            >
+              + Add expense
+            </button>
+            <ActionMenu
+              MenuIcon={SettingsIcon}
+              triggerRef={actionTriggerRef}
+              actions={settingsActions}
+              ariaLabel={"Open settings menu"}
+            ></ActionMenu>
+          </div>
         </div>
-        <div className={GroupDetailStyles.headerButtons}>
-          <button
-            type="button"
-            className="btn btn--primary"
-            onClick={newExpense}
-          >
-            + Add expense
-          </button>
-          <ActionMenu
-            MenuIcon={SettingsIcon}
-            triggerRef={actionTriggerRef}
-            actions={settingsActions}
-            ariaLabel={"Open settings menu"}
-          ></ActionMenu>
+        <div className={GroupDetailStyles.statRow}>
+          <div>
+            <span className={GroupDetailStyles.expenseAmount}>
+              {groupExpenses
+                .reduce((accumulator, currentItem) => {
+                  return accumulator + currentItem.amount;
+                }, 0)
+                .toFixed(2)}
+            </span>
+            <span className="muted-text"> total spent</span>
+          </div>
+          <div>
+            <span className="muted-text">{groupExpenses.length} expenses</span>
+          </div>
+          <div className={GroupDetailStyles.memberListContainer}>
+            <ul className={GroupDetailStyles.memberList}>
+              {groupMembers.map((member) => (
+                <li key={member.id}>
+                  <div className={GroupDetailStyles.memberBubble}>
+                    {(member.users?.display_name ?? member.guest_name)
+                      .split(" ")
+                      .map((word: string) => word[0])
+                      .join("")}
+                  </div>
+                </li>
+              ))}
+            </ul>
+            <span className="muted-text">{groupMembers.length} members</span>
+          </div>
         </div>
       </div>
-      <div className={GroupDetailStyles.statRow}>
-        <div>
-          <span className={GroupDetailStyles.expenseAmount}>
-            {groupExpenses
-              .reduce((accumulator, currentItem) => {
-                return accumulator + currentItem.amount;
-              }, 0)
-              .toFixed(2)}
-          </span>
-          <span className="muted-text"> total spent</span>
+      <div className="bottom">
+        <div className="row">
+          <h2>Activity</h2>
+          <div className={GroupDetailStyles.bottomStats}>
+            <span className="muted-text">{groupExpenses.length} expenses</span>
+            <span>&middot;</span>
+            <span className="muted-text">0 settlements</span>
+          </div>
         </div>
-        <div>
-          <span className="muted-text">{groupExpenses.length} expenses</span>
-        </div>
-        <div className={GroupDetailStyles.memberListContainer}>
-          <ul className={GroupDetailStyles.memberList}>
-            {groupMembers.map((member) => (
-              <li key={member.id}>
-                <div className={GroupDetailStyles.memberBubble}>
-                  {(member.users?.display_name ?? member.guest_name)
-                    .split(" ")
-                    .map((word: string) => word[0])
-                    .join("")}
+        {groupExpenses && groupExpenses.length > 0 ? (
+          <ul className={ExpenseListStyles.expenseList}>
+            {groupExpenses.map((expense) => (
+              <li key={expense.id} className={ExpenseListStyles.expenseItem}>
+                <div className={ExpenseListStyles.itemDetails}>
+                  <span className={ExpenseListStyles.itemDescription}>
+                    {expense.description}
+                  </span>
+                  <strong>
+                    {
+                      CURRENCIES.find((c) => c.iso_code === expense.currency)
+                        ?.symbol
+                    }
+                    {expense.amount.toFixed(2)}
+                  </strong>
+                  <span>{/* TODO: add payer */}payer</span>
+                  <span>
+                    {new Date(expense.created_at).toLocaleDateString()}
+                  </span>
+                </div>
+                <div className={ExpenseListStyles.itemButtons}>
+                  <ActionMenu
+                    MenuIcon={VerticalMenuIcon}
+                    triggerRef={actionTriggerRef}
+                    actions={getExpenseActions(expense)}
+                    ariaLabel={"Open expense settings menu"}
+                  ></ActionMenu>
                 </div>
               </li>
             ))}
           </ul>
-          <span className="muted-text">{groupMembers.length} members</span>
-        </div>
+        ) : (
+          <p>Add an expense</p>
+        )}
       </div>
-      {groupExpenses && groupExpenses.length > 0 ? (
-        <ul className={ExpenseListStyles.expenseList}>
-          {groupExpenses.map((expense) => (
-            <li key={expense.id} className={ExpenseListStyles.expenseItem}>
-              <div className={ExpenseListStyles.itemDetails}>
-                <span className={ExpenseListStyles.itemDescription}>
-                  {expense.description}
-                </span>
-                <strong>
-                  {
-                    CURRENCIES.find((c) => c.iso_code === expense.currency)
-                      ?.symbol
-                  }
-                  {expense.amount.toFixed(2)}
-                </strong>
-                <span>{/* TODO: add payer */}payer</span>
-                <span>{new Date(expense.created_at).toLocaleDateString()}</span>
-              </div>
-              <div className={ExpenseListStyles.itemButtons}>
-                <ActionMenu
-                  MenuIcon={VerticalMenuIcon}
-                  triggerRef={actionTriggerRef}
-                  actions={getExpenseActions(expense)}
-                  ariaLabel={"Open expense settings menu"}
-                ></ActionMenu>
-              </div>
-            </li>
-          ))}
-        </ul>
-      ) : (
-        <p>Add an expense</p>
-      )}
     </>
   );
 }

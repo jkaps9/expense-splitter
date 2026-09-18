@@ -1,3 +1,19 @@
+.top {
+  border-bottom: 1px solid var(--color-border);
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  padding-block-end: 2rem;
+}
+
+.bottom {
+}
+
+.bottomStats {
+  display: flex;
+  gap: 0.5rem;
+}
+
 .header {
   display: flex;
   justify-content: space-between;
