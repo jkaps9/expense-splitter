@@ -9,7 +9,7 @@ export default function GroupList({ groups, handleClick }: GroupsProps) {
   return (
     <>
       <div>
-        <h1>Groups</h1>
+        <h2>Groups</h2>
       </div>
       <ul>
         {groups &&
@@ -19,7 +19,7 @@ export default function GroupList({ groups, handleClick }: GroupsProps) {
                 className="btn btn--naked"
                 onClick={() => handleClick(group.id)}
               >
-                <h2>{group.name}</h2>
+                <span>{group.name}</span>
               </button>
             </li>
           ))}
