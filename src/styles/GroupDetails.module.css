@@ -19,3 +19,12 @@
   gap: 1rem;
   position: relative;
 }
+
+.memberList {
+  display: flex;
+}
+
+.memberListContainer {
+  display: flex;
+  gap: 0.25rem;
+}

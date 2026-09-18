@@ -218,13 +218,18 @@ export default function GroupDetails({ id }: { id: string }) {
         </div>
       </div>
       <div>
-        <ul>
-          {groupMembers.map((member) => (
-            <li key={member.id}>
-              {member.users?.display_name ?? member.guest_name}
-            </li>
-          ))}
-        </ul>
+        <div className={GroupDetailStyles.memberListContainer}>
+          <ul className={GroupDetailStyles.memberList}>
+            {groupMembers.map((member) => (
+              <li key={member.id}>
+                {member.users?.display_name ?? member.guest_name}
+              </li>
+            ))}
+          </ul>
+          <span className={GroupDetailStyles.memberCount}>
+            {groupMembers.length} members
+          </span>
+        </div>
       </div>
       {groupExpenses && groupExpenses.length > 0 ? (
         <ul className={ExpenseListStyles.expenseList}>
