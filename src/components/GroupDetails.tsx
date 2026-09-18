@@ -187,6 +187,20 @@ export default function GroupDetails({ id }: { id: string }) {
     });
   };
 
+  const getExpenseActions = (expense: Expense) => [
+    {
+      label: "Edit expense",
+      onClick: () => editExpense(expense),
+      icon: EditIcon,
+    },
+    {
+      label: "Delete expense",
+      onClick: () => deleteExpense(expense.id),
+      isDestructive: true,
+      icon: DeleteIcon,
+    },
+  ];
+
   const newMember = () => {
     navigate(`${import.meta.env.BASE_URL}/groups/new-member/`, {
       state: {
@@ -279,6 +293,12 @@ export default function GroupDetails({ id }: { id: string }) {
                   <DeleteIcon></DeleteIcon>
                   <span className="sr-only">Delete</span>
                 </button>
+                <ActionMenu
+                  MenuIcon={VerticalMenuIcon}
+                  triggerRef={actionTriggerRef}
+                  actions={getExpenseActions(expense)}
+                  ariaLabel={"Open expense settings menu"}
+                ></ActionMenu>
               </div>
             </li>
           ))}
