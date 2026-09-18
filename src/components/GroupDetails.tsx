@@ -219,7 +219,7 @@ export default function GroupDetails({ id }: { id: string }) {
       <div className={GroupDetailStyles.header}>
         <div className={GroupDetailStyles.headerNameAndDescription}>
           <h1>{groupDetails.name}</h1>
-          <p>{groupDetails.description}</p>
+          <p className="muted-text">{groupDetails.description}</p>
         </div>
         <div className={GroupDetailStyles.headerButtons}>
           <button
@@ -239,9 +239,17 @@ export default function GroupDetails({ id }: { id: string }) {
       </div>
       <div className={GroupDetailStyles.statRow}>
         <div>
-          <span className={GroupDetailStyles.expenseCount}>
-            {groupExpenses.length} expenses
+          <span className={GroupDetailStyles.expenseAmount}>
+            {groupExpenses
+              .reduce((accumulator, currentItem) => {
+                return accumulator + currentItem.amount;
+              }, 0)
+              .toFixed(2)}
           </span>
+          <span className="muted-text"> total spent</span>
+        </div>
+        <div>
+          <span className="muted-text">{groupExpenses.length} expenses</span>
         </div>
         <div className={GroupDetailStyles.memberListContainer}>
           <ul className={GroupDetailStyles.memberList}>
@@ -256,9 +264,7 @@ export default function GroupDetails({ id }: { id: string }) {
               </li>
             ))}
           </ul>
-          <span className={GroupDetailStyles.memberCount}>
-            {groupMembers.length} members
-          </span>
+          <span className="muted-text">{groupMembers.length} members</span>
         </div>
       </div>
       {groupExpenses && groupExpenses.length > 0 ? (

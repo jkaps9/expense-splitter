@@ -7,10 +7,6 @@
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
-
-  p {
-    color: var(--color-text-secondary);
-  }
 }
 
 .headerButtons {
@@ -21,6 +17,7 @@
 }
 
 .statRow {
+  align-items: center;
   display: flex;
   gap: var(--space-8);
 }
@@ -48,9 +45,4 @@
   justify-content: center;
   margin-inline-start: -0.675rem;
   width: 2rem;
-}
-
-.memberCount,
-.expenseCount {
-  color: var(--color-text-secondary);
 }

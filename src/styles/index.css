@@ -389,6 +389,10 @@ main > section {
   color: var(--color-accent);
 }
 
+.muted-text {
+  color: var(--color-text-secondary);
+}
+
 @media (min-width: 64rem) {
   [id="root"] {
     align-items: stretch;
