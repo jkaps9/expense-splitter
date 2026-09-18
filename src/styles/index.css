@@ -255,7 +255,7 @@ p {
   margin-inline: auto;
   max-width: 90rem;
   min-height: 100svh;
-  padding-inline: clamp(1rem, 0.8239rem + 0.7512vw, 1.5rem);
+  /* padding-inline: clamp(1rem, 0.8239rem + 0.7512vw, 1.5rem); */
   width: 100%;
 }
 
@@ -366,7 +366,7 @@ main > section {
   [id="root"] {
     align-items: stretch;
     display: flex;
-    padding: 1.5rem;
+    /* padding: 1.5rem; */
   }
 
   .hide-on-mobile {
