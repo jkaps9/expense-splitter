@@ -19,6 +19,7 @@ export default function DashboardBase() {
   });
 
   const [groups, setGroups] = useState<Group[]>([]);
+  const [selectedGroupId, setSelectedGroupId] = useState(null);
 
   useEffect(() => {
     async function fetchData() {
@@ -91,7 +92,11 @@ export default function DashboardBase() {
       </aside>
       <main className={styles.main}>
         <section>
-          <GroupDetails></GroupDetails>
+          {selectedGroupId ? (
+            <GroupDetails id={selectedGroupId}></GroupDetails>
+          ) : (
+            <p>no group selected</p>
+          )}
         </section>
       </main>
     </div>

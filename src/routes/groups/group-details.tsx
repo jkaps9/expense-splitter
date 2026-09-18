@@ -8,8 +8,7 @@ import ExpenseListStyles from "@styles/ExpenseList.module.css";
 import EditIcon from "@assets/edit.svg?react";
 import DeleteIcon from "@assets/trash.svg?react";
 
-export default function GroupDetails() {
-  const { id } = useParams();
+export default function GroupDetails({ id }: { id: string }) {
   const navigate = useNavigate();
 
   const [loading, setLoading] = useState(true);
