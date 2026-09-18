@@ -346,6 +346,27 @@ main > section {
   }
 }
 
+.btn--naked {
+  align-items: center;
+  border: none;
+  background: none;
+  color: currentColor;
+  gap: 1em;
+  justify-content: center;
+  padding: 0;
+  text-decoration: none;
+  text-wrap: nowrap;
+
+  svg {
+    height: auto;
+    width: 1.5em;
+  }
+
+  &:hover {
+    color: var(--color-accent-hover);
+  }
+}
+
 .sr-only {
   position: absolute;
   width: 1px;
