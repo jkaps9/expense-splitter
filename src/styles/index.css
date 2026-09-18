@@ -346,12 +346,18 @@ main > section {
 }
 
 .btn--secondary {
-  border-color: var(--color-accent);
-  color: var(--color-accent);
+  border-color: var(--color-border);
+  color: var(--color-text-primary);
+
   &:hover,
   &:active,
   &:focus-visible {
     background-color: var(--color-accent-subtle);
+  }
+
+  svg {
+    height: auto;
+    width: 1.5rem;
   }
 }
 
