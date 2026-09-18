@@ -222,7 +222,12 @@ export default function GroupDetails({ id }: { id: string }) {
           <ul className={GroupDetailStyles.memberList}>
             {groupMembers.map((member) => (
               <li key={member.id}>
-                {member.users?.display_name ?? member.guest_name}
+                <div className={GroupDetailStyles.memberBubble}>
+                  {(member.users?.display_name ?? member.guest_name)
+                    .split(" ")
+                    .map((word: string) => word[0])
+                    .join("")}
+                </div>
               </li>
             ))}
           </ul>

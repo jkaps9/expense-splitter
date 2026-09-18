@@ -28,3 +28,18 @@
   display: flex;
   gap: 0.25rem;
 }
+
+.memberBubble {
+  background-color: var(--color-accent);
+  border-radius: var(--radius-full);
+  border: 1px solid var(--color-border);
+  color: var(--color-bg-primary);
+  font-size: 0.75rem;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-inline-start: -0.675rem;
+  width: 2rem;
+  height: 2rem;
+}
