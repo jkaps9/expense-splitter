@@ -1,9 +1,10 @@
 import { useState, useEffect } from "react";
-import { Outlet } from "react-router";
+import { Outlet, Link } from "react-router";
 import DashboardHeader from "@components/DashboardHeader";
 import styles from "@styles/DashboardBase.module.css";
 import { ProfileData, Group } from "@/types";
 import { supabase } from "@/lib/supabase";
+import AddIcon from "@assets/add.svg?react";
 
 import GroupList from "@/components/GroupList";
 
@@ -74,17 +75,34 @@ export default function DashboardBase() {
 
   return (
     <div className={styles.dashboard}>
-      <DashboardHeader display_name={profileData.display_name} />
+      {/* <DashboardHeader display_name={profileData.display_name} />
       <main>
         {loading ? (
           <p>Loading...</p>
         ) : (
           <>
-            <GroupList groups={groups}></GroupList>
+            
             <Outlet context={outletProps} />
           </>
         )}
-      </main>
+      </main> */}
+
+      <aside className={styles.sidebar}>
+        <div className={styles.sidebarContent}>
+          {loading ? (
+            <p>Loading...</p>
+          ) : (
+            <GroupList groups={groups}></GroupList>
+          )}
+        </div>
+        <div className={styles.sidebarBottom}>
+          <Link to="/groups/new" className="btn btn--naked">
+            <AddIcon aria-hidden="true"></AddIcon>
+            <span>New Group</span>
+          </Link>
+        </div>
+      </aside>
+      <main className={styles.main}></main>
     </div>
   );
 }
