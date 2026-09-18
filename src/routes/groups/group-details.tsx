@@ -1,4 +1,4 @@
-import { useParams, useNavigate } from "react-router";
+import { useNavigate } from "react-router";
 import { supabase } from "@/lib/supabase";
 import { QueryData } from "@supabase/supabase-js";
 import { Group, Expense } from "@/types";
