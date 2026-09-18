@@ -1,5 +1,20 @@
 .dashboard {
   display: flex;
   flex: 1;
+}
+
+.sidebar {
+  border-inline-end: 1px solid var(--color-border);
+  display: flex;
   flex-direction: column;
+  justify-content: space-between;
+}
+
+.sidebarContent,
+.sidebarBottom {
+  padding: 1.5rem 1rem;
+}
+
+.main {
+  flex: 1;
 }
