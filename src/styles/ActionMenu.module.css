@@ -1,7 +1,3 @@
-.actionMenu {
-  position: relative;
-}
-
 .actionMenuDropdown {
   align-items: flex-start;
   background-color: var(--color-surface);
@@ -10,10 +6,9 @@
   box-shadow: 0 3px 8px 0 rgba(46, 20, 1, 0.2);
   display: flex;
   flex-direction: column;
-  min-width: 140px;
   overflow: hidden;
   position: absolute;
-  top: 125%;
+  top: 100%;
   right: 0;
   z-index: 100;
 

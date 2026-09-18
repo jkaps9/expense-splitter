@@ -9,6 +9,7 @@ import ExpenseListStyles from "@styles/ExpenseList.module.css";
 import GroupDetailStyles from "@styles/GroupDetails.module.css";
 import EditIcon from "@assets/edit.svg?react";
 import DeleteIcon from "@assets/trash.svg?react";
+import PeopleIcon from "@assets/people.svg?react";
 
 export default function GroupDetails({ id }: { id: string }) {
   const [loading, setLoading] = useState(true);
@@ -131,6 +132,11 @@ export default function GroupDetails({ id }: { id: string }) {
       icon: EditIcon,
     },
     {
+      label: "Edit members",
+      onClick: () => newMember(),
+      icon: PeopleIcon,
+    },
+    {
       label: "Delete group",
       onClick: () => deleteGroup(),
       isDestructive: true,
@@ -212,18 +218,6 @@ export default function GroupDetails({ id }: { id: string }) {
         </div>
       </div>
       <div>
-        <div className="row">
-          <h2>Group Members</h2>
-          <div>
-            <button
-              type="button"
-              className="btn btn--naked"
-              onClick={newMember}
-            >
-              + Add Member
-            </button>
-          </div>
-        </div>
         <ul>
           {groupMembers.map((member) => (
             <li key={member.id}>
