@@ -18,7 +18,7 @@ export default function DashboardHeader({
     <header className={`row ${styles.header}`}>
       <div className={styles.logo}>
         <ReactLogo aria-hidden="true" />
-        <span className="sr-only">React Supabase Starter</span>
+        <span>Expense Splitter</span>
       </div>
       <div className="row">
         <p>Hey, {display_name}</p>
