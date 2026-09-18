@@ -41,4 +41,8 @@
   .itemDetails {
     grid-template-columns: 2fr repeat(3, 1fr);
   }
+
+  .itemDescription {
+    grid-column: span 1;
+  }
 }
