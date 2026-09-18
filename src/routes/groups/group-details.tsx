@@ -20,11 +20,11 @@ export default function GroupDetails({ id }: { id: string }) {
     created_at: "",
   });
 
-  const groupMemberQuery = supabase
+  const membersBaseQuery = supabase
     .from("group_members")
-    .select("*, users(display_name)")
-    .eq("group_id", id);
-  type GroupMembersWithDisplayName = QueryData<typeof groupMemberQuery>;
+    .select("*, users(display_name)");
+
+  type GroupMembersWithDisplayName = QueryData<typeof membersBaseQuery>;
 
   const [groupMembers, setGroupMembers] = useState<
     GroupMembersWithDisplayName[]
@@ -37,7 +37,10 @@ export default function GroupDetails({ id }: { id: string }) {
         const [groupDetailRes, groupMembersRes, expensesRes] =
           await Promise.all([
             supabase.from("groups").select("*").eq("id", id),
-            groupMemberQuery,
+            supabase
+              .from("group_members")
+              .select("*, users(display_name)")
+              .eq("group_id", id),
             supabase
               .from("expenses")
               .select("*, splits(*)")
@@ -91,7 +94,7 @@ export default function GroupDetails({ id }: { id: string }) {
     return () => {
       authListener.subscription.unsubscribe();
     };
-  });
+  }, [id]);
 
   const deleteGroup = async () => {
     if (
