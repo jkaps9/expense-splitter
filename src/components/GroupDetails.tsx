@@ -168,6 +168,9 @@ export default function GroupDetails({ id }: { id: string }) {
 
       if (response.success) {
         alert("expense deleted");
+        setGroupExpenses((prev) =>
+          prev.filter((expense) => expense.id !== expenseId),
+        );
       } else {
         alert(
           `something went wrong\n${response.status}: ${response.statusText}`,
