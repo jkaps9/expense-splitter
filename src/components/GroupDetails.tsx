@@ -205,10 +205,10 @@ export default function GroupDetails({ id }: { id: string }) {
           >
             + Add expense
           </button>
-          <button type="button" className="btn btn--secondary">
+          {/* <button type="button" className="btn btn--secondary">
             <span className="sr-only">open settings dropdown</span>
             <SettingsIcon></SettingsIcon>
-          </button>
+          </button> */}
 
           <ActionMenu
             triggerRef={actionTriggerRef}

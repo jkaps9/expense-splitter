@@ -5,7 +5,7 @@ import styles from "@styles/ActionMenu.module.css";
 interface Action {
   label: string;
   onClick: () => void;
-  isDestructive: boolean;
+  isDestructive?: boolean;
   icon: React.ComponentType<React.ComponentProps<"svg">>;
 }
 
