@@ -25,6 +25,7 @@
 }
 
 .memberListContainer {
+  align-items: center;
   display: flex;
   gap: 0.25rem;
 }
@@ -42,4 +43,8 @@
   margin-inline-start: -0.675rem;
   width: 2rem;
   height: 2rem;
+}
+
+.memberCount {
+  color: var(--color-text-secondary);
 }
