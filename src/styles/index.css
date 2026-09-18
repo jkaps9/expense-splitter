@@ -314,26 +314,6 @@ main > section {
   padding: var(--space-2) var(--space-3);
 }
 
-.btn--primary {
-  background-color: var(--color-accent);
-
-  &:hover,
-  &:active,
-  &:focus-visible {
-    background-color: var(--color-accent-hover);
-  }
-}
-
-.btn--secondary {
-  border-color: var(--color-accent);
-  color: var(--color-accent);
-  &:hover,
-  &:active,
-  &:focus-visible {
-    background-color: var(--color-accent-subtle);
-  }
-}
-
 .btn--naked {
   align-items: center;
   border: none;
@@ -352,6 +332,26 @@ main > section {
 
   &:hover {
     color: var(--color-accent-hover);
+  }
+}
+
+.btn--primary {
+  background-color: var(--color-accent);
+
+  &:hover,
+  &:active,
+  &:focus-visible {
+    background-color: var(--color-accent-hover);
+  }
+}
+
+.btn--secondary {
+  border-color: var(--color-accent);
+  color: var(--color-accent);
+  &:hover,
+  &:active,
+  &:focus-visible {
+    background-color: var(--color-accent-subtle);
   }
 }
 
