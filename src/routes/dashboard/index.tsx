@@ -6,8 +6,8 @@ import { ProfileData, Group } from "@/types";
 import { supabase } from "@/lib/supabase";
 import AddIcon from "@assets/add.svg?react";
 
-import GroupList from "@/components/GroupList";
-import GroupDetails from "../groups/group-details";
+import GroupList from "@components/GroupList";
+import GroupDetails from "@components/GroupDetails";
 
 export default function DashboardBase() {
   const [loading, setLoading] = useState(true);
