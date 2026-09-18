@@ -1,0 +1,20 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+}
+
+.headerNameAndDescription {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+
+  p {
+    color: var(--color-text-secondary);
+  }
+}
+
+.headerButtons {
+  align-items: center;
+  display: flex;
+  gap: 1rem;
+}

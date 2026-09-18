@@ -5,6 +5,7 @@ import { Group, Expense } from "@/types";
 import { useState, useEffect } from "react";
 import { CURRENCIES } from "@/constants";
 import ExpenseListStyles from "@styles/ExpenseList.module.css";
+import GroupDetailStyles from "@styles/GroupDetails.module.css";
 import EditIcon from "@assets/edit.svg?react";
 import DeleteIcon from "@assets/trash.svg?react";
 
@@ -174,12 +175,20 @@ export default function GroupDetails({ id }: { id: string }) {
   return (
     <>
       {loading && <p>Loading...</p>}
-      <div className="row">
-        <div style={{ display: "flex", flexDirection: "column" }}>
+      <div className={GroupDetailStyles.header}>
+        <div className={GroupDetailStyles.headerNameAndDescription}>
           <h1>{groupDetails.name}</h1>
           <p>{groupDetails.description}</p>
         </div>
-        <div className={ExpenseListStyles.itemButtons}>
+        <div className={GroupDetailStyles.headerButtons}>
+          <button
+            type="button"
+            className="btn btn--primary"
+            onClick={newExpense}
+          >
+            + Add expense
+          </button>
+
           <button type="button" className="btn btn--naked" onClick={editGroup}>
             <EditIcon></EditIcon>
             <span className="sr-only">Edit Group</span>
@@ -214,11 +223,6 @@ export default function GroupDetails({ id }: { id: string }) {
             </li>
           ))}
         </ul>
-      </div>
-      <div>
-        <button type="button" className="btn btn--primary" onClick={newExpense}>
-          + Add Expense
-        </button>
       </div>
       {groupExpenses && groupExpenses.length > 0 ? (
         <ul className={ExpenseListStyles.expenseList}>
