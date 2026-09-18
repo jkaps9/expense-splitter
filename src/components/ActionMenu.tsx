@@ -1,5 +1,4 @@
 import { useState, useEffect, useRef } from "react";
-import MenuIcon from "@assets/settings.svg?react";
 import styles from "@styles/ActionMenu.module.css";
 
 interface Action {
@@ -10,12 +9,14 @@ interface Action {
 }
 
 interface ActionMenuProps {
+  MenuIcon: React.ComponentType<React.ComponentProps<"svg">>;
   actions: Action[];
   ariaLabel: string;
   triggerRef: React.RefObject<HTMLButtonElement | null>;
 }
 
 export default function ActionMenu({
+  MenuIcon,
   actions,
   ariaLabel = "Open options menu",
   triggerRef,
@@ -117,7 +118,7 @@ export default function ActionMenu({
         onClick={() => setIsOpen(!isOpen)}
         onKeyDown={handleButtonKeyDown}
       >
-        <MenuIcon aria-hidden="true"></MenuIcon>
+        {MenuIcon && <MenuIcon aria-hidden="true" />}
       </button>
 
       {isOpen && (
