@@ -10,6 +10,8 @@ import GroupDetailStyles from "@styles/GroupDetails.module.css";
 import EditIcon from "@assets/edit.svg?react";
 import DeleteIcon from "@assets/trash.svg?react";
 import PeopleIcon from "@assets/people.svg?react";
+import SettingsIcon from "@assets/settings.svg?react";
+import VerticalMenuIcon from "@assets/vertical-menu.svg?react";
 
 export default function GroupDetails({ id }: { id: string }) {
   const [loading, setLoading] = useState(true);
@@ -211,6 +213,7 @@ export default function GroupDetails({ id }: { id: string }) {
             + Add expense
           </button>
           <ActionMenu
+            MenuIcon={SettingsIcon}
             triggerRef={actionTriggerRef}
             actions={settingsActions}
             ariaLabel={"Open settings menu"}
