@@ -2,8 +2,9 @@ import { useNavigate } from "react-router";
 import { supabase } from "@/lib/supabase";
 import { QueryData } from "@supabase/supabase-js";
 import { Group, Expense } from "@/types";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { CURRENCIES } from "@/constants";
+import ActionMenu from "@/components/ActionMenu";
 import ExpenseListStyles from "@styles/ExpenseList.module.css";
 import GroupDetailStyles from "@styles/GroupDetails.module.css";
 import EditIcon from "@assets/edit.svg?react";
@@ -11,8 +12,6 @@ import DeleteIcon from "@assets/trash.svg?react";
 import SettingsIcon from "@assets/settings.svg?react";
 
 export default function GroupDetails({ id }: { id: string }) {
-  const navigate = useNavigate();
-
   const [loading, setLoading] = useState(true);
   const [groupDetails, setGroupDetails] = useState<Group>({
     id: "",
@@ -21,6 +20,9 @@ export default function GroupDetails({ id }: { id: string }) {
     default_currency: "",
     created_at: "",
   });
+
+  const navigate = useNavigate();
+  const actionTriggerRef = useRef(null);
 
   const membersBaseQuery = supabase
     .from("group_members")
@@ -123,6 +125,20 @@ export default function GroupDetails({ id }: { id: string }) {
     });
   };
 
+  const settingsActions = [
+    {
+      label: "Edit group",
+      onClick: () => editGroup(),
+      icon: EditIcon,
+    },
+    {
+      label: "Delete group",
+      onClick: () => deleteGroup(),
+      isDestructive: true,
+      icon: DeleteIcon,
+    },
+  ];
+
   const newExpense = () => {
     navigate(`${import.meta.env.BASE_URL}/expenses/new/`, {
       state: {
@@ -193,6 +209,12 @@ export default function GroupDetails({ id }: { id: string }) {
             <span className="sr-only">open settings dropdown</span>
             <SettingsIcon></SettingsIcon>
           </button>
+
+          <ActionMenu
+            triggerRef={actionTriggerRef}
+            actions={settingsActions}
+            ariaLabel={"Open settings menu"}
+          ></ActionMenu>
           <button type="button" className="btn btn--naked" onClick={editGroup}>
             <EditIcon></EditIcon>
             <span className="sr-only">Edit Group</span>
