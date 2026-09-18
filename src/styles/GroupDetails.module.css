@@ -20,6 +20,11 @@
   position: relative;
 }
 
+.statRow {
+  display: flex;
+  gap: var(--space-8);
+}
+
 .memberList {
   display: flex;
 }
@@ -31,20 +36,21 @@
 }
 
 .memberBubble {
+  align-items: center;
   background-color: var(--color-accent);
   border-radius: var(--radius-full);
   border: 1px solid var(--color-border);
   color: var(--color-bg-primary);
+  display: flex;
   font-size: 0.75rem;
   font-weight: 600;
-  display: flex;
-  align-items: center;
+  height: 2rem;
   justify-content: center;
   margin-inline-start: -0.675rem;
   width: 2rem;
-  height: 2rem;
 }
 
-.memberCount {
+.memberCount,
+.expenseCount {
   color: var(--color-text-secondary);
 }

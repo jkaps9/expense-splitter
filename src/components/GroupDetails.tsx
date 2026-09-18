@@ -217,7 +217,12 @@ export default function GroupDetails({ id }: { id: string }) {
           ></ActionMenu>
         </div>
       </div>
-      <div>
+      <div className={GroupDetailStyles.statRow}>
+        <div>
+          <span className={GroupDetailStyles.expenseCount}>
+            {groupExpenses.length} expenses
+          </span>
+        </div>
         <div className={GroupDetailStyles.memberListContainer}>
           <ul className={GroupDetailStyles.memberList}>
             {groupMembers.map((member) => (
