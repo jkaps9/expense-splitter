@@ -10,6 +10,7 @@
   display: flex;
   gap: 0.25rem;
   justify-content: space-between;
+  position: relative;
 }
 
 .itemDetails {
@@ -27,6 +28,14 @@
   align-items: center;
   display: flex;
   gap: 1rem;
+  button {
+    border: none;
+    padding: 0;
+    &:hover {
+      background-color: transparent;
+      color: var(--color-accent);
+    }
+  }
 }
 
 @media (min-width: 64rem) {

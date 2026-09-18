@@ -277,22 +277,6 @@ export default function GroupDetails({ id }: { id: string }) {
                 <span>{new Date(expense.created_at).toLocaleDateString()}</span>
               </div>
               <div className={ExpenseListStyles.itemButtons}>
-                <button
-                  type="button"
-                  className="btn btn--naked"
-                  onClick={() => editExpense(expense)}
-                >
-                  <EditIcon></EditIcon>
-                  <span className="sr-only">Edit</span>
-                </button>
-                <button
-                  type="button"
-                  className="btn btn--destructive btn--naked"
-                  onClick={() => deleteExpense(expense.id)}
-                >
-                  <DeleteIcon></DeleteIcon>
-                  <span className="sr-only">Delete</span>
-                </button>
                 <ActionMenu
                   MenuIcon={VerticalMenuIcon}
                   triggerRef={actionTriggerRef}
