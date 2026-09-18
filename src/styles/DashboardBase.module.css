@@ -19,8 +19,5 @@
 
 .main {
   flex: 1;
-  padding: 1rem;
-  section {
-    padding: 0;
-  }
+  padding-inline: 1rem;
 }
