@@ -9,7 +9,6 @@ import ExpenseListStyles from "@styles/ExpenseList.module.css";
 import GroupDetailStyles from "@styles/GroupDetails.module.css";
 import EditIcon from "@assets/edit.svg?react";
 import DeleteIcon from "@assets/trash.svg?react";
-import SettingsIcon from "@assets/settings.svg?react";
 
 export default function GroupDetails({ id }: { id: string }) {
   const [loading, setLoading] = useState(true);
@@ -205,28 +204,11 @@ export default function GroupDetails({ id }: { id: string }) {
           >
             + Add expense
           </button>
-          {/* <button type="button" className="btn btn--secondary">
-            <span className="sr-only">open settings dropdown</span>
-            <SettingsIcon></SettingsIcon>
-          </button> */}
-
           <ActionMenu
             triggerRef={actionTriggerRef}
             actions={settingsActions}
             ariaLabel={"Open settings menu"}
           ></ActionMenu>
-          <button type="button" className="btn btn--naked" onClick={editGroup}>
-            <EditIcon></EditIcon>
-            <span className="sr-only">Edit Group</span>
-          </button>
-          <button
-            type="button"
-            className="btn btn--destructive btn--naked"
-            onClick={deleteGroup}
-          >
-            <DeleteIcon></DeleteIcon>
-            <span className="sr-only">Delete Group</span>
-          </button>
         </div>
       </div>
       <div>
