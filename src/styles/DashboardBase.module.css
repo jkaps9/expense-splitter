@@ -9,7 +9,7 @@
   flex-direction: column;
   justify-content: space-between;
   & > * {
-    padding: 1.5rem 1rem;
+    padding: 1rem;
   }
 }
 
@@ -19,4 +19,8 @@
 
 .main {
   flex: 1;
+  padding: 1rem;
+  section {
+    padding: 0;
+  }
 }
