@@ -10,7 +10,6 @@ export default function GroupList({ groups }: GroupsProps) {
     <>
       <div>
         <h1>Groups</h1>
-        <Link to="/groups/new">Add Group</Link>
       </div>
       <ul>
         {groups &&
