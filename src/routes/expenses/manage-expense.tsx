@@ -160,9 +160,10 @@ export default function ManageExpense() {
         }
       }
 
-      navigate(
-        `${import.meta.env.BASE_URL}/groups/${location.state?.groupDetails.id}`,
-      );
+      // navigate(
+      //   `${import.meta.env.BASE_URL}/groups/${location.state?.groupDetails.id}`,
+      // );
+      navigate(`${import.meta.env.BASE_URL}/dashboard`);
     },
   });
 
