@@ -17,7 +17,6 @@ export default function GroupList({ groups }: GroupsProps) {
             <li key={group.id}>
               <Link to={`/groups/${group.id}`}>
                 <h2>{group.name}</h2>
-                <p>{group.description}</p>
               </Link>
             </li>
           ))}
