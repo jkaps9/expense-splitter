@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Outlet, Link } from "react-router";
+import { Link } from "react-router";
 import DashboardHeader from "@components/DashboardHeader";
 import styles from "@styles/DashboardBase.module.css";
 import { ProfileData, Group } from "@/types";
@@ -7,6 +7,7 @@ import { supabase } from "@/lib/supabase";
 import AddIcon from "@assets/add.svg?react";
 
 import GroupList from "@/components/GroupList";
+import GroupDetails from "../groups/group-details";
 
 export default function DashboardBase() {
   const [loading, setLoading] = useState(true);
@@ -68,31 +69,17 @@ export default function DashboardBase() {
     };
   });
 
-  const outletProps = {
-    profileData,
-    groups,
-  };
-
   return (
     <div className={styles.dashboard}>
-      {/* <DashboardHeader display_name={profileData.display_name} />
-      <main>
-        {loading ? (
-          <p>Loading...</p>
-        ) : (
-          <>
-            
-            <Outlet context={outletProps} />
-          </>
-        )}
-      </main> */}
-
       <aside className={styles.sidebar}>
         <div className={styles.sidebarContent}>
           {loading ? (
             <p>Loading...</p>
           ) : (
-            <GroupList groups={groups}></GroupList>
+            <>
+              <DashboardHeader />
+              <GroupList groups={groups}></GroupList>
+            </>
           )}
         </div>
         <div className={styles.sidebarBottom}>
@@ -102,7 +89,11 @@ export default function DashboardBase() {
           </Link>
         </div>
       </aside>
-      <main className={styles.main}></main>
+      <main className={styles.main}>
+        <section>
+          <GroupDetails></GroupDetails>
+        </section>
+      </main>
     </div>
   );
 }
