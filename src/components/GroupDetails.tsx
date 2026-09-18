@@ -180,17 +180,13 @@ export default function GroupDetails({ id }: { id: string }) {
           <p>{groupDetails.description}</p>
         </div>
         <div className={ExpenseListStyles.itemButtons}>
-          <button
-            type="button"
-            className="btn btn--secondary"
-            onClick={editGroup}
-          >
+          <button type="button" className="btn btn--naked" onClick={editGroup}>
             <EditIcon></EditIcon>
             <span className="sr-only">Edit Group</span>
           </button>
           <button
             type="button"
-            className="btn btn--destructive"
+            className="btn btn--destructive btn--naked"
             onClick={deleteGroup}
           >
             <DeleteIcon></DeleteIcon>
@@ -204,7 +200,7 @@ export default function GroupDetails({ id }: { id: string }) {
           <div>
             <button
               type="button"
-              className="btn btn--secondary"
+              className="btn btn--naked"
               onClick={newMember}
             >
               + Add Member
@@ -245,7 +241,7 @@ export default function GroupDetails({ id }: { id: string }) {
               <div className={ExpenseListStyles.itemButtons}>
                 <button
                   type="button"
-                  className="btn btn--secondary"
+                  className="btn btn--naked"
                   onClick={() => editExpense(expense)}
                 >
                   <EditIcon></EditIcon>
@@ -253,7 +249,7 @@ export default function GroupDetails({ id }: { id: string }) {
                 </button>
                 <button
                   type="button"
-                  className="btn btn--destructive"
+                  className="btn btn--destructive btn--naked"
                   onClick={() => deleteExpense(expense.id)}
                 >
                   <DeleteIcon></DeleteIcon>

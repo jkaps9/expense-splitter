@@ -334,18 +334,6 @@ main > section {
   }
 }
 
-.btn--destructive {
-  border-color: var(--color-error);
-  color: var(--color-error);
-
-  &:hover,
-  &:active,
-  &:focus-visible {
-    background-color: var(--color-error);
-    color: unset;
-  }
-}
-
 .btn--naked {
   align-items: center;
   border: none;
@@ -359,11 +347,23 @@ main > section {
 
   svg {
     height: auto;
-    width: 1.5em;
+    width: 1.5rem;
   }
 
   &:hover {
     color: var(--color-accent-hover);
+  }
+}
+
+.btn--destructive {
+  border-color: var(--color-error);
+  color: var(--color-error);
+
+  &:hover,
+  &:active,
+  &:focus-visible {
+    background-color: var(--color-error);
+    color: unset;
   }
 }
 

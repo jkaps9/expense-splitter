@@ -27,14 +27,6 @@
   align-items: center;
   display: flex;
   gap: 1rem;
-  & > * {
-    padding: 0;
-    border: none;
-    svg {
-      width: 1.5rem;
-      height: auto;
-    }
-  }
 }
 
 @media (min-width: 64rem) {
