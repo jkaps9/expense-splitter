@@ -1,11 +1,11 @@
 import { Group } from "@/types";
-import { Link } from "react-router";
 
 interface GroupsProps {
   groups: Group[];
+  handleClick: (id: string) => void;
 }
 
-export default function GroupList({ groups }: GroupsProps) {
+export default function GroupList({ groups, handleClick }: GroupsProps) {
   return (
     <>
       <div>
@@ -15,9 +15,12 @@ export default function GroupList({ groups }: GroupsProps) {
         {groups &&
           groups.map((group) => (
             <li key={group.id}>
-              <Link to={`/groups/${group.id}`}>
+              <button
+                className="btn btn--naked"
+                onClick={() => handleClick(group.id)}
+              >
                 <h2>{group.name}</h2>
-              </Link>
+              </button>
             </li>
           ))}
       </ul>

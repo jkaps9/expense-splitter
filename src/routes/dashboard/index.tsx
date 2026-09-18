@@ -19,7 +19,7 @@ export default function DashboardBase() {
   });
 
   const [groups, setGroups] = useState<Group[]>([]);
-  const [selectedGroupId, setSelectedGroupId] = useState(null);
+  const [selectedGroupId, setSelectedGroupId] = useState<string | null>(null);
 
   useEffect(() => {
     async function fetchData() {
@@ -70,6 +70,10 @@ export default function DashboardBase() {
     };
   });
 
+  const setGroupId = (groupId: string) => {
+    setSelectedGroupId(groupId);
+  };
+
   return (
     <div className={styles.dashboard}>
       <aside className={styles.sidebar}>
@@ -79,7 +83,7 @@ export default function DashboardBase() {
           ) : (
             <>
               <DashboardHeader />
-              <GroupList groups={groups}></GroupList>
+              <GroupList groups={groups} handleClick={setGroupId}></GroupList>
             </>
           )}
         </div>
