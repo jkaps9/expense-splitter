@@ -1,5 +1,8 @@
 .header {
   padding-block: var(--space-4);
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
 }
 
 .logo {
