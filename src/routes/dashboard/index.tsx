@@ -77,12 +77,13 @@ export default function DashboardBase() {
   return (
     <div className={styles.dashboard}>
       <aside className={styles.sidebar}>
+        <DashboardHeader />
+
         <div className={styles.sidebarContent}>
           {loading ? (
             <p>Loading...</p>
           ) : (
             <>
-              <DashboardHeader />
               <GroupList groups={groups} handleClick={setGroupId}></GroupList>
             </>
           )}
