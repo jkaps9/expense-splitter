@@ -269,7 +269,7 @@ export default function GroupDetails({ id }: { id: string }) {
           </div>
         </div>
       </div>
-      <div className="bottom">
+      <div className={GroupDetailStyles.bottom}>
         <div className="row">
           <h2>Activity</h2>
           <div className={GroupDetailStyles.bottomStats}>

@@ -69,9 +69,10 @@
 .expenseActivityCard {
   border: 1px solid var(--color-border);
   border-radius: var(--radius-md);
+  margin-top: var(--space-4);
 }
 
-@media (min-width: 64rem) {
+@media (min-width: 48rem) {
   .headerButtons {
     flex-direction: row;
     gap: 1rem;
