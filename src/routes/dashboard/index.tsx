@@ -85,7 +85,11 @@ export default function DashboardBase() {
               <p>Loading...</p>
             ) : (
               <>
-                <GroupList groups={groups} handleClick={setGroupId}></GroupList>
+                <GroupList
+                  groups={groups}
+                  handleClick={setGroupId}
+                  currentGroupId={selectedGroupId}
+                ></GroupList>
               </>
             )}
           </div>
