@@ -1,11 +1,11 @@
 .expenseList {
   display: flex;
   flex-direction: column;
-  gap: 1rem;
 }
 
 .expenseItem {
   align-items: center;
+  background-color: var(--color-surface);
   display: flex;
   gap: 0.25rem;
   justify-content: space-between;

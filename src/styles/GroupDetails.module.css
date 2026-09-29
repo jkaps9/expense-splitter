@@ -7,6 +7,7 @@
 }
 
 .bottom {
+  margin-top: var(--space-8);
 }
 
 .bottomStats {
