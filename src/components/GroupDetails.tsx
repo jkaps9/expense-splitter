@@ -287,25 +287,29 @@ export default function GroupDetails({ id }: { id: string }) {
                     <span className={ExpenseListStyles.itemDescription}>
                       {expense.description}
                     </span>
-                    <strong>
+                    <div className="payer-and-date">
+                      <span>{/* TODO: add payer */}payer</span>
+                      <span>
+                        {new Date(expense.created_at).toLocaleDateString()}
+                      </span>
+                    </div>
+                  </div>
+                  <div className={ExpenseListStyles.amountAndButtons}>
+                    <span className={ExpenseListStyles.amount}>
                       {
                         CURRENCIES.find((c) => c.iso_code === expense.currency)
                           ?.symbol
                       }
                       {expense.amount.toFixed(2)}
-                    </strong>
-                    <span>{/* TODO: add payer */}payer</span>
-                    <span>
-                      {new Date(expense.created_at).toLocaleDateString()}
                     </span>
-                  </div>
-                  <div className={ExpenseListStyles.itemButtons}>
-                    <ActionMenu
-                      MenuIcon={VerticalMenuIcon}
-                      triggerRef={actionTriggerRef}
-                      actions={getExpenseActions(expense)}
-                      ariaLabel={"Open expense settings menu"}
-                    ></ActionMenu>
+                    <div className={ExpenseListStyles.itemButtons}>
+                      <ActionMenu
+                        MenuIcon={VerticalMenuIcon}
+                        triggerRef={actionTriggerRef}
+                        actions={getExpenseActions(expense)}
+                        ariaLabel={"Open expense settings menu"}
+                      ></ActionMenu>
+                    </div>
                   </div>
                 </li>
               ))}
