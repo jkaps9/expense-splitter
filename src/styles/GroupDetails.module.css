@@ -39,14 +39,17 @@
   gap: var(--space-8);
 }
 
-.memberList {
-  display: flex;
-}
-
 .memberListContainer {
   align-items: center;
   display: flex;
   gap: 0.25rem;
+}
+
+.memberList {
+  display: flex;
+  & li:not(:first-child) .memberBubble {
+    margin-inline-start: -0.675rem;
+  }
 }
 
 .memberBubble {
@@ -56,12 +59,17 @@
   border: 1px solid var(--color-border);
   color: var(--color-bg-primary);
   display: none;
-  font-size: 0.75rem;
-  font-weight: 600;
+  font-size: var(--text-sm);
+  font-weight: var(--font-bold);
   height: 2rem;
   justify-content: center;
-  margin-inline-start: -0.675rem;
   width: 2rem;
+}
+
+.expenseActivityCard {
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: 1rem;
 }
 
 @media (min-width: 64rem) {

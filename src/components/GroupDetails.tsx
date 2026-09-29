@@ -278,40 +278,42 @@ export default function GroupDetails({ id }: { id: string }) {
             <span className="muted-text">0 settlements</span>
           </div>
         </div>
-        {groupExpenses && groupExpenses.length > 0 ? (
-          <ul className={ExpenseListStyles.expenseList}>
-            {groupExpenses.map((expense) => (
-              <li key={expense.id} className={ExpenseListStyles.expenseItem}>
-                <div className={ExpenseListStyles.itemDetails}>
-                  <span className={ExpenseListStyles.itemDescription}>
-                    {expense.description}
-                  </span>
-                  <strong>
-                    {
-                      CURRENCIES.find((c) => c.iso_code === expense.currency)
-                        ?.symbol
-                    }
-                    {expense.amount.toFixed(2)}
-                  </strong>
-                  <span>{/* TODO: add payer */}payer</span>
-                  <span>
-                    {new Date(expense.created_at).toLocaleDateString()}
-                  </span>
-                </div>
-                <div className={ExpenseListStyles.itemButtons}>
-                  <ActionMenu
-                    MenuIcon={VerticalMenuIcon}
-                    triggerRef={actionTriggerRef}
-                    actions={getExpenseActions(expense)}
-                    ariaLabel={"Open expense settings menu"}
-                  ></ActionMenu>
-                </div>
-              </li>
-            ))}
-          </ul>
-        ) : (
-          <p>Add an expense</p>
-        )}
+        <div className={GroupDetailStyles.expenseActivityCard}>
+          {groupExpenses && groupExpenses.length > 0 ? (
+            <ul className={ExpenseListStyles.expenseList}>
+              {groupExpenses.map((expense) => (
+                <li key={expense.id} className={ExpenseListStyles.expenseItem}>
+                  <div className={ExpenseListStyles.itemDetails}>
+                    <span className={ExpenseListStyles.itemDescription}>
+                      {expense.description}
+                    </span>
+                    <strong>
+                      {
+                        CURRENCIES.find((c) => c.iso_code === expense.currency)
+                          ?.symbol
+                      }
+                      {expense.amount.toFixed(2)}
+                    </strong>
+                    <span>{/* TODO: add payer */}payer</span>
+                    <span>
+                      {new Date(expense.created_at).toLocaleDateString()}
+                    </span>
+                  </div>
+                  <div className={ExpenseListStyles.itemButtons}>
+                    <ActionMenu
+                      MenuIcon={VerticalMenuIcon}
+                      triggerRef={actionTriggerRef}
+                      actions={getExpenseActions(expense)}
+                      ariaLabel={"Open expense settings menu"}
+                    ></ActionMenu>
+                  </div>
+                </li>
+              ))}
+            </ul>
+          ) : (
+            <p>Add an expense</p>
+          )}
+        </div>
       </div>
     </>
   );
