@@ -1,3 +1,7 @@
+.actionMenu {
+  display: flex;
+}
+
 .actionMenuDropdown {
   align-items: flex-start;
   background-color: var(--color-surface);
