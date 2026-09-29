@@ -287,9 +287,11 @@ export default function GroupDetails({ id }: { id: string }) {
                     <span className={ExpenseListStyles.itemDescription}>
                       {expense.description}
                     </span>
-                    <div className="payer-and-date">
-                      <span>{/* TODO: add payer */}payer</span>
-                      <span>
+                    <div className={ExpenseListStyles.dateAndPayer}>
+                      <span className="muted-text">
+                        {/* TODO: add payer */}payer
+                      </span>
+                      <span className="muted-text">
                         {new Date(expense.created_at).toLocaleDateString()}
                       </span>
                     </div>

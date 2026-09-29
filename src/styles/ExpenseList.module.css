@@ -18,20 +18,13 @@
 }
 
 .itemDetails {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 0.5rem;
   flex: 1;
-}
-
-.itemDescription {
-  grid-column: span 3;
 }
 
 .itemButtons {
   align-items: center;
   display: flex;
-  gap: 1rem;
+  gap: var(--space-4);
   button {
     border: none;
     padding: 0;
@@ -42,12 +35,16 @@
   }
 }
 
-@media (min-width: 64rem) {
-  .itemDetails {
-    grid-template-columns: 2fr repeat(3, 1fr);
-  }
+.dateAndPayer {
+  display: flex;
+  font-size: var(--text-sm);
+  gap: var(--space-2);
+}
 
-  .itemDescription {
-    grid-column: span 1;
-  }
+.amountAndButtons {
+  display: flex;
+  gap: var(--space-2);
+}
+
+@media (min-width: 64rem) {
 }
