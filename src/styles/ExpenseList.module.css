@@ -18,7 +18,12 @@
 }
 
 .itemDetails {
+  font-size: var(--text-lg);
   flex: 1;
+}
+
+.itemAmount {
+  font-size: var(--text-lg);
 }
 
 .itemButtons {

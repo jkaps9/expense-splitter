@@ -240,7 +240,7 @@ export default function GroupDetails({ id }: { id: string }) {
         </div>
         <div className={GroupDetailStyles.statRow}>
           <div>
-            <span className={GroupDetailStyles.expenseAmount}>
+            <span className="amount-text">
               {groupExpenses
                 .reduce((accumulator, currentItem) => {
                   return accumulator + currentItem.amount;
@@ -297,7 +297,9 @@ export default function GroupDetails({ id }: { id: string }) {
                     </div>
                   </div>
                   <div className={ExpenseListStyles.amountAndButtons}>
-                    <span className={ExpenseListStyles.amount}>
+                    <span
+                      className={`amount-text ${ExpenseListStyles.itemAmount}`}
+                    >
                       {
                         CURRENCIES.find((c) => c.iso_code === expense.currency)
                           ?.symbol
