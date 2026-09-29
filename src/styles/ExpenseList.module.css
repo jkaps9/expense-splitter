@@ -7,9 +7,8 @@
   align-items: center;
   background-color: var(--color-surface);
   display: flex;
-  gap: 0.25rem;
   justify-content: space-between;
-  padding: 1rem;
+  padding: var(--space-4);
   position: relative;
 
   &:not(:last-child) {

@@ -1,4 +1,5 @@
 import { Group } from "@/types";
+import styles from "@styles/GroupList.module.css";
 
 interface GroupsProps {
   groups: Group[];
@@ -8,13 +9,11 @@ interface GroupsProps {
 export default function GroupList({ groups, handleClick }: GroupsProps) {
   return (
     <>
-      <div>
-        <h2>Groups</h2>
-      </div>
-      <ul>
+      <span className={styles.title}>Groups</span>
+      <ul className={styles.list}>
         {groups &&
           groups.map((group) => (
-            <li key={group.id}>
+            <li key={group.id} className={styles.listItem}>
               <button
                 className="btn btn--naked"
                 onClick={() => handleClick(group.id)}

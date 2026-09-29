@@ -1,0 +1,14 @@
+.title {
+  text-transform: uppercase;
+}
+
+.listItem {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+  padding: var(--space-2) var(--space-4);
+
+  &.active {
+    background-color: var(--color-accent-subtle);
+  }
+}
