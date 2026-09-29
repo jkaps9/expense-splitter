@@ -9,11 +9,11 @@ interface GroupsProps {
 export default function GroupList({ groups, handleClick }: GroupsProps) {
   return (
     <>
-      <span className={styles.title}>Groups</span>
+      <span className={`${styles.title} muted-text`}>Groups</span>
       <ul className={styles.list}>
         {groups &&
           groups.map((group) => (
-            <li key={group.id} className={styles.listItem}>
+            <li key={group.id} className={`${styles.listItem} muted-text`}>
               <button
                 className="btn btn--naked"
                 onClick={() => handleClick(group.id)}

@@ -4,7 +4,7 @@
   flex-direction: column;
   justify-content: space-between;
   & > * {
-    padding: 1rem;
+    padding: var(--space-4);
   }
 }
 
@@ -17,6 +17,10 @@
 /*   display: flex; */
 /*   justify-content: space-between; */
 /* } */
+
+.sidebarContent {
+  padding-block: var(--space-4);
+}
 
 .main {
   flex: 1;

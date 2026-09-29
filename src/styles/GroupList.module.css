@@ -10,5 +10,6 @@
 
   &.active {
     background-color: var(--color-accent-subtle);
+    color: var(--color-text-primary);
   }
 }

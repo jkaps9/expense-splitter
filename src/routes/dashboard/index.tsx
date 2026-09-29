@@ -77,16 +77,18 @@ export default function DashboardBase() {
   return (
     <div className={styles.dashboard}>
       <aside className={styles.sidebar}>
-        <DashboardHeader />
+        <div className={styles.sidebarTop}>
+          <DashboardHeader />
 
-        <div className={styles.sidebarContent}>
-          {loading ? (
-            <p>Loading...</p>
-          ) : (
-            <>
-              <GroupList groups={groups} handleClick={setGroupId}></GroupList>
-            </>
-          )}
+          <div className={styles.sidebarContent}>
+            {loading ? (
+              <p>Loading...</p>
+            ) : (
+              <>
+                <GroupList groups={groups} handleClick={setGroupId}></GroupList>
+              </>
+            )}
+          </div>
         </div>
         <div className={styles.sidebarBottom}>
           <Link to="/groups/new" className="btn btn--naked">
