@@ -5,6 +5,7 @@ import { Group, Expense } from "@/types";
 import { useState, useEffect, useRef } from "react";
 import ActionMenu from "@components/ActionMenu";
 import ExpenseList from "@components/ExpenseList";
+import MemberBubble from "@components/MemberBubble";
 import styles from "@styles/GroupDetails.module.css";
 import EditIcon from "@assets/edit.svg?react";
 import DeleteIcon from "@assets/trash.svg?react";
@@ -256,12 +257,9 @@ export default function GroupDetails({ id }: { id: string }) {
             <ul className={styles.memberList}>
               {groupMembers.map((member) => (
                 <li key={member.id}>
-                  <div className={styles.memberBubble}>
-                    {(member.users?.display_name ?? member.guest_name)
-                      .split(" ")
-                      .map((word: string) => word[0])
-                      .join("")}
-                  </div>
+                  <MemberBubble
+                    name={member.users?.display_name ?? member.guest_name}
+                  ></MemberBubble>
                 </li>
               ))}
             </ul>
