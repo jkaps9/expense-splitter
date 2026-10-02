@@ -5,7 +5,7 @@ import { Group, Expense } from "@/types";
 import { useState, useEffect, useRef } from "react";
 import ActionMenu from "@components/ActionMenu";
 import ExpenseList from "@components/ExpenseList";
-import GroupDetailStyles from "@styles/GroupDetails.module.css";
+import styles from "@styles/GroupDetails.module.css";
 import EditIcon from "@assets/edit.svg?react";
 import DeleteIcon from "@assets/trash.svg?react";
 import PeopleIcon from "@assets/people.svg?react";
@@ -216,13 +216,13 @@ export default function GroupDetails({ id }: { id: string }) {
   return (
     <>
       {loading && <p>Loading...</p>}
-      <div className={GroupDetailStyles.top}>
-        <div className={GroupDetailStyles.header}>
-          <div className={GroupDetailStyles.headerNameAndDescription}>
+      <div className={styles.top}>
+        <div className={styles.header}>
+          <div className={styles.headerNameAndDescription}>
             <h1>{groupDetails.name}</h1>
             <p className="muted-text">{groupDetails.description}</p>
           </div>
-          <div className={GroupDetailStyles.headerButtons}>
+          <div className={styles.headerButtons}>
             <button
               type="button"
               className="btn btn--primary"
@@ -238,7 +238,7 @@ export default function GroupDetails({ id }: { id: string }) {
             ></ActionMenu>
           </div>
         </div>
-        <div className={GroupDetailStyles.statRow}>
+        <div className={styles.statRow}>
           <div>
             <span className="amount-text">
               {groupExpenses
@@ -252,11 +252,11 @@ export default function GroupDetails({ id }: { id: string }) {
           <div>
             <span className="muted-text">{groupExpenses.length} expenses</span>
           </div>
-          <div className={GroupDetailStyles.memberListContainer}>
-            <ul className={GroupDetailStyles.memberList}>
+          <div className={styles.memberListContainer}>
+            <ul className={styles.memberList}>
               {groupMembers.map((member) => (
                 <li key={member.id}>
-                  <div className={GroupDetailStyles.memberBubble}>
+                  <div className={styles.memberBubble}>
                     {(member.users?.display_name ?? member.guest_name)
                       .split(" ")
                       .map((word: string) => word[0])
@@ -269,16 +269,16 @@ export default function GroupDetails({ id }: { id: string }) {
           </div>
         </div>
       </div>
-      <div className={GroupDetailStyles.bottom}>
+      <div className={styles.bottom}>
         <div className="row">
           <h2>Activity</h2>
-          <div className={GroupDetailStyles.bottomStats}>
+          <div className={styles.bottomStats}>
             <span className="muted-text">{groupExpenses.length} expenses</span>
             <span>&middot;</span>
             <span className="muted-text">0 settlements</span>
           </div>
         </div>
-        <div className={GroupDetailStyles.expenseActivityCard}>
+        <div className={styles.expenseActivityCard}>
           <ExpenseList
             expenseList={groupExpenses}
             getExpenseActions={getExpenseActions}
