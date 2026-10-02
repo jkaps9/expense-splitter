@@ -170,19 +170,19 @@ export default function GroupDetails({ id }: { id: string }) {
         "Are you sure you want to delete this expense? This action is irreversible.",
       )
     ) {
-      const response = await supabase
+      const { error, status, statusText } = await supabase
         .from("expenses")
         .delete()
         .eq("id", expenseId);
 
-      if (response.success) {
+      if (!error) {
         alert("expense deleted");
         setGroupExpenses((prev) =>
           prev.filter((expense) => expense.id !== expenseId),
         );
       } else {
         alert(
-          `something went wrong\n${response.status}: ${response.statusText}`,
+          `something went wrong\n${status}: ${statusText || error.message}`,
         );
       }
     }
