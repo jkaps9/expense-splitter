@@ -49,7 +49,9 @@ export default function GroupDetails({ id }: { id: string }) {
               .eq("group_id", id),
             supabase
               .from("expenses")
-              .select("*, splits(*)")
+              .select(
+                "*, splits(*), payer:group_members!paid_by_member_id(*, users(display_name))",
+              )
               .eq("group_id", id)
               .order("created_at", { ascending: false }),
           ]);
@@ -73,6 +75,7 @@ export default function GroupDetails({ id }: { id: string }) {
           console.error("Error fetching group expenses");
         } else {
           setGroupExpenses(expensesRes.data);
+          console.log(expensesRes.data);
         }
       } catch (err) {
         console.error(err);
@@ -289,7 +292,9 @@ export default function GroupDetails({ id }: { id: string }) {
                     </span>
                     <div className={ExpenseListStyles.dateAndPayer}>
                       <span className="muted-text">
-                        {/* TODO: add payer */}payer
+                        {expense.payer?.users?.display_name ||
+                          expense.payer?.guest_name ||
+                          "Unknown"}
                       </span>
                       <span className="muted-text">
                         {new Date(expense.created_at).toLocaleDateString()}

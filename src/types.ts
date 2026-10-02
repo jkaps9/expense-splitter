@@ -61,4 +61,11 @@ export interface Expense {
   expense_date: string;
   created_at: string;
   splits?: Split[];
+  payer?: {
+    id: string;
+    guest_name: string | null;
+    users?: {
+      display_name: string | null;
+    } | null;
+  };
 }
