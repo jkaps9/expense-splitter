@@ -4,7 +4,8 @@ import { QueryData } from "@supabase/supabase-js";
 import { Group, Expense } from "@/types";
 import { useState, useEffect, useRef } from "react";
 import { CURRENCIES } from "@/constants";
-import ActionMenu from "@/components/ActionMenu";
+import ActionMenu from "@components/ActionMenu";
+import ExpenseList from "@components/ExpenseList";
 import ExpenseListStyles from "@styles/ExpenseList.module.css";
 import GroupDetailStyles from "@styles/GroupDetails.module.css";
 import EditIcon from "@assets/edit.svg?react";
@@ -75,7 +76,6 @@ export default function GroupDetails({ id }: { id: string }) {
           console.error("Error fetching group expenses");
         } else {
           setGroupExpenses(expensesRes.data);
-          console.log(expensesRes.data);
         }
       } catch (err) {
         console.error(err);
@@ -158,55 +158,6 @@ export default function GroupDetails({ id }: { id: string }) {
     });
   };
 
-  const deleteExpense = async (expenseId: string) => {
-    if (
-      window.confirm(
-        "Are you sure you want to delete this expense? This action is irreversible.",
-      )
-    ) {
-      const response = await supabase
-        .from("expenses")
-        .delete()
-        .eq("id", expenseId);
-
-      if (response.success) {
-        alert("expense deleted");
-        setGroupExpenses((prev) =>
-          prev.filter((expense) => expense.id !== expenseId),
-        );
-      } else {
-        alert(
-          `something went wrong\n${response.status}: ${response.statusText}`,
-        );
-      }
-    }
-  };
-
-  const editExpense = (expense: Expense) => {
-    navigate(`${import.meta.env.BASE_URL}/expenses/edit/${expense.id}`, {
-      state: {
-        groupDetails: groupDetails,
-        groupMembers: groupMembers,
-        expense: expense,
-        splits: expense.splits || [],
-      },
-    });
-  };
-
-  const getExpenseActions = (expense: Expense) => [
-    {
-      label: "Edit expense",
-      onClick: () => editExpense(expense),
-      icon: EditIcon,
-    },
-    {
-      label: "Delete expense",
-      onClick: () => deleteExpense(expense.id),
-      isDestructive: true,
-      icon: DeleteIcon,
-    },
-  ];
-
   const newMember = () => {
     navigate(`${import.meta.env.BASE_URL}/groups/new-member/`, {
       state: {
@@ -282,57 +233,7 @@ export default function GroupDetails({ id }: { id: string }) {
           </div>
         </div>
         <div className={GroupDetailStyles.expenseActivityCard}>
-          {groupExpenses && groupExpenses.length > 0 ? (
-            <ul className={ExpenseListStyles.expenseList}>
-              {groupExpenses.map((expense) => (
-                <li key={expense.id} className={ExpenseListStyles.expenseItem}>
-                  <div className={ExpenseListStyles.itemDetails}>
-                    <span className={ExpenseListStyles.itemDescription}>
-                      {expense.description}
-                    </span>
-                    <div className={ExpenseListStyles.dateAndPayer}>
-                      <span className="muted-text">
-                        {expense.payer?.users?.display_name ||
-                          expense.payer?.guest_name ||
-                          "Unknown"}
-                      </span>
-                      <span className="muted-text">
-                        {new Date(expense.created_at).toLocaleDateString()}
-                      </span>
-                    </div>
-                  </div>
-                  <div className={ExpenseListStyles.amountAndButtons}>
-                    <span
-                      className={`amount-text ${ExpenseListStyles.itemAmount}`}
-                    >
-                      {
-                        CURRENCIES.find((c) => c.iso_code === expense.currency)
-                          ?.symbol
-                      }
-                      {expense.amount.toFixed(2)}
-                    </span>
-                    <div className={ExpenseListStyles.itemButtons}>
-                      <ActionMenu
-                        MenuIcon={VerticalMenuIcon}
-                        triggerRef={actionTriggerRef}
-                        actions={getExpenseActions(expense)}
-                        ariaLabel={"Open expense settings menu"}
-                      ></ActionMenu>
-                    </div>
-                  </div>
-                </li>
-              ))}
-            </ul>
-          ) : (
-            <div className={ExpenseListStyles.empty}>
-              <p className={ExpenseListStyles.emptyTitle}>
-                You have not added any expenses yet
-              </p>
-              <p className="muted-text">
-                To add a new expense, click the "Add expense" button.
-              </p>
-            </div>
-          )}
+          <ExpenseList expenseList={groupExpenses}></ExpenseList>
         </div>
       </div>
     </>
