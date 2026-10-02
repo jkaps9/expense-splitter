@@ -12,7 +12,6 @@ export default function DashboardHeader() {
     <header className={`${styles.header}`}>
       <div className={styles.logo}>
         <ReactLogo aria-hidden="true" />
-        <span>Expense Splitter</span>
       </div>
       <div className="row">
         <button type="button" onClick={signOut} className="btn btn--secondary">

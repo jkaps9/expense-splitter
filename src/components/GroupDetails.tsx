@@ -319,7 +319,14 @@ export default function GroupDetails({ id }: { id: string }) {
               ))}
             </ul>
           ) : (
-            <p>Add an expense</p>
+            <div className={ExpenseListStyles.empty}>
+              <p className={ExpenseListStyles.emptyTitle}>
+                You have not added any expenses yet
+              </p>
+              <p className="muted-text">
+                To add a new expense, click the "Add expense" button.
+              </p>
+            </div>
           )}
         </div>
       </div>
