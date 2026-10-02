@@ -1,71 +1,26 @@
-import { useNavigate } from "react-router";
-import { supabase } from "@/lib/supabase";
 import { Expense } from "@/types";
 import { CURRENCIES } from "@/constants";
 import { useRef } from "react";
 
 import styles from "@styles/ExpenseList.module.css";
 import ActionMenu from "@/components/ActionMenu";
-import EditIcon from "@assets/edit.svg?react";
-import DeleteIcon from "@assets/trash.svg?react";
 import VerticalMenuIcon from "@assets/vertical-menu.svg?react";
+
+interface ExpenseListProps {
+  expenseList: Expense[];
+  getExpenseActions: (expense: Expense) => {
+    label: string;
+    onClick: () => void;
+    isDestructive?: boolean;
+    icon: React.ComponentType<React.ComponentProps<"svg">>;
+  }[];
+}
 
 export default function ExpenseList({
   expenseList,
-}: {
-  expenseList: Expense[];
-}) {
-  const navigate = useNavigate();
+  getExpenseActions,
+}: ExpenseListProps) {
   const actionTriggerRef = useRef(null);
-
-  const deleteExpense = async (expenseId: string) => {
-    if (
-      window.confirm(
-        "Are you sure you want to delete this expense? This action is irreversible.",
-      )
-    ) {
-      const response = await supabase
-        .from("expenses")
-        .delete()
-        .eq("id", expenseId);
-
-      if (response.success) {
-        alert("expense deleted");
-        setGroupExpenses((prev) =>
-          prev.filter((expense) => expense.id !== expenseId),
-        );
-      } else {
-        alert(
-          `something went wrong\n${response.status}: ${response.statusText}`,
-        );
-      }
-    }
-  };
-
-  const editExpense = (expense: Expense) => {
-    navigate(`${import.meta.env.BASE_URL}/expenses/edit/${expense.id}`, {
-      state: {
-        groupDetails: groupDetails,
-        groupMembers: groupMembers,
-        expense: expense,
-        splits: expense.splits || [],
-      },
-    });
-  };
-
-  const getExpenseActions = (expense: Expense) => [
-    {
-      label: "Edit expense",
-      onClick: () => editExpense(expense),
-      icon: EditIcon,
-    },
-    {
-      label: "Delete expense",
-      onClick: () => deleteExpense(expense.id),
-      isDestructive: true,
-      icon: DeleteIcon,
-    },
-  ];
 
   return (
     <>

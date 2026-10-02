@@ -164,6 +164,55 @@ export default function GroupDetails({ id }: { id: string }) {
     });
   };
 
+  const deleteExpense = async (expenseId: string) => {
+    if (
+      window.confirm(
+        "Are you sure you want to delete this expense? This action is irreversible.",
+      )
+    ) {
+      const response = await supabase
+        .from("expenses")
+        .delete()
+        .eq("id", expenseId);
+
+      if (response.success) {
+        alert("expense deleted");
+        setGroupExpenses((prev) =>
+          prev.filter((expense) => expense.id !== expenseId),
+        );
+      } else {
+        alert(
+          `something went wrong\n${response.status}: ${response.statusText}`,
+        );
+      }
+    }
+  };
+
+  const editExpense = (expense: Expense) => {
+    navigate(`${import.meta.env.BASE_URL}/expenses/edit/${expense.id}`, {
+      state: {
+        groupDetails: groupDetails,
+        groupMembers: groupMembers,
+        expense: expense,
+        splits: expense.splits || [],
+      },
+    });
+  };
+
+  const getExpenseActions = (expense: Expense) => [
+    {
+      label: "Edit expense",
+      onClick: () => editExpense(expense),
+      icon: EditIcon,
+    },
+    {
+      label: "Delete expense",
+      onClick: () => deleteExpense(expense.id),
+      isDestructive: true,
+      icon: DeleteIcon,
+    },
+  ];
+
   return (
     <>
       {loading && <p>Loading...</p>}
@@ -230,7 +279,10 @@ export default function GroupDetails({ id }: { id: string }) {
           </div>
         </div>
         <div className={GroupDetailStyles.expenseActivityCard}>
-          <ExpenseList expenseList={groupExpenses}></ExpenseList>
+          <ExpenseList
+            expenseList={groupExpenses}
+            getExpenseActions={getExpenseActions}
+          ></ExpenseList>
         </div>
       </div>
     </>
