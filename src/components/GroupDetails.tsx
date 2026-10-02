@@ -3,16 +3,13 @@ import { supabase } from "@/lib/supabase";
 import { QueryData } from "@supabase/supabase-js";
 import { Group, Expense } from "@/types";
 import { useState, useEffect, useRef } from "react";
-import { CURRENCIES } from "@/constants";
 import ActionMenu from "@components/ActionMenu";
 import ExpenseList from "@components/ExpenseList";
-import ExpenseListStyles from "@styles/ExpenseList.module.css";
 import GroupDetailStyles from "@styles/GroupDetails.module.css";
 import EditIcon from "@assets/edit.svg?react";
 import DeleteIcon from "@assets/trash.svg?react";
 import PeopleIcon from "@assets/people.svg?react";
 import SettingsIcon from "@assets/settings.svg?react";
-import VerticalMenuIcon from "@assets/vertical-menu.svg?react";
 
 export default function GroupDetails({ id }: { id: string }) {
   const [loading, setLoading] = useState(true);
