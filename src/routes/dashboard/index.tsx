@@ -42,6 +42,7 @@ export default function DashboardBase() {
           console.error("Error fetching groups", groupsRes.error.message);
         } else {
           setGroups(groupsRes.data);
+          console.log(groupsRes.data);
         }
       } catch (err) {
         console.error(err);
@@ -68,7 +69,7 @@ export default function DashboardBase() {
     return () => {
       authListener.subscription.unsubscribe();
     };
-  });
+  }, []);
 
   const setGroupId = (groupId: string) => {
     setSelectedGroupId(groupId);
