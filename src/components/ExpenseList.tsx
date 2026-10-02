@@ -4,6 +4,7 @@ import { useRef } from "react";
 
 import styles from "@styles/ExpenseList.module.css";
 import ActionMenu from "@/components/ActionMenu";
+import MemberBubble from "@components/MemberBubble";
 import VerticalMenuIcon from "@assets/vertical-menu.svg?react";
 
 interface ExpenseListProps {
@@ -33,11 +34,21 @@ export default function ExpenseList({
                   {expense.description}
                 </span>
                 <div className={styles.dateAndPayer}>
-                  <span className="muted-text">
-                    {expense.payer?.users?.display_name ||
-                      expense.payer?.guest_name ||
-                      "Unknown"}
-                  </span>
+                  <div className={styles.payer}>
+                    <MemberBubble
+                      name={
+                        expense.payer?.users?.display_name ||
+                        expense.payer?.guest_name ||
+                        "Unknown"
+                      }
+                    ></MemberBubble>
+                    <span className="muted-text">
+                      {expense.payer?.users?.display_name ||
+                        expense.payer?.guest_name ||
+                        "Unknown"}
+                    </span>
+                  </div>
+                  <span>&middot;</span>
                   <span className="muted-text">
                     {new Date(expense.created_at).toLocaleDateString()}
                   </span>

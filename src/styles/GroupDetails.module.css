@@ -48,6 +48,10 @@
 
 .memberList {
   display: flex;
+
+  li:not(:first-child) {
+    margin-inline-start: -0.675rem;
+  }
 }
 
 .expenseActivityCard {
