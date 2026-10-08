@@ -23,6 +23,14 @@ export default function ExpenseList({
 }: ExpenseListProps) {
   const actionTriggerRef = useRef(null);
 
+  const currencyFormatter = (amount: number, currency: string) => {
+    const formatter = new Intl.NumberFormat("en-US", {
+      style: "currency",
+      currency: currency,
+    });
+    return formatter.format(amount);
+  };
+
   return (
     <>
       {expenseList && expenseList.length > 0 ? (
@@ -56,11 +64,7 @@ export default function ExpenseList({
               </div>
               <div className={styles.amountAndButtons}>
                 <span className={`amount-text ${styles.itemAmount}`}>
-                  {
-                    CURRENCIES.find((c) => c.iso_code === expense.currency)
-                      ?.symbol
-                  }
-                  {expense.amount.toFixed(2)}
+                  {currencyFormatter(expense.amount, expense.currency)}
                 </span>
                 <div className={styles.itemButtons}>
                   <ActionMenu

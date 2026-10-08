@@ -214,6 +214,15 @@ export default function GroupDetails({ id }: { id: string }) {
     },
   ];
 
+  const currencyFormatter = (amount: number, currency: string) => {
+    const formatter = new Intl.NumberFormat("en-US", {
+      style: "currency",
+      currency: currency,
+    });
+
+    return formatter.format(amount);
+  };
+
   return (
     <>
       {loading && <p>Loading...</p>}
@@ -242,11 +251,12 @@ export default function GroupDetails({ id }: { id: string }) {
         <div className={styles.statRow}>
           <div>
             <span className="amount-text">
-              {groupExpenses
-                .reduce((accumulator, currentItem) => {
+              {currencyFormatter(
+                groupExpenses.reduce((accumulator, currentItem) => {
                   return accumulator + currentItem.amount;
-                }, 0)
-                .toFixed(2)}
+                }, 0),
+                groupDetails.default_currency || "USD",
+              )}
             </span>
             <span className="muted-text"> total spent</span>
           </div>
